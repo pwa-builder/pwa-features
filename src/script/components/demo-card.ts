@@ -1,10 +1,10 @@
 import { LitElement, css, html, customElement, property } from 'lit-element';
 
 
-@customElement('comp-card')
-export class CompCard extends LitElement {
+@customElement('demo-card')
+export class DemoCard extends LitElement {
 
-  @property({ type: Object }) comp: any;
+  @property({ type: Object }) demo: any;
   
 
   static get styles() {
@@ -14,7 +14,7 @@ export class CompCard extends LitElement {
         justify-content: center;
       }
     
-      .compCard {
+      .demoCard {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -37,12 +37,12 @@ export class CompCard extends LitElement {
         font-size: 14px;
       }
 
-      #cardActions {
+      #demoActions {
         display: flex;
         justify-content: center;
       }
 
-      #cardActions a {
+      #demoActions a {
         text-decoration: none;
         font-size: 14px;
         font-weight: bold;
@@ -62,7 +62,7 @@ export class CompCard extends LitElement {
         transition: all 260ms;
       }
 
-      #cardActions a:hover {
+      #demoActions a:hover {
         background-color: #9337d8;
         color: white;
       }
@@ -75,14 +75,14 @@ export class CompCard extends LitElement {
 
   render() {
     return html`
-      <div class="compCard">
+      <div class="demoCard">
         <div>
-          <h3>${this.comp.name}</h3>
-          <p>${this.comp.desc}</p>
+          <h3>${this.demo.name}</h3>
+          <p>${this.demo.desc}</p>
         </div>
 
-        <div id="cardActions">
-          <a .href=${`component/${this.comp.ID}`}>View Component</a>
+        <div id="demoActions">
+          <a .href=${`demo/${this.demo.ID}`}>View Demo</a>
         </div>
       </div>
     `;

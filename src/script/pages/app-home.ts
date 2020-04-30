@@ -3,11 +3,18 @@ import { LitElement, css, html, customElement, property } from 'lit-element';
 // For more info on the @pwabuilder/pwainstall component click here https://github.com/pwa-builder/pwa-install
 import '@pwabuilder/pwainstall';
 import '../components/comp-card';
+import '../components/demo-card';
+import { getAll, getFeatured, searchComps, getDemos } from '../services/data';
 
 @customElement('app-home')
 export class AppHome extends LitElement {
 
-  @property({ type: Array }) comps: any[] | null = null
+  @property({ type: Array }) comps: any[] | null = null;
+  @property({ type: Array }) featured: any[] | null = null;
+  @property({ type: Array }) demos: any[] | null = null;
+
+  @property({ type: String }) cat: string | null = null;
+  @property({ type: String }) searchValue: string | null = null;
 
   static get styles() {
     return css`
@@ -19,9 +26,10 @@ export class AppHome extends LitElement {
 
       button {
         cursor: pointer;
+        outline: none;
       }
 
-      ul {
+      #compList {
         list-style: none;
         padding: 0;
         display: grid;
@@ -29,9 +37,39 @@ export class AppHome extends LitElement {
         grid-gap: 1rem;
       }
 
+      #featured ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 10px;
+
+        min-height: 280px;
+      }
+
+      #featured comp-card {
+        margin: 8px;
+      }
+
+      #featured h2 {
+        text-align: center;
+        color: black;
+        font-size: 24px;
+      }
+
       #catBar {
         display: flex;
         justify-content: space-around;
+
+        position: sticky;
+        top: 0;
+
+        align-items: center;
+
+        backdrop-filter: blur(10px);
+        background: #f0f0f03d;
+        padding-top: 1em;
       }
 
       #catBar button {
@@ -45,26 +83,68 @@ export class AppHome extends LitElement {
         border: none;
         padding: 10px 20px;
         border-radius: 20px;
-        margin: 10px;
-        width: 158px;
+        margin: 2px;
+        width: 140px;
+      }
+
+      #catBar button.active {
+        background: linear-gradient(270deg,#622392 17.15%,#9337d8 52.68%);
       }
 
       #headerText {
         color: white;
-        margin-left: 6em;
-        margin-right: 6em;
-        margin-bottom: 64px;
+
+        background: linear-gradient(45deg, #3f9ccd, #7160d3);
+        background-repeat: no-repeat;
+        padding-left: 144px;
+        margin: 0;
+        padding-bottom: 2em;
+        padding-top: 2em;
+      }
+
+      #headerText h1 {
+        font-size: 24px;
       }
 
       #headerText p {
-        font-size: 18px;
+        font-size: 16px;
+        line-height: 22px;
         width: 28em;
+      }
+
+      #searchBlock {
+        display: flex;
+        align-items: center;
+        margin-bottom: 30px;
+
+        margin-top: 8px;
+
+        justify-content: start;
+      }
+
+      #searchBlock #search {
+        display: flex;
+        flex-direction: column;
+      }
+
+      #searchInput {
+        width: 28em;
+        height: 38px;
+        border: none;
+        padding: 8px;
+        border-radius: 4px;
+        border: none;
+      }
+
+      #search label {
+        font-weight: bold;
+        color: black;
+        margin-bottom: 8px;
       }
 
       @media(max-width: 800px) {
         #headerText {
-          margin-left: 0;
-          margin-right: 0;
+          padding: 16px;
         }
 
         #headerText p {
@@ -74,6 +154,29 @@ export class AppHome extends LitElement {
         #catBar {
           display: flex;
           justify-content: space-between;
+          flex-direction: column;
+
+          white-space: nowrap;
+          overflow: scroll;
+        }
+
+        #featured ul {
+          flex-direction: column;
+        }
+
+        #searchBlock {
+          margin-left: 0;
+          margin-top: 4em;
+
+          width: 90%;
+        }
+
+        #searchBlock #search {
+          width: 100%;
+        }
+
+        #searchInput {
+          width: 100%;
         }
       }
 
@@ -81,11 +184,6 @@ export class AppHome extends LitElement {
         ul {
           margin-left: 6em;
           margin-right: 6em;
-        }
-
-        #catBar {
-          margin-left: 11em;
-          margin-right: 11em;
         }
       }
 
@@ -102,16 +200,23 @@ export class AppHome extends LitElement {
   }
 
   async firstUpdated() {
-    await this.getAll();
+    await this.doFeatured();
+    await this.doGetAll();
   }
 
-  async getAll() {
-    const resp = await fetch('/assets/components.json');
-    this.comps = await resp.json();
+  async doFeatured() {
+    this.featured = await getFeatured();
+  }
+
+  async doGetAll() {
+    const data = await getAll();
+    this.comps = [...data];
+
+    this.cat = null;
   }
 
   async changeCat(cat: string) {
-    const resp = await fetch('/assets/components.json');
+    /*const resp = await fetch('/assets/components.json');
     const comps = await resp.json();
 
     let temp: any[] = [];
@@ -122,6 +227,23 @@ export class AppHome extends LitElement {
     });
 
     this.comps = [...temp];
+
+    this.cat = cat;*/
+
+    if (cat === 'demos') {
+      const demos = await getDemos();
+
+      this.demos = [...demos];
+
+      this.cat = cat;
+    }
+  }
+
+  async handleSearch(event: InputEvent) {
+    this.searchValue = (event.target as HTMLInputElement)?.value;
+    const searchedValues = await searchComps(this.searchValue);
+
+    this.comps = [...searchedValues];
   }
 
   render() {
@@ -135,23 +257,60 @@ export class AppHome extends LitElement {
 Add that special something to supercharge your PWA. These cross-platform features can make your website work more like an app.</p>
         </div>
 
+
         <div id="catBar">
-          <button @click=${this.getAll}>All</button>
-          <button @click=${() => this.changeCat('pwa')}>PWA</button>
-          <button @click=${() => this.changeCat('auth')}>Auth</button>
-          <button @click=${() => this.changeCat('graph')}>Microsoft Graph</button>
-          <button>Templates</button>
+          <div id="searchBlock">
+            <div id="search">
+              <label for="searchInput">Search</label>
+              <input @input="${(event: InputEvent) => this.handleSearch(event)}" .value="${this.searchValue}" id="searchInput" name="searchInput" type="search" placeholder="install component...">
+            </div>
+          </div>
+
+          <div id="cats">
+            <button class="${this.cat === null ? 'active' : null}" @click=${this.doGetAll}>Components</button>
+            <button class="${this.cat === 'demos' ? 'active' : null}" @click=${() => this.changeCat('demos')}>Demos</button>
+            <button>Templates</button>
+          </div>
         </div>
 
-        <ul>
+        ${this.cat === null ? html`<section id="featured">
+          <h2>Featured</h2>
+
+          <ul>
+            ${
+        this.featured?.map((comp) => {
+          return html`
+                  <comp-card .comp=${comp}></comp-card>
+                `
+        })
+        }
+          </ul>
+        </section>` : null}
+
+        ${this.cat === null ? html`<ul id="compList">
           ${
-            this.comps?.map((comp) => {
-              return html`
+        this.comps?.map((comp) => {
+          return html`
                 <comp-card .comp=${comp}></comp-card>
               `
-            })
-          }
-        </ul>
+        })
+        }
+        </ul>` : null}
+
+        ${
+          this.cat === 'demos' ? html`
+
+            <ul id="compList">
+              ${
+                this.demos?.map((demo) => {
+                  return html`
+                    <demo-card .demo=${demo}></demo-card>
+                  `
+                })
+              }
+            </ul>
+          ` : null
+        }
 
         <pwa-install>Install PWA Starter</pwa-install>
       </div>

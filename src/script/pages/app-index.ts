@@ -12,9 +12,7 @@ export class AppIndex extends LitElement {
 
   static get styles() {
     return css`
-      main {
-        padding: 16px;
-      }
+
     `;
   }
 
@@ -29,6 +27,12 @@ export class AppIndex extends LitElement {
       { path: '/', component: 'app-home' },
       {
         path: '/component/:id', component: 'comp-detail',
+        action: async () => {
+          await import('./comp-detail.js');
+        },
+      },
+      {
+        path: '/demo/:id', component: 'comp-detail',
         action: async () => {
           await import('./comp-detail.js');
         },

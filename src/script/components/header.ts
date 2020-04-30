@@ -13,8 +13,20 @@ export class AppHeader extends LitElement {
         padding-left: 16px;
         padding-right: 16px;
         background: black;
-        color: white;
+        color: black;
         height: 52px;
+      }
+
+      header img {
+        height: 32px;
+        width: 86px;
+      }
+
+      @media(min-width: 1336px) {
+        header {
+          padding-left: 154px;
+          padding-right: 154px;
+        }
       }
 
     `;
@@ -27,7 +39,10 @@ export class AppHeader extends LitElement {
   render() {
     return html`
       <header>
+        <img src="/assets/pwabuilder.svg" alt="PWABuilder icon">
 
+        <div id="github">
+        </div>
       </header>
     `;
   }

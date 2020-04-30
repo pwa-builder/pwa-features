@@ -12,10 +12,9 @@ html, body {
   font-family: var(--font-family);
   padding: 0;
   margin: 0;
+  background: #F0F0F0;
 }
 
 body {
   height: 100%;
-  background: linear-gradient(45deg, #3f9ccd, #7160d3);
-  background-repeat: no-repeat;
 }
