@@ -7,7 +7,9 @@
     "embed": "https://glitch.com/embed/#!/embed/pwainstall?path=README.md&previewSize=100",
     "npm_url": "",
     "github_url": "",
-    "readme_url": "https://raw.githubusercontent.com/pwa-builder/pwa-auth/master/README.md"
+    "readme_url": "https://raw.githubusercontent.com/pwa-builder/pwa-auth/master/README.md",
+    "install_url": "https://cdn.jsdelivr.net/npm/@pwabuilder/pwaauth@latest/dist/pwa-auth.min.js",
+    "package_name": "@pwabuilder/pwaauth"
   },
   {
     "name": "Install your PWA",
@@ -17,7 +19,9 @@
     "embed": "https://glitch.com/embed/#!/embed/pwainstall?path=README.md&previewSize=100",
     "npm_url": "https://www.npmjs.com/package/@pwabuilder/pwainstall",
     "github_url": "https://github.com/pwa-builder/pwa-install",
-    "readme_url": "https://raw.githubusercontent.com/pwa-builder/pwa-install/master/README.md"
+    "readme_url": "https://raw.githubusercontent.com/pwa-builder/pwa-install/master/README.md",
+    "install_url": "https://cdn.jsdelivr.net/npm/@pwabuilder/pwainstall@latest/dist/pwa-install.min.js",
+    "package_name": "@pwabuilder/pwainstall"
   },
   {
      "name": "Graph Login Component",
@@ -41,7 +45,9 @@
     "embed": "https://glitch.com/embed/#!/embed/pwainstall?path=README.md&previewSize=100",
     "npm_url": "https://www.npmjs.com/package/@pwabuilder/pwainstall",
     "github_url": "https://github.com/pwa-builder/pwa-install",
-    "readme_url": "https://raw.githubusercontent.com/pwa-builder/pwa-install/master/README.md"
+    "readme_url": "https://raw.githubusercontent.com/pwa-builder/pwa-install/master/README.md",
+    "install_url": "https://cdn.jsdelivr.net/npm/@pwabuilder/pwainstall@latest/dist/pwa-install.min.js",
+    "package_name": "@pwabuilder/pwainstall"
   },
   {
      "name": "Graph Login Component",
@@ -65,7 +71,9 @@
     "embed": "https://glitch.com/embed/#!/embed/pwainstall?path=README.md&previewSize=100",
     "npm_url": "https://www.npmjs.com/package/@pwabuilder/pwainstall",
     "github_url": "https://github.com/pwa-builder/pwa-install",
-    "readme_url": "https://raw.githubusercontent.com/pwa-builder/pwa-install/master/README.md"
+    "readme_url": "https://raw.githubusercontent.com/pwa-builder/pwa-install/master/README.md",
+    "install_url": "https://cdn.jsdelivr.net/npm/@pwabuilder/pwainstall@latest/dist/pwa-install.min.js",
+    "package_name": "@pwabuilder/pwainstall"
   },
   {
      "name": "Graph Login Component",

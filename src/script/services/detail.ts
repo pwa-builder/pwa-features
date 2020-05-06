@@ -5,7 +5,6 @@ export async function handleMarkdown(markdownURL: string): Promise<string | void
       const markdown = await markdownReq.text();
 
       const markedWorker = new Worker('/assets/markWorker.js');
-      console.log(markedWorker);
 
       markedWorker.postMessage(markdown);
 

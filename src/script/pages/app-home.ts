@@ -158,6 +158,8 @@ export class AppHome extends LitElement {
 
           white-space: nowrap;
           overflow: scroll;
+
+          padding-bottom: 1em;
         }
 
         #featured ul {
@@ -166,7 +168,7 @@ export class AppHome extends LitElement {
 
         #searchBlock {
           margin-left: 0;
-          margin-top: 4em;
+          margin-top: 1em;
 
           width: 90%;
         }
@@ -269,7 +271,6 @@ Add that special something to supercharge your PWA. These cross-platform feature
           <div id="cats">
             <button class="${this.cat === null ? 'active' : null}" @click=${this.doGetAll}>Components</button>
             <button class="${this.cat === 'demos' ? 'active' : null}" @click=${() => this.changeCat('demos')}>Demos</button>
-            <button>Templates</button>
           </div>
         </div>
 
