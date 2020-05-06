@@ -4,7 +4,6 @@ import { injectManifest } from 'rollup-plugin-workbox';
 import minifyHTML from 'rollup-plugin-minify-html-literals';
 import strip from '@rollup/plugin-strip';
 import copy from 'rollup-plugin-copy';
-import OMT from "@surma/rollup-plugin-off-main-thread";
 
 export default {
   input: ['build/script/pages/app-index.js'],
@@ -16,7 +15,6 @@ export default {
     resolve(),
     minifyHTML(),
     terser(),
-    OMT(),
     strip({
       functions: ['console.log']
     }),
