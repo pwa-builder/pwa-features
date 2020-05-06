@@ -19,7 +19,7 @@ export class AppHome extends LitElement {
   static get styles() {
     return css`
       pwa-install {
-        position: absolute;
+        position: fixed;
         bottom: 16px;
         right: 16px;
       }
