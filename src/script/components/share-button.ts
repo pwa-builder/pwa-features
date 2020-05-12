@@ -34,7 +34,7 @@ export class ShareButton extends LitElement {
     try {
       await (navigator as any).share({
         title: 'PWABuilder',
-        text: 'Check out this component I found on PWABuilder',
+        text: 'Check this out!',
         url: location.href,
       })
     }
