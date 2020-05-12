@@ -3,6 +3,7 @@ import { getAComp } from '../services/data';
 import { handleMarkdown } from '../services/detail';
 
 import '../components/comp-toast';
+import '../components/share-button';
 
 
 @customElement('comp-detail')
@@ -234,7 +235,7 @@ export class CompDetail extends LitElement {
           </div>
 
           <div id="actions">
-            <button>Share</button>
+            <share-button></share-button>
             <a .href="${this.comp?.github_url}">Github</a>
             <a .href="${this.comp?.npm_url}">npm</a>
           </div>
