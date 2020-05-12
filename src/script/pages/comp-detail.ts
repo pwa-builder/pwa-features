@@ -50,33 +50,39 @@ export class CompDetail extends LitElement {
       }
 
       #installOptions {
-        background: #9337d8;
-        width: 8.73em;
+        background: white;
         display: flex;
-        justify-content: center;
-        align-items: center;
         flex-direction: column;
         border-radius: 0px 0px 6px 6px;
         padding: 5px;
-        margin-top: -.9em;
-        padding-top: 22px;
+
+        padding-left: 12px;
+        align-items: flex-start;
+        border-radius: 6px;
+        margin-left: 1.8em;
+        width: 10em;
+        box-shadow: 0 0 4px 1px rgba(0,0,0,.18039);
+        justify-content: flex-start;
 
         animation-name: appear;
         animation-duration: 200ms;
       }
 
       #installOptions button {
-        background: white;
-        color: #9337d8;
-        padding: 5px;
-        padding-left: 10px;
-        padding-right: 10px;
-        margin-bottom: 8px;
-        font-weight: bold;
+        height: 40px;
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 21px;
+        background: none;
+        color: #000;
+        padding-left: 0;
+        padding-right: 0;
+        width: initial;
         border: none;
-        border-radius: 22px;
-        width: 100%;
         cursor: pointer;
+
+        width: 100%;
+        text-align: start;
       }
 
       #compDetail {
