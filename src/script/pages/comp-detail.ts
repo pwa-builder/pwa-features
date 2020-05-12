@@ -4,6 +4,7 @@ import { handleMarkdown } from '../services/detail';
 
 import '../components/comp-toast';
 import '../components/share-button';
+import { Router } from '@vaadin/router';
 
 
 @customElement('comp-detail')
@@ -18,7 +19,7 @@ export class CompDetail extends LitElement {
   static get styles() {
     return css`
       #headerBlock {
-        margin-left: 9em;
+        margin-left: 3em;
         color: black;
         margin-top: 48px;
 
@@ -143,6 +144,30 @@ export class CompDetail extends LitElement {
         overflow: auto;
       }
 
+      #backButtonBlock {
+        margin-right: 2em;
+      }
+
+      #backButton {
+        height: 4em;
+        border: none;
+        background: white;
+        border-radius: 50%;
+        padding: 14px;
+        width: 4em;
+        cursor: pointer;
+      }
+
+      #backButton img {
+        height: 100%;
+      }
+
+      #headerInfoBlock {
+        display: flex;
+        flex-direction: row;
+        align-items: start;
+      }
+
       @media(max-width: 800px) {
         #headerBlock, #demo, #readme {
           margin-left: 0;
@@ -153,12 +178,17 @@ export class CompDetail extends LitElement {
           flex-direction: column;
         }
 
+        #backButtonBlock {
+          margin-right: 1em;
+        }
+
         #demo iframe {
           width: 100%;
         }
 
         #actions {
           margin-top: 1em;
+          margin-left: 4.4em;
         }
       }
 
@@ -214,19 +244,32 @@ export class CompDetail extends LitElement {
     }
   }
 
+  goBack() {
+    Router.go('/');
+  }
+
   render() {
     return html`
       <div id="compDetail">
 
         <section id="headerBlock">
-          <div>
-            <h2>${this.comp?.name}</h2>
+          <div id="headerInfoBlock">
 
-            <p>${this.comp?.desc}</P>
+            <div id="backButtonBlock">
+              <button @click="${() => this.goBack()}" id="backButton">
+                <img src="/assets/back.svg" alt="back icon">
+              </button>
+            </div>
 
-            <button id="installButton" @click="${this.installComp}">
-              Install Component
-            </button>
+            <div>
+              <h2>${this.comp?.name}</h2>
+
+              <p>${this.comp?.desc}</P>
+
+              <button id="installButton" @click="${this.installComp}">
+                Install Component
+              </button>
+            </div>
 
             ${this.showOptions ? html`<div id="installOptions">
               <button @click="${() => this.copyInstall("script")}">with script tag</button>
