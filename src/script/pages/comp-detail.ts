@@ -269,12 +269,12 @@ export class CompDetail extends LitElement {
               <button id="installButton" @click="${this.installComp}">
                 Install Component
               </button>
-            </div>
 
-            ${this.showOptions ? html`<div id="installOptions">
+              ${this.showOptions ? html`<div id="installOptions">
               <button @click="${() => this.copyInstall("script")}">with script tag</button>
               <button @click="${() => this.copyInstall("npm")}">with NPM</button>
             </div>` : null}
+            </div>
           </div>
 
           <div id="actions">
