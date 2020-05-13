@@ -2,9 +2,12 @@
   {
     "name": "Sign in with Microsoft, Google or Facebook",
     "desc": "Web component that lets your users sign-in using their Microsoft, Google, or Facebook account. Your app receives their email address, name, and profile picture.",
-    "categories": ["auth", "pwa"],
+    "categories": [
+      "auth",
+      "pwa"
+    ],
     "ID": "pwa_auth",
-    "embed": "https://glitch.com/embed/#!/embed/pwainstall?path=README.md&previewSize=100",
+    "embed": "https://glitch.com/embed/#!/embed/pwaauth?path=README.md&previewSize=100",
     "npm_url": "",
     "github_url": "",
     "readme_url": "https://raw.githubusercontent.com/pwa-builder/pwa-auth/master/README.md",
@@ -14,7 +17,9 @@
   {
     "name": "Install your PWA",
     "desc": "A simple component that gives users a button to install your PWA directly from the browser",
-    "categories": ["pwa"],
+    "categories": [
+      "pwa"
+    ],
     "ID": "install_pwa",
     "embed": "https://glitch.com/embed/#!/embed/pwainstall?path=README.md&previewSize=100",
     "npm_url": "https://www.npmjs.com/package/@pwabuilder/pwainstall",
@@ -24,62 +29,88 @@
     "package_name": "@pwabuilder/pwainstall"
   },
   {
-     "name": "Graph Login Component",
-     "desc":"A simple component that gives users a button to install your PWA directly from the browser",
-     "categories": ["graph", "auth"],
-     "ID": "graph_login",
-     "url":"https://raw.githubusercontent.com/pwa-builder/pwa-auth/master/README.md"
-  },
-  {
-    "name": "Sign in with Microsoft, Google or Facebook",
-    "desc": "Web component that lets your users sign-in using their Microsoft, Google, or Facebook account. Your app receives their email address, name, and profile picture.",
-    "categories": ["auth", "pwa"],
-    "ID": "pwa_auth",
-    "url": "https://raw.githubusercontent.com/pwa-builder/pwa-auth/master/README.md"
-  },
-  {
-    "name": "Install your PWA",
+    "name": "Graph Login Component",
     "desc": "A simple component that gives users a button to install your PWA directly from the browser",
-    "categories": ["pwa"],
-    "ID": "install_pwa",
-    "embed": "https://glitch.com/embed/#!/embed/pwainstall?path=README.md&previewSize=100",
-    "npm_url": "https://www.npmjs.com/package/@pwabuilder/pwainstall",
-    "github_url": "https://github.com/pwa-builder/pwa-install",
-    "readme_url": "https://raw.githubusercontent.com/pwa-builder/pwa-install/master/README.md",
-    "install_url": "https://cdn.jsdelivr.net/npm/@pwabuilder/pwainstall@latest/dist/pwa-install.min.js",
-    "package_name": "@pwabuilder/pwainstall"
+    "categories": [
+      "graph",
+      "auth"
+    ],
+    "ID": "graph_login",
+    "embed": "https://mgt.dev/?path=/story/components-mgt-login--login",
+    "npm_url": "https://www.npmjs.com/package/@microsoft/mgt",
+    "github_url": "https://github.com/microsoftgraph/microsoft-graph-toolkit",
+    "readme_url": "https://raw.githubusercontent.com/microsoftgraph/microsoft-graph-toolkit/master/README.md",
+    "install_url": "https://unpkg.com/@microsoft/mgt/dist/bundle/mgt-loader.js",
+    "package_name": "@microsoft/mgt"
   },
   {
-     "name": "Graph Login Component",
-     "desc":"A simple component that gives users a button to install your PWA directly from the browser",
-     "categories": ["graph", "auth"],
-     "ID": "graph_login",
-     "url":"https://raw.githubusercontent.com/pwa-builder/pwa-auth/master/README.md"
+    "name": "Agenda Graph Component",
+    "desc": "This component returns calendar events for the signed in user from the Microsoft Graph API.",
+    "categories": [
+      "graph"
+    ],
+    "ID": "graph_calendar",
+    "embed": "https://mgt.dev/?path=/story/components-mgt-agenda--simple",
+    "npm_url": "https://www.npmjs.com/package/@microsoft/mgt",
+    "github_url": "https://github.com/microsoftgraph/microsoft-graph-toolkit",
+    "readme_url": "https://raw.githubusercontent.com/microsoftgraph/microsoft-graph-toolkit/master/README.md",
+    "install_url": "https://unpkg.com/@microsoft/mgt/dist/bundle/mgt-loader.js",
+    "package_name": "@microsoft/mgt"
   },
   {
-    "name": "Sign in with Microsoft, Google or Facebook",
-    "desc": "Web component that lets your users sign-in using their Microsoft, Google, or Facebook account. Your app receives their email address, name, and profile picture.",
-    "categories": ["auth", "pwa"],
-    "ID": "pwa_auth",
-    "url": "https://raw.githubusercontent.com/pwa-builder/pwa-auth/master/README.md"
+    "name": "Tasks Graph Component",
+    "desc": "This component returns the tasks for the signed in user from the Microsoft Graph API.",
+    "categories": [
+      "graph"
+    ],
+    "ID": "graph_tasks",
+    "embed": "https://mgt.dev/?path=/story/components-mgt-tasks--simple",
+    "npm_url": "https://www.npmjs.com/package/@microsoft/mgt",
+    "github_url": "https://github.com/microsoftgraph/microsoft-graph-toolkit",
+    "readme_url": "https://raw.githubusercontent.com/microsoftgraph/microsoft-graph-toolkit/master/README.md",
+    "install_url": "https://unpkg.com/@microsoft/mgt/dist/bundle/mgt-loader.js",
+    "package_name": "@microsoft/mgt"
   },
   {
-    "name": "Install your PWA",
-    "desc": "A simple component that gives users a button to install your PWA directly from the browser",
-    "categories": ["pwa"],
-    "ID": "install_pwa",
-    "embed": "https://glitch.com/embed/#!/embed/pwainstall?path=README.md&previewSize=100",
-    "npm_url": "https://www.npmjs.com/package/@pwabuilder/pwainstall",
-    "github_url": "https://github.com/pwa-builder/pwa-install",
-    "readme_url": "https://raw.githubusercontent.com/pwa-builder/pwa-install/master/README.md",
-    "install_url": "https://cdn.jsdelivr.net/npm/@pwabuilder/pwainstall@latest/dist/pwa-install.min.js",
-    "package_name": "@pwabuilder/pwainstall"
+    "name": "People Picker Graph Component",
+    "desc": "The People Picker component enables the user to view, add, or remove people objects from a dynamic drop-down list as they type.",
+    "categories": [
+      "graph"
+    ],
+    "ID": "graph_people_picker",
+    "embed": "https://mgt.dev/?path=/story/components-mgt-people-picker--people-picker",
+    "npm_url": "https://www.npmjs.com/package/@microsoft/mgt",
+    "github_url": "https://github.com/microsoftgraph/microsoft-graph-toolkit",
+    "readme_url": "https://raw.githubusercontent.com/microsoftgraph/microsoft-graph-toolkit/master/README.md",
+    "install_url": "https://unpkg.com/@microsoft/mgt/dist/bundle/mgt-loader.js",
+    "package_name": "@microsoft/mgt"
   },
   {
-     "name": "Graph Login Component",
-     "desc":"A simple component that gives users a button to install your PWA directly from the browser",
-     "categories": ["graph", "auth"],
-     "ID": "graph_login",
-     "url":"https://raw.githubusercontent.com/pwa-builder/pwa-auth/master/README.md"
+    "name": "People Graph Component",
+    "desc": "This ccomponent returns the Contacts for the signed in user from the Microsoft Graph API.",
+    "categories": [
+      "graph"
+    ],
+    "ID": "graph_people",
+    "embed": "https://mgt.dev/?path=/story/components-mgt-people--people",
+    "npm_url": "https://www.npmjs.com/package/@microsoft/mgt",
+    "github_url": "https://github.com/microsoftgraph/microsoft-graph-toolkit",
+    "readme_url": "https://raw.githubusercontent.com/microsoftgraph/microsoft-graph-toolkit/master/README.md",
+    "install_url": "https://unpkg.com/@microsoft/mgt/dist/bundle/mgt-loader.js",
+    "package_name": "@microsoft/mgt"
+  },
+  {
+    "name": "Enable 2D inking on the web",
+    "desc": "Fast, low latency inking in 2 lines of code!",
+    "categories": [
+      "pwa"
+    ],
+    "ID": "inking",
+    "embed": "https://glitch.com/embed/#!/embed/pwa-inking?path=index.html&previewSize=100",
+    "npm_url": "https://www.npmjs.com/package/@pwabuilder/pwa-inking",
+    "github_url": "https://github.com/pwa-builder/pwa-inking",
+    "readme_url": "https://raw.githubusercontent.com/pwa-builder/pwa-inking/master/README.md",
+    "install_url": "https://cdn.jsdelivr.net/npm/@pwabuilder/pwa-inking",
+    "package_name": "@pwabuilder/pwa-inking"
   }
 ]
