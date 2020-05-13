@@ -7,7 +7,7 @@
       "pwa"
     ],
     "ID": "pwa_auth",
-    "embed": "https://glitch.com/embed/#!/embed/pwaauth?path=README.md&previewSize=100",
+    "embed": "https://glitch.com/embed/#!/embed/pwa-auth-basic?previewSize=100&previewFirst=true&sidebarCollapsed=true",
     "npm_url": "",
     "github_url": "",
     "readme_url": "https://raw.githubusercontent.com/pwa-builder/pwa-auth/master/README.md",

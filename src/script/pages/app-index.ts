@@ -32,9 +32,9 @@ export class AppIndex extends LitElement {
         },
       },
       {
-        path: '/demo/:id', component: 'comp-detail',
+        path: '/demo/:id', component: 'demo-detail',
         action: async () => {
-          await import('./comp-detail.js');
+          await import('./demo-detail.js');
         },
       },
       {

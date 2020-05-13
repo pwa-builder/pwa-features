@@ -67,3 +67,16 @@ export async function getDemos() {
   const demos = await demosRequest.json();
   return demos;
 }
+
+export async function getADemo(id: string) {
+  const resp = await fetch('/assets/demos.json');
+  const data: any[] = await resp.json();
+
+  const demo = data.find((demo) => {
+    if (demo.ID === id) {
+      return demo;
+    }
+  })
+
+  return demo;
+}
