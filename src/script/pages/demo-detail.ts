@@ -128,7 +128,7 @@ export class DemoDetail extends LitElement {
 
       #demo iframe {
         width: 100%;
-        height: 22em;
+        height: 34em;
       }
 
       #readme {
