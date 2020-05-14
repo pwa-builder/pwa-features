@@ -46,6 +46,14 @@ export class DemoDetail extends LitElement {
         text-decoration: none;
 
         cursor: pointer;
+
+        display: inline-flex;
+        width: 7em;
+        justify-content: space-between;
+      }
+
+      #learnMoreButton img {
+        width: 1.2em;
       }
 
       #installOptions {
@@ -235,6 +243,8 @@ export class DemoDetail extends LitElement {
 
               <a .href="${this.demo?.learn_more}" id="learnMoreButton">
                 Learn More
+
+                <img src="/assets/link.svg" alt="link icon">
               </a>
             </div>
           </div>

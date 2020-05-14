@@ -23,6 +23,11 @@ export class ShareButton extends LitElement {
         display: flex;
         justify-content: center;
       }
+
+      button img {
+        width: 1em;
+        margin-right: 2px
+      }
     `;
   }
 
@@ -46,6 +51,7 @@ export class ShareButton extends LitElement {
   render() {
     return html`
       <button @click="${() => this.share()}">
+        <img src="/assets/share.svg" alt="share icon">
         Share
       </button>
     `;
