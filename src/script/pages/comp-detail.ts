@@ -396,8 +396,8 @@ export class CompDetail extends LitElement {
 
           <div id="actions">
             <share-button></share-button>
-            <a .href="${this.comp?.github_url}">Github</a>
-            <a .href="${this.comp?.npm_url}">npm</a>
+            <a .href="${this.comp?.github_url}" target="_blank" rel="noopener noreferrer">Github</a>
+            <a .href="${this.comp?.npm_url}" target="_blank" rel="noopener noreferrer">npm</a>
           </div>
         </section>
 

@@ -241,7 +241,7 @@ export class DemoDetail extends LitElement {
 
               <p>${this.demo?.desc}</P>
 
-              <a .href="${this.demo?.learn_more}" id="learnMoreButton">
+              <a .href="${this.demo?.learn_more}" id="learnMoreButton" target="_blank" rel="noopener noreferrer">
                 Learn More
 
                 <img src="/assets/link.svg" alt="link icon">
@@ -251,7 +251,7 @@ export class DemoDetail extends LitElement {
 
           <div id="actions">
             <share-button></share-button>
-            <a .href="${this.demo?.github_url}">Github</a>
+            <a .href="${this.demo?.github_url}" target="_blank" rel="noopener noreferrer">Github</a>
           </div>
         </section>
 
