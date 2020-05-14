@@ -100,6 +100,8 @@ export class AppHome extends LitElement {
         margin: 0;
         padding-bottom: 2em;
         padding-top: 2em;
+
+        height: 140px;
       }
 
       #headerText h1 {
@@ -253,10 +255,18 @@ export class AppHome extends LitElement {
       <div>
 
         <div id="headerText">
+        ${this.cat !== 'demos'
+        ? html`
           <h1>PWABuilder Components</h1>
 
           <p>
-Add that special something to supercharge your PWA. These cross-platform features can make your website work more like an app.</p>
+          Add that special something to supercharge your PWA. These cross-platform features can make your website work more like an app.</p>`
+        : html`
+          <h1>PWABuilder Demos</h1>
+
+          <p>
+           Interested in what the modern web can do? Check out our demos of all the latest web APIs supported in Edge below!</p>
+        `}
         </div>
 
 
@@ -299,19 +309,19 @@ Add that special something to supercharge your PWA. These cross-platform feature
         </ul>` : null}
 
         ${
-          this.cat === 'demos' ? html`
+      this.cat === 'demos' ? html`
 
             <ul id="compList">
               ${
-                this.demos?.map((demo) => {
-                  return html`
+        this.demos?.map((demo) => {
+          return html`
                     <demo-card .demo=${demo}></demo-card>
                   `
-                })
-              }
+        })
+        }
             </ul>
           ` : null
-        }
+      }
 
         <pwa-install>Install PWA Starter</pwa-install>
       </div>
