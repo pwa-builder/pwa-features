@@ -220,20 +220,6 @@ export class AppHome extends LitElement {
   }
 
   async changeCat(cat: string) {
-    /*const resp = await fetch('/assets/components.json');
-    const comps = await resp.json();
-
-    let temp: any[] = [];
-    comps.forEach((comp: any) => {
-      if (comp.categories.includes(cat)) {
-        temp.push(comp);
-      }
-    });
-
-    this.comps = [...temp];
-
-    this.cat = cat;*/
-
     if (cat === 'demos') {
       const demos = await getDemos();
 

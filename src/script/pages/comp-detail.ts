@@ -54,6 +54,7 @@ export class CompDetail extends LitElement {
       #installOptions {
         background: white;
         display: flex;
+        position: absolute;
         flex-direction: column;
         border-radius: 0px 0px 6px 6px;
         padding: 5px;
@@ -85,6 +86,15 @@ export class CompDetail extends LitElement {
 
         width: 100%;
         text-align: start;
+
+        display: flex;
+        align-items: center;
+      }
+
+      #installOptions button img {
+        height: 100%;
+        width: 1em;
+        margin-right: 8px;
       }
 
       #compDetail {
@@ -214,7 +224,6 @@ export class CompDetail extends LitElement {
 
     this.readme = await handleMarkdown(this.comp.readme_url) || null;
     await this.requestUpdate();
-    console.log(this.readme);
   }
 
   installComp() {
@@ -271,8 +280,14 @@ export class CompDetail extends LitElement {
               </button>
 
               ${this.showOptions ? html`<div id="installOptions">
-              <button @click="${() => this.copyInstall("script")}">with script tag</button>
-              <button @click="${() => this.copyInstall("npm")}">with NPM</button>
+              <button @click="${() => this.copyInstall("script")}">
+                <img src="/assets/copy.svg" alt="copy icon">
+                with script tag
+              </button>
+              <button @click="${() => this.copyInstall("npm")}">
+                <img src="/assets/copy.svg" alt="copy icon">
+                with npm
+              </button>
             </div>` : null}
             </div>
           </div>
