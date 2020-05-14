@@ -220,7 +220,7 @@ export class DemoDetail extends LitElement {
   }
 
   goBack() {
-    Router.go('/');
+    Router.go('/?cat=demos');
   }
 
   render() {

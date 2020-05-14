@@ -206,6 +206,10 @@ export class AppHome extends LitElement {
   async firstUpdated() {
     await this.doFeatured();
     await this.doGetAll();
+
+    if (location.search.includes('demos')) {
+      await this.changeCat('demos');
+    }
   }
 
   async doFeatured() {
