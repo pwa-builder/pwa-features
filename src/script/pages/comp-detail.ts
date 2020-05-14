@@ -178,6 +178,32 @@ export class CompDetail extends LitElement {
         align-items: start;
       }
 
+      #scrolledHeaderBlock {
+        visibility: hidden;
+        height: 0;
+        opacity: 0;
+        transition: opacity 0.3s;
+      }
+
+      #scrolledHeaderBlock.open {
+        visibility: inherit;
+        top: 0;
+        position: sticky;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        left: 0;
+        right: 0;
+        background: #f0f0f0;
+        z-index: 9999;
+        height: 64px;
+        opacity: 1;
+      }
+
+      #scrolledHeaderBlock #installOptions {
+        margin-left: -10px;
+      }
+
       @media(max-width: 800px) {
         #headerBlock, #demo, #readme {
           margin-left: 0;
@@ -224,6 +250,28 @@ export class CompDetail extends LitElement {
 
     this.readme = await handleMarkdown(this.comp.readme_url) || null;
     await this.requestUpdate();
+
+    this.handleObserver();
+  }
+
+  handleObserver() {
+    const target = this.shadowRoot?.querySelector("#headerInfoBlock");
+    const header = this.shadowRoot?.querySelector("#scrolledHeaderBlock");
+
+    const iObserver = new IntersectionObserver(entries => {
+      console.log(entries);
+      if (entries[0].isIntersecting === true) {
+        console.log('intersecting');
+        header?.classList.remove('open');
+      } else {
+        console.log('not intersecting');
+        header?.classList.add('open');
+      }
+    });
+
+    if (target) {
+      iObserver.observe(target);
+    }
   }
 
   installComp() {
@@ -260,6 +308,25 @@ export class CompDetail extends LitElement {
   render() {
     return html`
       <div id="compDetail">
+
+        <div id="scrolledHeaderBlock">
+          <h3>${this.comp?.name}</h3>
+
+          <button id="installButton" @click="${this.installComp}">
+            Install Component
+
+            ${this.showOptions ? html`<div id="installOptions">
+              <button @click="${() => this.copyInstall("script")}">
+                <img src="/assets/copy.svg" alt="copy icon">
+                with script tag
+              </button>
+              <button @click="${() => this.copyInstall("npm")}">
+                <img src="/assets/copy.svg" alt="copy icon">
+                with npm
+              </button>
+            </div>` : null}
+          </button>
+        </div>
 
         <section id="headerBlock">
           <div id="headerInfoBlock">
