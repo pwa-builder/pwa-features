@@ -140,8 +140,8 @@ export class CompDetail extends LitElement {
       }
 
       #demo iframe {
-        width: 78%;
-        height: 22em;
+        width: 100%;
+        height: 26em;
       }
 
       #readme {
@@ -204,6 +204,33 @@ export class CompDetail extends LitElement {
         margin-left: -10px;
       }
 
+      #docsLink {
+        color: white;
+        font-weight: bold;
+        font-size: 14px;
+        cursor: pointer;
+        border-radius: 20px;
+        background: black;
+        border-width: initial;
+        border-style: none;
+        border-color: initial;
+        border-image: initial;
+        padding: 10px 14px;
+        text-decoration: none;
+        margin-left: 4px;
+        
+        display: flex;
+        align-items: center;
+
+        width: 9em;
+        display: inline-flex;
+        justify-content: space-between;
+      }
+
+      #docsLink img {
+        width: 1.2em;
+      }
+
       @media(max-width: 800px) {
         #headerBlock, #demo, #readme {
           margin-left: 0;
@@ -248,7 +275,13 @@ export class CompDetail extends LitElement {
     this.comp = await getAComp((location.pathname.split("/").pop() as string));
     console.log(this.comp);
 
-    this.readme = await handleMarkdown(this.comp.readme_url) || null;
+    // this.readme = await handleMarkdown(this.comp.readme_url) || null;
+    const readmeData = await handleMarkdown(this.comp.readme_url) || null;
+
+    if (readmeData?.includes('404') === false) {
+      this.readme = readmeData;
+    }
+
     await this.requestUpdate();
 
     this.handleObserver();
@@ -356,6 +389,8 @@ export class CompDetail extends LitElement {
                 with npm
               </button>
             </div>` : null}
+
+            ${this.comp?.docs_url ? html`<a id="docsLink" .href="${this.comp?.docs_url}">Documentation <img src="/assets/link.svg" alt="link icon"></a>` : null}
             </div>
           </div>
 
@@ -371,7 +406,7 @@ export class CompDetail extends LitElement {
           <iframe .src="${this.comp?.embed}"></iframe>
         </section>
 
-        <section id="readme" .innerHTML="${this.readme}"></section>
+        ${this.readme ? html`<section id="readme" .innerHTML="${this.readme}"></section>` : null}
 
         ${this.showToast ? html`<comp-toast>copied to your clipboard</comp-toast>` : null}
       </div>
