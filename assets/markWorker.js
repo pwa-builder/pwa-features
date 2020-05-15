@@ -2,5 +2,7 @@ importScripts('/assets/marked.min.js');
 
 onmessage = (e) => {
   const markdownString = e.data;
-  postMessage(marked(markdownString));
+  postMessage(marked(markdownString, {
+    breaks: true
+  }));
 };
