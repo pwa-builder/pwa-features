@@ -183,6 +183,10 @@ export class CompDetail extends LitElement {
         height: 0;
         opacity: 0;
         transition: opacity 0.3s;
+        padding-left: 1em;
+
+        background: #ffffff9e;
+        backdrop-filter: blur(10px);
       }
 
       #scrolledHeaderBlock.open {
@@ -194,7 +198,6 @@ export class CompDetail extends LitElement {
         justify-content: space-between;
         left: 0;
         right: 0;
-        background: #f0f0f0;
         z-index: 9999;
         height: 64px;
         opacity: 1;
@@ -202,6 +205,19 @@ export class CompDetail extends LitElement {
 
       #scrolledHeaderBlock #installOptions {
         margin-left: -10px;
+      }
+
+      #scrolledHeaderBlock #headerBackButtonBlock {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      #scrolledHeaderBlock #headerBackButtonBlock #backButton {
+        margin-right: 14px;
+        height: 3em;
+        width: 3em;
+        padding: 10px;
       }
 
       #docsLink {
@@ -292,12 +308,9 @@ export class CompDetail extends LitElement {
     const header = this.shadowRoot?.querySelector("#scrolledHeaderBlock");
 
     const iObserver = new IntersectionObserver(entries => {
-      console.log(entries);
       if (entries[0].isIntersecting === true) {
-        console.log('intersecting');
         header?.classList.remove('open');
       } else {
-        console.log('not intersecting');
         header?.classList.add('open');
       }
     });
@@ -340,26 +353,32 @@ export class CompDetail extends LitElement {
 
   render() {
     return html`
-      <div id="compDetail">
-
-        <div id="scrolledHeaderBlock">
-          <h3>${this.comp?.name}</h3>
-
-          <button id="installButton" @click="${this.installComp}">
-            Install Component
-
-            ${this.showOptions ? html`<div id="installOptions">
-              <button @click="${() => this.copyInstall("script")}">
-                <img src="/assets/copy.svg" alt="copy icon">
-                with script tag
-              </button>
-              <button @click="${() => this.copyInstall("npm")}">
-                <img src="/assets/copy.svg" alt="copy icon">
-                with npm
-              </button>
-            </div>` : null}
+      <div id="scrolledHeaderBlock">
+        <div id="headerBackButtonBlock">
+          <button @click="${() => this.goBack()}" id="backButton">
+            <img src="/assets/back.svg" alt="back icon">
           </button>
+
+          <h3>${this.comp?.name}</h3>
         </div>
+
+        <button id="installButton" @click="${this.installComp}">
+          Install Component
+
+          ${this.showOptions ? html`<div id="installOptions">
+            <button @click="${() => this.copyInstall("script")}">
+              <img src="/assets/copy.svg" alt="copy icon">
+              with script tag
+            </button>
+            <button @click="${() => this.copyInstall("npm")}">
+              <img src="/assets/copy.svg" alt="copy icon">
+              with npm
+            </button>
+          </div>` : null}
+        </button>
+      </div>
+
+      <div id="compDetail">
 
         <section id="headerBlock">
           <div id="headerInfoBlock">
