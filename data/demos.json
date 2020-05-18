@@ -10,7 +10,29 @@
     "screenshot_url": "https://webboard.app/assets/screen.png",
     "video_url":"https://www.youtube.com/embed/m0JcYPRZuUg",
     "spec_url": "https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-desynchronized",
-    "learn_more": "https://developers.google.com/web/updates/2019/05/desynchronized"
+    "learn_more": "https://developers.google.com/web/updates/2019/05/desynchronized",
+    "support": [
+      {
+        "browser": "Edge",
+        "support": true
+      },
+      {
+        "browser": "Chrome",
+        "support": true
+      },
+      {
+        "browser": "Firefox",
+        "support": false
+      },
+      {
+        "browser": "Samsung Internet",
+        "support": true
+      },
+      {
+        "browser": "Safari",
+        "support": false
+      }
+    ]
   },
   {
     "name": "low-latency canvas API",
@@ -22,6 +44,28 @@
     "screenshot_url": "https://webboard.app/assets/screen.png",
     "video_url":"",
     "spec_url": "https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-desynchronized",
-    "learn_more": "https://developers.google.com/web/updates/2019/05/desynchronized"
+    "learn_more": "https://developers.google.com/web/updates/2019/05/desynchronized",
+    "support": [
+      {
+        "browser": "Edge",
+        "support": true
+      },
+      {
+        "browser": "Chrome",
+        "support": true
+      },
+      {
+        "browser": "Firefox",
+        "support": false
+      },
+      {
+        "browser": "Samsung Internet",
+        "support": true
+      },
+      {
+        "browser": "Safari",
+        "support": false
+      }
+    ]
   }
 ]
