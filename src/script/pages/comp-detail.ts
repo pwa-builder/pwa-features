@@ -252,6 +252,12 @@ export class CompDetail extends LitElement {
         width: 1.2em;
       }
 
+      #detailInfoBlock {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
       @media(max-width: 800px) {
         #headerBlock, #demo, #readme {
           margin-left: 0;
@@ -400,7 +406,7 @@ export class CompDetail extends LitElement {
               </button>
             </div>
 
-            <div>
+            <div id="detailInfoBlock">
               <h2>${this.comp?.name}</h2>
 
               <p>${this.comp?.desc}</P>
