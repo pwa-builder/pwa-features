@@ -52,6 +52,10 @@ export class CompDetail extends LitElement {
         cursor: pointer;
       }
 
+      #demoVid {
+        margin-bottom: 14px;
+      }
+
       #installOptions {
         background: white;
         display: flex;
@@ -400,6 +404,8 @@ export class CompDetail extends LitElement {
               <h2>${this.comp?.name}</h2>
 
               <p>${this.comp?.desc}</P>
+
+              ${this.comp?.video_url ? html`<iframe id="demoVid" width="560" height="315" src="${this.comp?.video_url}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>` : null}
 
               <button id="installButton" @click="${this.installComp}">
                 Install Component
