@@ -415,18 +415,18 @@ export class CompDetail extends LitElement {
 
               <button id="installButton" @click="${this.installComp}">
                 Install Component
-              </button>
 
-              ${this.showOptions ? html`<div id="installOptions">
-              <button @click="${() => this.copyInstall("script")}">
-                <img src="/assets/copy.svg" alt="copy icon">
-                with script tag
+                ${this.showOptions ? html`<div id="installOptions">
+                  <button @click="${() => this.copyInstall("script")}">
+                    <img src="/assets/copy.svg" alt="copy icon">
+                    with script tag
+                  </button>
+                  <button @click="${() => this.copyInstall("npm")}">
+                    <img src="/assets/copy.svg" alt="copy icon">
+                    with npm
+                  </button>
+                </div>` : null}
               </button>
-              <button @click="${() => this.copyInstall("npm")}">
-                <img src="/assets/copy.svg" alt="copy icon">
-                with npm
-              </button>
-            </div>` : null}
 
             ${this.comp?.docs_url ? html`<a id="docsLink" .href="${this.comp?.docs_url}">Documentation <img src="/assets/link.svg" alt="link icon"></a>` : null}
             </div>
