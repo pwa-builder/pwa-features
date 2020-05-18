@@ -292,7 +292,7 @@ export class DemoDetail extends LitElement {
 
               <div>
                 <a .href="${this.demo?.demo_url}" id="liveButton" target="_blank" rel="noopener noreferrer">
-                  Try It Live
+                  Live Demo
                 </a>
 
                 <a .href="${this.demo?.learn_more}" id="learnMoreButton" target="_blank" rel="noopener noreferrer">
@@ -311,9 +311,9 @@ export class DemoDetail extends LitElement {
           </div>
         </section>
 
-        <section id="demo">
+        ${!this.demo?.video_url ? html`<section id="demo">
           <img .src="${this.demo?.screenshot_url}">
-        </section>
+        </section>` : null}
 
         ${this.readme ? html`<section id="readme" .innerHTML="${this.readme}"></section>` : null}
       </div>
