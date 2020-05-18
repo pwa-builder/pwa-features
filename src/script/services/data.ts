@@ -1,7 +1,7 @@
 import { set, get } from 'idb-keyval';
 
 export async function getAll() {
-  const resp = await fetch('/assets/components.json');
+  const resp = await fetch('/data/components.json');
   const data = await resp.json();
 
   await set('comps', data);
@@ -10,7 +10,7 @@ export async function getAll() {
 }
 
 export async function getFeatured() {
-  const resp = await fetch('/assets/featured.json');
+  const resp = await fetch('/data/featured.json');
   const featuredIDs = await resp.json();
 
   const allComps = await getAll();
@@ -33,7 +33,7 @@ export async function getFeatured() {
 }
 
 export async function getAComp(id: string) {
-  const resp = await fetch('/assets/components.json');
+  const resp = await fetch('/data/components.json');
   const data: any[] = await resp.json();
 
   const comp = data.find((comp) => {
@@ -63,13 +63,13 @@ export async function searchComps(searchValue: string) {
 }
 
 export async function getDemos() {
-  const demosRequest = await fetch('/assets/demos.json');
+  const demosRequest = await fetch('/data/demos.json');
   const demos = await demosRequest.json();
   return demos;
 }
 
 export async function getADemo(id: string) {
-  const resp = await fetch('/assets/demos.json');
+  const resp = await fetch('/data/demos.json');
   const data: any[] = await resp.json();
 
   const demo = data.find((demo) => {

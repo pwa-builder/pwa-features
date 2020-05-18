@@ -22,6 +22,7 @@ export default {
       targets: [
         { src: 'index.prod.html', dest: 'dist/', rename: 'index.html' },
         { src: 'assets/**/*', dest: 'dist/assets/' },
+        { src: 'data/*', dest: 'dist/data/' },
         { src: 'src/global.css', dest: 'dist/'},
         { src: 'manifest.json', dest: 'dist/'}
       ]
