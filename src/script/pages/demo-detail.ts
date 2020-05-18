@@ -4,12 +4,14 @@ import { getADemo } from '../services/data';
 import '../components/comp-toast';
 import '../components/share-button';
 import { Router } from '@vaadin/router';
+import { handleMarkdown } from '../services/detail';
 
 
 @customElement('demo-detail')
 export class DemoDetail extends LitElement {
 
   @property({ type: Object }) demo: any = null;
+  @property({ type: String }) readme: string | null = null;
 
   static get styles() {
     return css`
@@ -32,7 +34,13 @@ export class DemoDetail extends LitElement {
         margin-top: 0;
       }
 
-      #learnMoreButton {
+      #demoMain {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      #liveButton {
         border-radius: 20px;
         background: rgb(147, 55, 216);
         color: white;
@@ -48,8 +56,31 @@ export class DemoDetail extends LitElement {
         cursor: pointer;
 
         display: inline-flex;
+        margin-right: 4px;
+        width: 7em;
+        justify-content: center;
+      }
+
+      #learnMoreButton {
+        border-radius: 20px;
+        background: black;
+        color: white;
+        border: none;
+        font-weight: bold;
+        font-size: 14px;
+        padding: 10px;
+        padding-left: 14px;
+        padding-right: 14px;
+
+        text-decoration: none;
+
+        cursor: pointer;
+
+        display: inline-flex;
         width: 7em;
         justify-content: space-between;
+
+        margin-top: 14px;
       }
 
       #learnMoreButton img {
@@ -134,9 +165,15 @@ export class DemoDetail extends LitElement {
         color: black;
       }
 
-      #demo iframe {
+      #demo img {
         width: 100%;
-        height: 34em;
+        height: 30em;
+        object-fit: contain;
+
+        background: white;
+        border-radius: 12px;
+        padding-bottom: 18px;
+        padding-top: 18px;
       }
 
       #readme {
@@ -217,6 +254,14 @@ export class DemoDetail extends LitElement {
     this.demo = await getADemo((location.pathname.split("/").pop() as string));
     console.log(this.demo);
 
+    if (this.demo.more_info) {
+      const markdownData = await handleMarkdown(`/data/markdown/${this.demo.more_info}`);
+
+      if (markdownData) {
+        this.readme = markdownData;
+      }
+    }
+
   }
 
   goBack() {
@@ -236,29 +281,41 @@ export class DemoDetail extends LitElement {
               </button>
             </div>
 
-            <div>
-              <h2>${this.demo?.name}</h2>
+            <div id="demoMain">
+              <div>
+                <h2>${this.demo?.name}</h2>
 
-              <p>${this.demo?.desc}</P>
+                <p>${this.demo?.desc}</P>
 
-              <a .href="${this.demo?.learn_more}" id="learnMoreButton" target="_blank" rel="noopener noreferrer">
-                Learn More
+                <iframe width="560" height="315" src="${this.demo?.video_url}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              </div>
 
-                <img src="/assets/link.svg" alt="link icon">
-              </a>
+              <div>
+                <a .href="${this.demo?.demo_url}" id="liveButton" target="_blank" rel="noopener noreferrer">
+                  Try It Live
+                </a>
+
+                <a .href="${this.demo?.learn_more}" id="learnMoreButton" target="_blank" rel="noopener noreferrer">
+                  Learn More
+
+                  <img src="/assets/link.svg" alt="link icon">
+                </a>
+              </div>
             </div>
           </div>
 
           <div id="actions">
             <share-button></share-button>
+            <a .href="${this.demo?.spec_url}" target="_blank" rel="noopener noreferrer">Spec</a>
             <a .href="${this.demo?.github_url}" target="_blank" rel="noopener noreferrer">Github</a>
           </div>
         </section>
 
         <section id="demo">
-          <h2 id="demoHeader">Demo</h2>
-          <iframe .src="${this.demo?.demo_url}"></iframe>
+          <img .src="${this.demo?.screenshot_url}">
         </section>
+
+        ${this.readme ? html`<section id="readme" .innerHTML="${this.readme}"></section>` : null}
       </div>
     `;
   }

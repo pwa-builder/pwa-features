@@ -1,42 +1,27 @@
+
 [
   {
     "name": "low-latency canvas API",
     "desc": "This API tells the canvas to skip most of the rendering pipeline in the browser to get pixels on screen with minimal latency.",
+    "more_info": "low-latency.md",
     "ID": "low_latency_canvas",
     "demo_url": "https://webboard.app",
     "github_url": "https://github.com/jgw96/web-whiteboard",
+    "screenshot_url": "https://webboard.app/assets/screen.png",
+    "video_url":"https://www.youtube.com/embed/m0JcYPRZuUg",
+    "spec_url": "https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-desynchronized",
     "learn_more": "https://developers.google.com/web/updates/2019/05/desynchronized"
   },
   {
     "name": "low-latency canvas API",
     "desc": "This API tells the canvas to skip most of the rendering pipeline in the browser to get pixels on screen with minimal latency.",
+    "more_info": "low-latency.md",
     "ID": "low_latency_canvas",
     "demo_url": "https://webboard.app",
     "github_url": "https://github.com/jgw96/web-whiteboard",
-    "learn_more": "https://developers.google.com/web/updates/2019/05/desynchronized"
-  },
-  {
-    "name": "low-latency canvas API",
-    "desc": "This API tells the canvas to skip most of the rendering pipeline in the browser to get pixels on screen with minimal latency.",
-    "ID": "low_latency_canvas",
-    "demo_url": "https://webboard.app",
-    "github_url": "https://github.com/jgw96/web-whiteboard",
-    "learn_more": "https://developers.google.com/web/updates/2019/05/desynchronized"
-  },
-  {
-    "name": "low-latency canvas API",
-    "desc": "This API tells the canvas to skip most of the rendering pipeline in the browser to get pixels on screen with minimal latency.",
-    "ID": "low_latency_canvas",
-    "demo_url": "https://webboard.app",
-    "github_url": "https://github.com/jgw96/web-whiteboard",
-    "learn_more": "https://developers.google.com/web/updates/2019/05/desynchronized"
-  },
-  {
-    "name": "low-latency canvas API",
-    "desc": "This API tells the canvas to skip most of the rendering pipeline in the browser to get pixels on screen with minimal latency.",
-    "ID": "low_latency_canvas",
-    "demo_url": "https://webboard.app",
-    "github_url": "https://github.com/jgw96/web-whiteboard",
+    "screenshot_url": "https://webboard.app/assets/screen.png",
+    "video_url":"",
+    "spec_url": "https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-desynchronized",
     "learn_more": "https://developers.google.com/web/updates/2019/05/desynchronized"
   }
 ]
