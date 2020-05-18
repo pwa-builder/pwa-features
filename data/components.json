@@ -12,7 +12,29 @@
     "github_url": "",
     "readme_url": "https://raw.githubusercontent.com/pwa-builder/pwa-auth/master/README.md",
     "install_url": "https://cdn.jsdelivr.net/npm/@pwabuilder/pwaauth@latest/dist/pwa-auth.min.js",
-    "package_name": "@pwabuilder/pwaauth"
+    "package_name": "@pwabuilder/pwaauth",
+    "support": [
+      {
+        "browser": "Edge",
+        "support": true
+      },
+      {
+        "browser": "Chrome",
+        "support": true
+      },
+      {
+        "browser": "Firefox",
+        "support": true
+      },
+      {
+        "browser": "Samsung Internet",
+        "support": true
+      },
+      {
+        "browser": "Safari",
+        "support": true
+      }
+    ]
   },
   {
     "name": "Install your PWA",
@@ -26,7 +48,29 @@
     "github_url": "https://github.com/pwa-builder/pwa-install",
     "readme_url": "https://raw.githubusercontent.com/pwa-builder/pwa-install/master/README.md",
     "install_url": "https://cdn.jsdelivr.net/npm/@pwabuilder/pwainstall@latest/dist/pwa-install.min.js",
-    "package_name": "@pwabuilder/pwainstall"
+    "package_name": "@pwabuilder/pwainstall",
+    "support": [
+      {
+        "browser": "Edge",
+        "support": true
+      },
+      {
+        "browser": "Chrome",
+        "support": true
+      },
+      {
+        "browser": "Firefox",
+        "support": true
+      },
+      {
+        "browser": "Samsung Internet",
+        "support": true
+      },
+      {
+        "browser": "Safari",
+        "support": true
+      }
+    ]
   },
   {
     "name": "Graph Login Component",
@@ -42,7 +86,29 @@
     "readme_url": "https://raw.githubusercontent.com/microsoftgraph/microsoft-graph-toolkit/master/README.md",
     "install_url": "https://unpkg.com/@microsoft/mgt/dist/bundle/mgt-loader.js",
     "docs_url": "https://docs.microsoft.com/en-us/graph/toolkit/components/login",
-    "package_name": "@microsoft/mgt"
+    "package_name": "@microsoft/mgt",
+    "support": [
+      {
+        "browser": "Edge",
+        "support": true
+      },
+      {
+        "browser": "Chrome",
+        "support": true
+      },
+      {
+        "browser": "Firefox",
+        "support": true
+      },
+      {
+        "browser": "Samsung Internet",
+        "support": true
+      },
+      {
+        "browser": "Safari",
+        "support": true
+      }
+    ]
   },
   {
     "name": "Agenda Graph Component",
@@ -57,7 +123,29 @@
     "readme_url": "https://raw.githubusercontent.com/microsoftgraph/microsoft-graph-toolkit/master/README.md",
     "install_url": "https://unpkg.com/@microsoft/mgt/dist/bundle/mgt-loader.js",
     "docs_url": "https://docs.microsoft.com/en-us/graph/toolkit/components/agenda",
-    "package_name": "@microsoft/mgt"
+    "package_name": "@microsoft/mgt",
+    "support": [
+      {
+        "browser": "Edge",
+        "support": true
+      },
+      {
+        "browser": "Chrome",
+        "support": true
+      },
+      {
+        "browser": "Firefox",
+        "support": true
+      },
+      {
+        "browser": "Samsung Internet",
+        "support": true
+      },
+      {
+        "browser": "Safari",
+        "support": true
+      }
+    ]
   },
   {
     "name": "Tasks Graph Component",
@@ -72,7 +160,29 @@
     "readme_url": "https://raw.githubusercontent.com/microsoftgraph/microsoft-graph-toolkit/master/README.md",
     "install_url": "https://unpkg.com/@microsoft/mgt/dist/bundle/mgt-loader.js",
     "docs_url": "https://docs.microsoft.com/en-us/graph/toolkit/components/tasks",
-    "package_name": "@microsoft/mgt"
+    "package_name": "@microsoft/mgt",
+    "support": [
+      {
+        "browser": "Edge",
+        "support": true
+      },
+      {
+        "browser": "Chrome",
+        "support": true
+      },
+      {
+        "browser": "Firefox",
+        "support": true
+      },
+      {
+        "browser": "Samsung Internet",
+        "support": true
+      },
+      {
+        "browser": "Safari",
+        "support": true
+      }
+    ]
   },
   {
     "name": "People Picker Graph Component",
@@ -87,7 +197,29 @@
     "readme_url": "https://raw.githubusercontent.com/microsoftgraph/microsoft-graph-toolkit/master/README.md",
     "install_url": "https://unpkg.com/@microsoft/mgt/dist/bundle/mgt-loader.js",
     "docs_url": "https://docs.microsoft.com/en-us/graph/toolkit/components/people-picker",
-    "package_name": "@microsoft/mgt"
+    "package_name": "@microsoft/mgt",
+    "support": [
+      {
+        "browser": "Edge",
+        "support": true
+      },
+      {
+        "browser": "Chrome",
+        "support": true
+      },
+      {
+        "browser": "Firefox",
+        "support": true
+      },
+      {
+        "browser": "Samsung Internet",
+        "support": true
+      },
+      {
+        "browser": "Safari",
+        "support": true
+      }
+    ]
   },
   {
     "name": "People Graph Component",
@@ -102,7 +234,29 @@
     "readme_url": "https://raw.githubusercontent.com/microsoftgraph/microsoft-graph-toolkit/master/README.md",
     "install_url": "https://unpkg.com/@microsoft/mgt/dist/bundle/mgt-loader.js",
     "docs_url": "https://docs.microsoft.com/en-us/graph/toolkit/components/people",
-    "package_name": "@microsoft/mgt"
+    "package_name": "@microsoft/mgt",
+    "support": [
+      {
+        "browser": "Edge",
+        "support": true
+      },
+      {
+        "browser": "Chrome",
+        "support": true
+      },
+      {
+        "browser": "Firefox",
+        "support": true
+      },
+      {
+        "browser": "Samsung Internet",
+        "support": true
+      },
+      {
+        "browser": "Safari",
+        "support": true
+      }
+    ]
   },
   {
     "name": "Enable 2D inking on the web",
@@ -116,6 +270,28 @@
     "github_url": "https://github.com/pwa-builder/pwa-inking",
     "readme_url": "https://raw.githubusercontent.com/pwa-builder/pwa-inking/master/README.md",
     "install_url": "https://cdn.jsdelivr.net/npm/@pwabuilder/pwa-inking",
-    "package_name": "@pwabuilder/pwa-inking"
+    "package_name": "@pwabuilder/pwa-inking",
+    "support": [
+      {
+        "browser": "Edge",
+        "support": true
+      },
+      {
+        "browser": "Chrome",
+        "support": true
+      },
+      {
+        "browser": "Firefox",
+        "support": true
+      },
+      {
+        "browser": "Samsung Internet",
+        "support": true
+      },
+      {
+        "browser": "Safari",
+        "support": true
+      }
+    ]
   }
 ]

@@ -1,10 +1,11 @@
 import { LitElement, css, html, customElement, property } from 'lit-element';
 import { getAComp } from '../services/data';
 import { handleMarkdown } from '../services/detail';
+import { Router } from '@vaadin/router';
 
 import '../components/comp-toast';
 import '../components/share-button';
-import { Router } from '@vaadin/router';
+import '../components/browser-support';
 
 
 @customElement('comp-detail')
@@ -130,7 +131,7 @@ export class CompDetail extends LitElement {
       #demo {
         display: flex;
         margin-top: 2em;
-        margin-bottom: 4em;
+        margin-bottom: 2em;
 
         flex-direction: column;
         align-items: start;
@@ -424,6 +425,14 @@ export class CompDetail extends LitElement {
           <h2 id="demoHeader">Demo</h2>
           <iframe .src="${this.comp?.embed}"></iframe>
         </section>
+
+        ${
+          this.comp?.support ? html`
+            <section id="support">
+              <browser-support .supportData="${this.comp?.support}"></browser-support>
+            </section>
+          ` : null
+        }
 
         ${this.readme ? html`<section id="readme" .innerHTML="${this.readme}"></section>` : null}
 
