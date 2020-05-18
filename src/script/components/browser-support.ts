@@ -13,7 +13,7 @@ export class BrowserSupport extends LitElement {
         flex-direction: column;
 
         background: white;
-        width: 56%;
+        width: 64%;
         padding-right: 1em;
         margin-left: 9em;
         margin-top: 2em;
@@ -45,6 +45,20 @@ export class BrowserSupport extends LitElement {
         justify-content: space-between;
         margin-right: 8px;
         font-weight: bold;
+      }
+
+      @media(max-width: 800px) {
+          #support {
+            margin-left: 0;
+            width: inherit;
+          }
+
+          #supportDetails {
+            display: grid;
+            grid-template-columns: auto auto;
+            width: fit-content;
+            grid-gap: 10px;
+          }
       }
     `;
   }

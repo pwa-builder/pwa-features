@@ -354,6 +354,12 @@ export class CompDetail extends LitElement {
 
   render() {
     return html`
+      <meta property="og:title" content="${this.comp?.name}">
+      <meta property="og:description" content="Check out this component on PWABuilder.">
+      <meta property="og:image" content="${this.comp?.screenshot_url}">
+      <meta property="og:url" content="${location.href}">
+      <meta name="twitter:card" content="summary_large_image">
+
       <div id="scrolledHeaderBlock">
         <div id="headerBackButtonBlock">
           <button @click="${() => this.goBack()}" id="backButton">

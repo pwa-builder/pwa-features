@@ -212,6 +212,10 @@ export class DemoDetail extends LitElement {
         align-items: start;
       }
 
+      #mobileDemoVid {
+        display: none;
+      }
+
       @media(max-width: 800px) {
         #headerBlock, #demo, #readme {
           margin-left: 0;
@@ -233,6 +237,17 @@ export class DemoDetail extends LitElement {
         #actions {
           margin-top: 1em;
           margin-left: 4.4em;
+        }
+
+        #desktopDemoVid {
+          display: none;
+        }
+
+        #mobileDemoVid {
+          display: block;
+          border-radius: 8px;
+          width: 100%;
+          margin-top: 2em;
         }
       }
 
@@ -272,6 +287,12 @@ export class DemoDetail extends LitElement {
 
   render() {
     return html`
+      <meta property="og:title" content="${this.demo?.name}">
+      <meta property="og:description" content="Check out this demo on PWABuilder.">
+      <meta property="og:image" content="${this.demo?.screenshot_url}">
+      <meta property="og:url" content="${location.href}">
+      <meta name="twitter:card" content="summary_large_image">
+
       <div id="compDetail">
 
         <section id="headerBlock">
@@ -289,7 +310,7 @@ export class DemoDetail extends LitElement {
 
                 <p>${this.demo?.desc}</P>
 
-                <iframe width="560" height="315" src="${this.demo?.video_url}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe id="desktopDemoVid" width="560" height="315" src="${this.demo?.video_url}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
               </div>
 
               <div>
@@ -316,6 +337,8 @@ export class DemoDetail extends LitElement {
         ${!this.demo?.video_url ? html`<section id="demo">
           <img .src="${this.demo?.screenshot_url}">
         </section>` : null}
+
+        <iframe id="mobileDemoVid" width="560" height="315" src="${this.demo?.video_url}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
         ${
           this.demo?.support ? html`
