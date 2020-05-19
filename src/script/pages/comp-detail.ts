@@ -56,6 +56,10 @@ export class CompDetail extends LitElement {
         margin-bottom: 14px;
       }
 
+      #mobileDemoVid {
+        display: none;
+      }
+
       #installOptions {
         background: white;
         display: flex;
@@ -288,6 +292,7 @@ export class CompDetail extends LitElement {
         #headerBlock {
           flex-direction: column;
         }
+        
 
         #backButtonBlock {
           margin-right: 1em;
@@ -300,6 +305,17 @@ export class CompDetail extends LitElement {
         #actions {
           margin-top: 1em;
           margin-left: 4.4em;
+        }
+
+        #mobileDemoVid {
+          display: block;
+          width: 100%;
+          margin-top: 2em;
+          border-radius: 8px;
+        }
+
+        #demoVid {
+          display: none;
         }
       }
 
@@ -451,10 +467,10 @@ export class CompDetail extends LitElement {
                 </button>
 
                 ${
-                  this.comp?.live_demo_url && !this.comp?.embed ? html`
+      this.comp?.live_demo_url && !this.comp?.embed ? html`
                     <a id="liveDemoLink" href="${this.comp?.live_demo_url}" target="_blank" rel="noopener noreferrer">Live Demo</a>
                   ` : null
-                }
+      }
               </div>
 
             ${this.comp?.docs_url ? html`<a id="docsLink" .href="${this.comp?.docs_url}">Documentation <img src="/assets/link.svg" alt="link icon"></a>` : null}
@@ -468,18 +484,20 @@ export class CompDetail extends LitElement {
           </div>
         </section>
 
+        ${this.comp?.video_url ? html`<iframe id="mobileDemoVid" width="560" height="315" src="${this.comp?.video_url}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>` : null}
+
         ${this.comp?.embed && !this.comp?.live_demo_url ? html`<section id="demo">
           <h2 id="demoHeader">Demo</h2>
           <iframe .src="${this.comp?.embed}"></iframe>
         </section>` : null}
 
         ${
-          this.comp?.support ? html`
+      this.comp?.support ? html`
             <section id="support">
               <browser-support .supportData="${this.comp?.support}"></browser-support>
             </section>
           ` : null
-        }
+      }
 
         ${this.readme ? html`<section id="readme" .innerHTML="${this.readme}"></section>` : null}
 
