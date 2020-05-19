@@ -258,6 +258,27 @@ export class CompDetail extends LitElement {
         align-items: flex-start;
       }
 
+      #liveDemoLink {
+        border-radius: 20px;
+        background: black;
+        color: white;
+        border: none;
+        font-weight: bold;
+        font-size: 14px;
+        padding: 10px;
+        padding-left: 14px;
+        padding-right: 14px;
+
+        text-decoration: none;
+
+        cursor: pointer;
+
+        display: inline-flex;
+        margin-right: 4px;
+        width: 7em;
+        justify-content: center;
+      }
+
       @media(max-width: 800px) {
         #headerBlock, #demo, #readme {
           margin-left: 0;
@@ -413,20 +434,28 @@ export class CompDetail extends LitElement {
 
               ${this.comp?.video_url ? html`<iframe id="demoVid" width="560" height="315" src="${this.comp?.video_url}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>` : null}
 
-              <button id="installButton" @click="${this.installComp}">
-                Install Component
+              <div>
+                <button id="installButton" @click="${this.installComp}">
+                  Install Component
 
-                ${this.showOptions ? html`<div id="installOptions">
-                  <button @click="${() => this.copyInstall("script")}">
-                    <img src="/assets/copy.svg" alt="copy icon">
-                    with script tag
-                  </button>
-                  <button @click="${() => this.copyInstall("npm")}">
-                    <img src="/assets/copy.svg" alt="copy icon">
-                    with npm
-                  </button>
-                </div>` : null}
-              </button>
+                  ${this.showOptions ? html`<div id="installOptions">
+                    <button @click="${() => this.copyInstall("script")}">
+                      <img src="/assets/copy.svg" alt="copy icon">
+                      with script tag
+                    </button>
+                    <button @click="${() => this.copyInstall("npm")}">
+                      <img src="/assets/copy.svg" alt="copy icon">
+                      with npm
+                    </button>
+                  </div>` : null}
+                </button>
+
+                ${
+                  this.comp?.live_demo_url && !this.comp?.embed ? html`
+                    <a id="liveDemoLink" href="${this.comp?.live_demo_url}" target="_blank" rel="noopener noreferrer">Live Demo</a>
+                  ` : null
+                }
+              </div>
 
             ${this.comp?.docs_url ? html`<a id="docsLink" .href="${this.comp?.docs_url}">Documentation <img src="/assets/link.svg" alt="link icon"></a>` : null}
             </div>
@@ -439,10 +468,10 @@ export class CompDetail extends LitElement {
           </div>
         </section>
 
-        <section id="demo">
+        ${this.comp?.embed && !this.comp?.live_demo_url ? html`<section id="demo">
           <h2 id="demoHeader">Demo</h2>
           <iframe .src="${this.comp?.embed}"></iframe>
-        </section>
+        </section>` : null}
 
         ${
           this.comp?.support ? html`
