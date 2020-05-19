@@ -283,6 +283,11 @@ export class CompDetail extends LitElement {
         justify-content: center;
       }
 
+      #liveDemoLink img {
+        width: 1.2em;
+        margin-left: 8px;
+      }
+
       @media(max-width: 800px) {
         #headerBlock, #demo, #readme {
           margin-left: 0;
@@ -468,7 +473,11 @@ export class CompDetail extends LitElement {
 
                 ${
       this.comp?.live_demo_url && !this.comp?.embed ? html`
-                    <a id="liveDemoLink" href="${this.comp?.live_demo_url}" target="_blank" rel="noopener noreferrer">Live Demo</a>
+                    <a id="liveDemoLink" href="${this.comp?.live_demo_url}" target="_blank" rel="noopener noreferrer">
+                    Live demo
+
+                    <img src="/assets/link.svg" alt="link icon">
+                    </a>
                   ` : null
       }
               </div>
