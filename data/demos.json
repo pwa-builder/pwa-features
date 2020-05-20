@@ -35,16 +35,48 @@
     ]
   },
   {
-    "name": "low-latency canvas API",
-    "desc": "This API tells the canvas to skip most of the rendering pipeline in the browser to get pixels on screen with minimal latency.",
-    "more_info": "low-latency.md",
-    "ID": "low_latency_canvas",
-    "demo_url": "https://webboard.app",
+    "name": "Web Shortcuts API",
+    "desc": "This API allows you to create jumplists for your PWA!.",
+    "more_info": "web-shortcuts.md",
+    "ID": "web_shortcuts",
+    "demo_url": "https://app-shortcuts.glitch.me/",
+    "github_url": "https://glitch.com/edit/#!/app-shortcuts",
+    "screenshot_url": "/assets/shortcuts.png",
+    "spec_url": "https://w3c.github.io/manifest/#shortcuts-member",
+    "learn_more": "https://web.dev/app-shortcuts/",
+    "support": [
+      {
+        "browser": "Edge",
+        "support": true
+      },
+      {
+        "browser": "Chrome",
+        "support": true
+      },
+      {
+        "browser": "Firefox",
+        "support": false
+      },
+      {
+        "browser": "Samsung Internet",
+        "support": false
+      },
+      {
+        "browser": "Safari",
+        "support": false
+      }
+    ]
+  },
+  {
+    "name": "Web Share API",
+    "desc": "This API allows you to share URLs and Files using the native share UI.",
+    "more_info": "web-share.md",
+    "ID": "web_share",
+    "demo_url": "https://w3c.github.io/web-share/demos/share-files.html",
     "github_url": "https://github.com/jgw96/web-whiteboard",
-    "screenshot_url": "https://webboard.app/assets/screen.png",
-    "video_url":"https://www.youtube.com/embed/m0JcYPRZuUg",
-    "spec_url": "https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-desynchronized",
-    "learn_more": "https://developers.google.com/web/updates/2019/05/desynchronized",
+    "screenshot_url": "/assets/share_example.png",
+    "spec_url": "https://w3c.github.io/web-share",
+    "learn_more": "https://web.dev/web-share/",
     "support": [
       {
         "browser": "Edge",
@@ -64,21 +96,19 @@
       },
       {
         "browser": "Safari",
-        "support": false
+        "support": true
       }
     ]
   },
   {
-    "name": "low-latency canvas API",
-    "desc": "This API tells the canvas to skip most of the rendering pipeline in the browser to get pixels on screen with minimal latency.",
-    "more_info": "low-latency.md",
-    "ID": "low_latency_canvas",
-    "demo_url": "https://webboard.app",
-    "github_url": "https://github.com/jgw96/web-whiteboard",
-    "screenshot_url": "https://webboard.app/assets/screen.png",
-    "video_url":"https://www.youtube.com/embed/m0JcYPRZuUg",
-    "spec_url": "https://html.spec.whatwg.org/multipage/canvas.html#concept-canvas-desynchronized",
-    "learn_more": "https://developers.google.com/web/updates/2019/05/desynchronized",
+    "name": "Share Target API",
+    "desc": "This API allows you to register your PWA as a share target to recieve shared content.",
+    "more_info": "share-target.md",
+    "ID": "share_target",
+    "demo_url": "https://web-share.glitch.me/",
+    "github_url": "https://web-share.glitch.me/",
+    "spec_url": "https://wicg.github.io/web-share-target/",
+    "learn_more": "https://web.dev/web-share-target/",
     "support": [
       {
         "browser": "Edge",

@@ -310,7 +310,7 @@ export class DemoDetail extends LitElement {
 
                 <p>${this.demo?.desc}</P>
 
-                <iframe id="desktopDemoVid" width="560" height="315" src="${this.demo?.video_url}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                ${this.demo?.video_url ? html`<iframe id="desktopDemoVid" width="560" height="315" src="${this.demo?.video_url}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>` : null }
               </div>
 
               <div>
@@ -330,11 +330,11 @@ export class DemoDetail extends LitElement {
           <div id="actions">
             <share-button></share-button>
             <a .href="${this.demo?.spec_url}" target="_blank" rel="noopener noreferrer">Spec</a>
-            <a .href="${this.demo?.github_url}" target="_blank" rel="noopener noreferrer">Github</a>
+            <a .href="${this.demo?.github_url}" target="_blank" rel="noopener noreferrer">Code</a>
           </div>
         </section>
 
-        ${!this.demo?.video_url ? html`<section id="demo">
+        ${!this.demo?.video_url && this.demo?.screenshot_url ? html`<section id="demo">
           <img .src="${this.demo?.screenshot_url}">
         </section>` : null}
 
