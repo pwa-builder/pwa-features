@@ -1,10 +1,10 @@
 {
-  "name": "PWA Starter",
+  "name": "PWABuilder Features",
   "display": "standalone",
   "start_url": "/",
-  "short_name": "starter",
+  "short_name": "Features",
   "theme_color": "#686bd2",
-  "description": "This is a PWA Starter app",
+  "description": "Check out the PWABuilder components and what the web can do!",
   "orientation": "any",
   "background_color": "#686bd2",
   "related_applications": [],
