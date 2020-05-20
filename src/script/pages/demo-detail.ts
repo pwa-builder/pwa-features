@@ -7,6 +7,7 @@ import '../components/browser-support';
 
 import { Router } from '@vaadin/router';
 import { handleMarkdown } from '../services/detail';
+import { doCapture } from '../services/analytics';
 
 
 @customElement('demo-detail')
@@ -279,6 +280,13 @@ export class DemoDetail extends LitElement {
       }
     }
 
+    // analytics
+    const config =  {
+      uri: window.location.href,
+      pageName: `${this.demo?.name}`,
+      pageHeight: window.innerHeight
+    }
+    doCapture(config);
   }
 
   goBack() {

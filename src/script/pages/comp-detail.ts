@@ -6,6 +6,7 @@ import { Router } from '@vaadin/router';
 import '../components/comp-toast';
 import '../components/share-button';
 import '../components/browser-support';
+import { doCapture } from '../services/analytics';
 
 
 @customElement('comp-detail')
@@ -375,6 +376,13 @@ export class CompDetail extends LitElement {
 
   installComp() {
     this.showOptions = !this.showOptions;
+
+    const config =  {
+      uri: window.location.href,
+      pageName: `${this.comp?.name}`,
+      pageHeight: window.innerHeight
+    }
+    doCapture(config);
   }
 
   async copyInstall(type: string) {

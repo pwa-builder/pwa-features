@@ -6,6 +6,8 @@ import { Router } from '@vaadin/router';
 
 import '../components/header';
 
+import { initAnalytics } from '../services/analytics';
+
 
 @customElement('app-index')
 export class AppIndex extends LitElement {
@@ -45,6 +47,9 @@ export class AppIndex extends LitElement {
         },
       }
     ]);
+
+    // init analytics
+    initAnalytics();
   }
 
   render() {
