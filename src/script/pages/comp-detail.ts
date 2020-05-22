@@ -51,6 +51,15 @@ export class CompDetail extends LitElement {
         padding-right: 14px;
 
         cursor: pointer;
+
+        display: inline-flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      #installButton img {
+        width: 14px;
+        margin-left: 8px;
       }
 
       #demoVid {
@@ -73,6 +82,7 @@ export class CompDetail extends LitElement {
         align-items: flex-start;
         border-radius: 6px;
         margin-left: 1.8em;
+        margin-top: 4em;
         width: 10em;
         box-shadow: 0 0 4px 1px rgba(0,0,0,.18039);
         justify-content: flex-start;
@@ -466,6 +476,8 @@ export class CompDetail extends LitElement {
               <div>
                 <button id="installButton" @click="${this.installComp}">
                   Install Component
+
+                  <img src="/assets/down.svg">
 
                   ${this.showOptions ? html`<div id="installOptions">
                     <button @click="${() => this.copyInstall("script")}">
