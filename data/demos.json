@@ -131,5 +131,101 @@
         "support": false
       }
     ]
+  },
+  {
+    "name": "Wake Lock API",
+    "desc": "This API allows your PWA to keep the screen awake on a device.",
+    "more_info": "wake-lock.md",
+    "ID": "wake_lock",
+    "demo_url": "https://wake-lock-demo.glitch.me/",
+    "github_url": "https://glitch.com/edit/#!/wake-lock-demo",
+    "spec_url": "https://www.w3.org/TR/wake-lock/",
+    "learn_more": "https://web.dev/wakelock/",
+    "support": [
+      {
+        "browser": "Edge",
+        "support": true
+      },
+      {
+        "browser": "Chrome",
+        "support": true
+      },
+      {
+        "browser": "Firefox",
+        "support": false
+      },
+      {
+        "browser": "Samsung Internet",
+        "support": true
+      },
+      {
+        "browser": "Safari",
+        "support": false
+      }
+    ]
+  },
+  {
+    "name": "Native File System API",
+    "desc": "This API allows you to read and write files just like a native app.",
+    "more_info": "file-system.md",
+    "ID": "file_system",
+    "demo_url": "https://googlechromelabs.github.io/text-editor/",
+    "github_url": "https://github.com/GoogleChromeLabs/text-editor/",
+    "spec_url": "https://wicg.github.io/native-file-system/",
+    "learn_more": "https://web.dev/native-file-system/",
+    "support": [
+      {
+        "browser": "Edge",
+        "support": true
+      },
+      {
+        "browser": "Chrome",
+        "support": true
+      },
+      {
+        "browser": "Firefox",
+        "support": false
+      },
+      {
+        "browser": "Samsung Internet",
+        "support": true
+      },
+      {
+        "browser": "Safari",
+        "support": false
+      }
+    ]
+  },
+  {
+    "name": "Periodic Background Sync API",
+    "desc": "This periodic background sync API allows your app to sync with your server in the background, ensuring your apps data is always fresh.",
+    "more_info": "periodic-sync.md",
+    "ID": "periodic_sync",
+    "demo_url": "https://webplatformapis.com/periodic_sync/periodicSync_improved.html",
+    "github_url": "https://github.com/GoogleChromeLabs/so-pwa/pull/11",
+    "spec_url": "https://github.com/WICG/BackgroundSync/blob/master/explainers/periodicsync-explainer.md",
+    "learn_more": "https://web.dev/periodic-background-sync/",
+    "support": [
+      {
+        "browser": "Edge",
+        "support": true
+      },
+      {
+        "browser": "Chrome",
+        "support": true
+      },
+      {
+        "browser": "Firefox",
+        "support": false
+      },
+      {
+        "browser": "Samsung Internet",
+        "support": true
+      },
+      {
+        "browser": "Safari",
+        "support": false
+      }
+    ]
   }
 ]

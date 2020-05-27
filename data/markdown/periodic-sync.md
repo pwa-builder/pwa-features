@@ -1,0 +1,3 @@
+## The Periodic Background Sync API
+
+The Periodic Background Sync API enables your service worker to periodically wake up and sync with your backend in the background. For example, for a newspaper PWA your service worker could periodically wake up in the background and refresh your Cache with the latest news articles, ensuring that when the user later opens this PWA they will be seeing the latest data.
