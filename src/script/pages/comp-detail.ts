@@ -500,9 +500,10 @@ export class CompDetail extends LitElement {
                     </a>
                   ` : null
       }
+
+${this.comp?.docs_url ? html`<a id="docsLink" .href="${this.comp?.docs_url}">Documentation <img src="/assets/link.svg" alt="link icon"></a>` : null}
               </div>
 
-            ${this.comp?.docs_url ? html`<a id="docsLink" .href="${this.comp?.docs_url}">Documentation <img src="/assets/link.svg" alt="link icon"></a>` : null}
             </div>
           </div>
 
