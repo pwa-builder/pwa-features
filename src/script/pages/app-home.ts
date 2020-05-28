@@ -68,6 +68,7 @@ export class AppHome extends LitElement {
         align-items: center;
 
         backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
         background: #f0f0f03d;
         padding-top: 1em;
       }

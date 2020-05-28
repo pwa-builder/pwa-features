@@ -207,6 +207,7 @@ export class CompDetail extends LitElement {
 
         background: #ffffff9e;
         backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
       }
 
       #scrolledHeaderBlock.open {
