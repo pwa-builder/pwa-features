@@ -56,7 +56,8 @@ export class AppHeader extends LitElement {
       }
 
       header #github {
-        width: 20px;
+        height: 32px;
+        width: 86px;
       }
 
       @media(min-width: 1336px) {
