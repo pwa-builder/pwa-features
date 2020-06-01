@@ -22,7 +22,7 @@ export class AppHome extends LitElement {
         position: fixed;
         bottom: 16px;
         right: 16px;
-        --install-button-color: var(--app-primary-color);
+        --install-button-color: var(--app-color-primary);
       }
 
       button {
