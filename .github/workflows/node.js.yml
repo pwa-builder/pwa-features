@@ -1,0 +1,40 @@
+# This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
+
+name: main CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [10.x, 12.x, 14.x]
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Building with Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - run: npm run build --if-present
+      
+    - uses: tibor19/static-website-deploy@v1
+    - name: deploy
+      if: ${{ success() }}
+      with:
+        # Connection String of the Azure Storage Container
+        connection-string: ${{ secrets.CONNECTION_STRING }}
+        # Folder containing the files to be uploaded to the Storage Container
+        folder: "dist"
+        # Enabled static website
+        enabled-static-website: true
+        # If the existing files should be removed before uploading the new files
+        remove-existing-files: true
