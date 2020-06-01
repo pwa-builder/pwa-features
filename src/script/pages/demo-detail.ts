@@ -346,7 +346,7 @@ export class DemoDetail extends LitElement {
           <img .src="${this.demo?.screenshot_url}">
         </section>` : null}
 
-        <iframe id="mobileDemoVid" width="560" height="315" src="${this.demo?.video_url}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        ${this.demo?.video_url ? html`<iframe id="mobileDemoVid" width="560" height="315" src="${this.demo?.video_url}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>` : null}
 
         ${
           this.demo?.support ? html`

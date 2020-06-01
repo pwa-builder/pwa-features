@@ -17,9 +17,46 @@ export class AppHeader extends LitElement {
         height: 52px;
       }
 
-      header img {
+      header #icon {
         height: 32px;
         width: 86px;
+        cursor: pointer;
+      }
+
+      header #tabs {
+        width: 14em;
+        display: flex;
+        justify-content: space-around;
+      }
+
+      header #tabs a, header #tabs button {
+        padding-bottom: 6px;
+        font-family: sans-serif;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 21px;
+        text-align: center;
+        color: hsla(0,0%,100%,.7);
+        align-items: center;
+        text-transform: uppercase;
+        font-size: 14px;
+        text-decoration: none;
+        background: none;
+        border: none;
+        outline: none;
+        cursor: pointer;
+      }
+
+      header #tabs a {
+        color: white;
+      }
+
+      header #tabs a:active {
+        color: white;
+      }
+
+      header #github {
+        width: 20px;
       }
 
       @media(min-width: 1336px) {
@@ -36,10 +73,19 @@ export class AppHeader extends LitElement {
     super();
   }
 
+  goback() {
+    window.history.back();
+  }
+
   render() {
     return html`
       <header>
-        <img src="/assets/pwabuilder.svg" alt="PWABuilder icon">
+        <img @click="${this.goback}" id="icon" src="/assets/pwabuilder.svg" alt="PWABuilder icon">
+
+        <div id="tabs">
+          <button @click="${this.goback}">My Hub</button>
+          <a href="/">Feature Store</a>
+        </div>
 
         <div id="github">
         </div>

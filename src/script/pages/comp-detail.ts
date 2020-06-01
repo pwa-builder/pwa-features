@@ -204,6 +204,7 @@ export class CompDetail extends LitElement {
         opacity: 0;
         transition: opacity 0.3s;
         padding-left: 1em;
+        padding-right: 1em;
 
         background: #ffffff9e;
         backdrop-filter: blur(10px);
