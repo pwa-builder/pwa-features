@@ -14,29 +14,46 @@ jobs:
 
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [10.x, 12.x, 14.x]
-
     steps:
     - uses: actions/checkout@v2
     - name: Building with Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
       with:
-        node-version: ${{ matrix.node-version }}
+        node-version: "14"
     - run: npm install
     - run: npm run build --if-present
-      
+    
+    - name: Archive production artifacts
+      uses: actions/upload-artifact@v1
+      if: ${{ success() }}
+      with:
+          name: dist
+          path: dist
+
+  deploy:
+    
+    runs-on: ubuntu-latest
+    
+    steps:
     - uses: actions/checkout@v2
-    - name: deploy
+    - name: download
+      uses: actions/download-artifact@v2
+      if: ${{ success() }}
+      with:
+        # Artifact name
+        name: dist
+        # Destination path
+        path: dist
+        
+    - name: Deploy
       uses: tibor19/static-website-deploy@v1
       if: ${{ success() }}
       with:
-        # Connection String of the Azure Storage Container
-        connection-string: ${{ secrets.CONNECTION_STRING }}
-        # Folder containing the files to be uploaded to the Storage Container
-        folder: "dist"
-        # Enabled static website
-        enabled-static-website: true
-        # If the existing files should be removed before uploading the new files
-        remove-existing-files: true
+          # Connection String of the Azure Storage Container
+          connection-string: ${{ secrets.CONNECTION_STRING }}
+          # Folder containing the files to be uploaded to the Storage Container
+          folder: "dist"
+          # Enabled static website
+          enabled-static-website: true
+          # If the existing files should be removed before uploading the new files
+          remove-existing-files: true
