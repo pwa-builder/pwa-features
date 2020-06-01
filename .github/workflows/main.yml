@@ -45,7 +45,7 @@ jobs:
           # Connection String of the Azure Storage Container
           connection-string: ${{ secrets.CONNECTION_STRING }}
           # Folder containing the files to be uploaded to the Storage Container
-          folder: "dist"
+          folder: "./dist"
           # Enabled static website
           enabled-static-website: true
           # If the existing files should be removed before uploading the new files
