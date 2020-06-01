@@ -28,7 +28,6 @@ jobs:
       if: ${{ success() }}
       with:
           name: dist
-          path: dist
 
   deploy:
     
@@ -42,8 +41,6 @@ jobs:
       with:
         # Artifact name
         name: dist
-        # Destination path
-        path: dist
         
     - name: Deploy
       uses: tibor19/static-website-deploy@v1
