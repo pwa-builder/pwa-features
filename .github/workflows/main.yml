@@ -37,6 +37,7 @@ jobs:
       with:
         # Artifact name
         name: dist
+        path: dist
         
     - name: Deploy
       uses: tibor19/static-website-deploy@v1
