@@ -51,8 +51,8 @@ export class AppHeader extends LitElement {
         color: white;
       }
 
-      header #tabs a:active {
-        color: white;
+      header #tabs #hubLink {
+        color: hsla(0,0%,100%,.7);
       }
 
       header #github {
@@ -74,17 +74,17 @@ export class AppHeader extends LitElement {
     super();
   }
 
-  goback() {
-    window.history.back();
+  gobuilder() {
+    location.href = 'https://pwabuilder.com';
   }
 
   render() {
     return html`
       <header>
-        <img @click="${this.goback}" id="icon" src="/assets/pwabuilder.svg" alt="PWABuilder icon">
+        <img @click="${this.gobuilder}" id="icon" src="/assets/pwabuilder.svg" alt="PWABuilder icon">
 
         <div id="tabs">
-          <button @click="${this.goback}">My Hub</button>
+          <a id="hubLink" href="https://pwabuilder.com">My Hub</a>
           <a href="/">Feature Store</a>
         </div>
 
