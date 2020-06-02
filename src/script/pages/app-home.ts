@@ -14,7 +14,7 @@ export class AppHome extends LitElement {
   @property({ type: Array }) demos: any[] | null = null;
 
   @property({ type: String }) cat: string | null = null;
-  @property({ type: String }) searchValue: string | null = null;
+  @property({ type: String }) searchValue: string = '';
 
   static get styles() {
     return css`
@@ -276,7 +276,7 @@ export class AppHome extends LitElement {
           </div>
         </div>
 
-        ${this.cat === null ? html`<section id="featured">
+        ${this.searchValue.length < 1 && this.cat === null ? html`<section id="featured">
           <h2>Featured</h2>
 
           <ul>
