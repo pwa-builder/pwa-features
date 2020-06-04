@@ -4,6 +4,8 @@ import { LitElement, css, html, customElement } from 'lit-element';
 @customElement('app-header')
 export class AppHeader extends LitElement {
 
+  previous: string | null = null;
+
   static get styles() {
     return css`
       header {
@@ -74,8 +76,17 @@ export class AppHeader extends LitElement {
     super();
   }
 
+  firstUpdated() {
+    this.previous = document.referrer;
+  }
+
   gobuilder() {
-    location.href = 'https://pwabuilder.com';
+    if (this.previous?.includes('pwabuilder') && this.previous?.includes('url')) {
+      location.href = this.previous;
+    }
+    else {
+      location.href = 'https://pwabuilder.com';
+    }
   }
 
   render() {
@@ -84,7 +95,7 @@ export class AppHeader extends LitElement {
         <img @click="${this.gobuilder}" id="icon" src="/assets/pwabuilder.svg" alt="PWABuilder icon">
 
         <div id="tabs">
-          <a id="hubLink" href="https://pwabuilder.com">My Hub</a>
+          <a id="hubLink" @click="${this.gobuilder}">My Hub</a>
           <a href="/">Feature Store</a>
         </div>
 
