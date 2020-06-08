@@ -315,7 +315,7 @@ export class AppHome extends LitElement {
           ` : null
       }
 
-        <pwa-install>Install</pwa-install>
+        <pwa-install>Install App</pwa-install>
       </div>
     `;
   }
