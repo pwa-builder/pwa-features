@@ -190,6 +190,9 @@ export class CompDetail extends LitElement {
         padding: 14px;
         width: 4em;
         cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
       }
 
       #backButton img {
