@@ -7,6 +7,7 @@ import '../components/browser-support';
 
 import { Router } from '@vaadin/router';
 import { handleMarkdown } from '../services/detail';
+import { doCapture } from '../services/analytics';
 
 
 @customElement('demo-detail')
@@ -279,6 +280,13 @@ export class DemoDetail extends LitElement {
       }
     }
 
+    // analytics
+    const config =  {
+      uri: window.location.href,
+      pageName: `${this.demo?.name}`,
+      pageHeight: window.innerHeight
+    }
+    doCapture(config);
   }
 
   goBack() {
@@ -338,7 +346,7 @@ export class DemoDetail extends LitElement {
           <img .src="${this.demo?.screenshot_url}">
         </section>` : null}
 
-        <iframe id="mobileDemoVid" width="560" height="315" src="${this.demo?.video_url}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        ${this.demo?.video_url ? html`<iframe id="mobileDemoVid" width="560" height="315" src="${this.demo?.video_url}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>` : null}
 
         ${
           this.demo?.support ? html`

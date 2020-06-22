@@ -17,11 +17,17 @@
     "@pwabuilder/pwainstall": "^1.6.4",
     "@vaadin/router": "^1.7.2",
     "idb-keyval": "^3.2.0",
+<<<<<<< HEAD
     "lit-element": "^2.3.1",
     "marked": "^1.0.0",
     "mdn-browser-compat-data": "^1.0.21"
+=======
+    "lit-element": "^2.3.0",
+    "marked": "^1.0.0"
+>>>>>>> 25495fa386be5752ef22815ca66f240135143e86
   },
   "devDependencies": {
+    "@babel/compat-data": "^7.10.0",
     "@rollup/plugin-strip": "^1.3.2",
     "@surma/rollup-plugin-off-main-thread": "^1.4.1",
     "concurrently": "^5.2.0",

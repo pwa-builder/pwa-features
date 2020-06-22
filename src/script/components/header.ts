@@ -4,6 +4,8 @@ import { LitElement, css, html, customElement } from 'lit-element';
 @customElement('app-header')
 export class AppHeader extends LitElement {
 
+  previous: string | null = null;
+
   static get styles() {
     return css`
       header {
@@ -17,7 +19,45 @@ export class AppHeader extends LitElement {
         height: 52px;
       }
 
-      header img {
+      header #icon {
+        height: 32px;
+        width: 86px;
+        cursor: pointer;
+      }
+
+      header #tabs {
+        width: 14em;
+        display: flex;
+        justify-content: space-around;
+      }
+
+      header #tabs a, header #tabs button {
+        padding-bottom: 6px;
+        font-family: sans-serif;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 21px;
+        text-align: center;
+        color: hsla(0,0%,100%,.7);
+        align-items: center;
+        text-transform: uppercase;
+        font-size: 14px;
+        text-decoration: none;
+        background: none;
+        border: none;
+        outline: none;
+        cursor: pointer;
+      }
+
+      header #tabs a {
+        color: white;
+      }
+
+      header #tabs #hubLink {
+        color: hsla(0,0%,100%,.7);
+      }
+
+      header #github {
         height: 32px;
         width: 86px;
       }
@@ -36,10 +76,28 @@ export class AppHeader extends LitElement {
     super();
   }
 
+  firstUpdated() {
+    this.previous = document.referrer;
+  }
+
+  gobuilder() {
+    if (this.previous?.includes('pwabuilder') && this.previous?.includes('url')) {
+      location.href = this.previous;
+    }
+    else {
+      location.href = 'https://preview.pwabuilder.com';
+    }
+  }
+
   render() {
     return html`
       <header>
-        <img src="/assets/pwabuilder.svg" alt="PWABuilder icon">
+        <img @click="${this.gobuilder}" id="icon" src="/assets/pwabuilder.svg" alt="PWABuilder icon">
+
+        <div id="tabs">
+          <a id="hubLink" @click="${this.gobuilder}">My Hub</a>
+          <a href="/">Feature Store</a>
+        </div>
 
         <div id="github">
         </div>

@@ -14,7 +14,7 @@ export class AppHome extends LitElement {
   @property({ type: Array }) demos: any[] | null = null;
 
   @property({ type: String }) cat: string | null = null;
-  @property({ type: String }) searchValue: string | null = null;
+  @property({ type: String }) searchValue: string = '';
 
   static get styles() {
     return css`
@@ -22,6 +22,7 @@ export class AppHome extends LitElement {
         position: fixed;
         bottom: 16px;
         right: 16px;
+        --install-button-color: var(--app-color-primary);
       }
 
       button {
@@ -68,6 +69,7 @@ export class AppHome extends LitElement {
         align-items: center;
 
         backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
         background: #f0f0f03d;
         padding-top: 1em;
       }
@@ -274,7 +276,7 @@ export class AppHome extends LitElement {
           </div>
         </div>
 
-        ${this.cat === null ? html`<section id="featured">
+        ${this.searchValue.length < 1 && this.cat === null ? html`<section id="featured">
           <h2>Featured</h2>
 
           <ul>
@@ -313,7 +315,7 @@ export class AppHome extends LitElement {
           ` : null
       }
 
-        <pwa-install>Install PWA Starter</pwa-install>
+        <pwa-install>Install App</pwa-install>
       </div>
     `;
   }

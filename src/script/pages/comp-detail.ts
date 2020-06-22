@@ -6,6 +6,7 @@ import { Router } from '@vaadin/router';
 import '../components/comp-toast';
 import '../components/share-button';
 import '../components/browser-support';
+import { doCapture } from '../services/analytics';
 
 
 @customElement('comp-detail')
@@ -50,6 +51,15 @@ export class CompDetail extends LitElement {
         padding-right: 14px;
 
         cursor: pointer;
+
+        display: inline-flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      #installButton img {
+        width: 14px;
+        margin-left: 8px;
       }
 
       #demoVid {
@@ -72,6 +82,7 @@ export class CompDetail extends LitElement {
         align-items: flex-start;
         border-radius: 6px;
         margin-left: 1.8em;
+        margin-top: 4em;
         width: 10em;
         box-shadow: 0 0 4px 1px rgba(0,0,0,.18039);
         justify-content: flex-start;
@@ -193,9 +204,11 @@ export class CompDetail extends LitElement {
         opacity: 0;
         transition: opacity 0.3s;
         padding-left: 1em;
+        padding-right: 1em;
 
         background: #ffffff9e;
         backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
       }
 
       #scrolledHeaderBlock.open {
@@ -375,6 +388,13 @@ export class CompDetail extends LitElement {
 
   installComp() {
     this.showOptions = !this.showOptions;
+
+    const config =  {
+      uri: window.location.href,
+      pageName: `${this.comp?.name}`,
+      pageHeight: window.innerHeight
+    }
+    doCapture(config);
   }
 
   async copyInstall(type: string) {
@@ -459,6 +479,8 @@ export class CompDetail extends LitElement {
                 <button id="installButton" @click="${this.installComp}">
                   Install Component
 
+                  <img src="/assets/down.svg">
+
                   ${this.showOptions ? html`<div id="installOptions">
                     <button @click="${() => this.copyInstall("script")}">
                       <img src="/assets/copy.svg" alt="copy icon">
@@ -480,9 +502,10 @@ export class CompDetail extends LitElement {
                     </a>
                   ` : null
       }
+
+${this.comp?.docs_url ? html`<a id="docsLink" .href="${this.comp?.docs_url}">Documentation <img src="/assets/link.svg" alt="link icon"></a>` : null}
               </div>
 
-            ${this.comp?.docs_url ? html`<a id="docsLink" .href="${this.comp?.docs_url}">Documentation <img src="/assets/link.svg" alt="link icon"></a>` : null}
             </div>
           </div>
 
