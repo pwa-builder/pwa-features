@@ -39,6 +39,10 @@ export class CompDetail extends LitElement {
         margin-top: 0;
       }
 
+      #compActionsBlock {
+        display: flex;
+      }
+
       #installButton {
         border-radius: 20px;
         background: rgb(147, 55, 216);
@@ -292,8 +296,10 @@ export class CompDetail extends LitElement {
 
         display: inline-flex;
         margin-right: 4px;
+        margin-left: 6px;
         width: 7em;
         justify-content: center;
+        height: 16.8px;
       }
 
       #liveDemoLink img {
@@ -475,7 +481,7 @@ export class CompDetail extends LitElement {
 
               ${this.comp?.video_url ? html`<iframe id="demoVid" width="560" height="315" src="${this.comp?.video_url}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>` : null}
 
-              <div>
+              <div id="compActionsBlock">
                 <button id="installButton" @click="${this.installComp}">
                   Install Component
 

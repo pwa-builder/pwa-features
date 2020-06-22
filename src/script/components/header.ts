@@ -62,6 +62,13 @@ export class AppHeader extends LitElement {
         width: 86px;
       }
 
+      @media(max-width: 800px) {
+        header #tabs {
+          margin-left: 2em;
+          width: 57em;
+        }
+      }
+
       @media(min-width: 1336px) {
         header {
           padding-left: 154px;
