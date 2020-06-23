@@ -257,7 +257,7 @@ export class AppHome extends LitElement {
           <h1>PWABuilder Demos</h1>
 
           <p>
-           Interested in what the modern web can do? Check out our demos of all the latest web APIs supported in Edge below!</p>
+           Interested in what the modern web can do? Check out our demos below to start playing with new web APIs!</p>
         `}
         </div>
 
