@@ -60,11 +60,11 @@ Because of this, your PWA may want to check for existing background fetch operat
 
 ```js
 // Grab the service worker.
-const swReg = await navigator.serviceWorker.ready;
+const sw = await navigator.serviceWorker.ready;
 
 // See if we're already fetching Season 2.
 const season2Id = "my-podcast-season-2";
-const existingFetch = await swReg.backgroundFetch.get(season2Id);
+const existingFetch = await sw.backgroundFetch.get(season2Id);
 if (existingFetch) {
     console.log("Season 2 download already in progress.");
 }
