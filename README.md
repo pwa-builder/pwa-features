@@ -10,5 +10,5 @@ This PWA is built with the [PWABuilder pwa-starter](https://github.com/pwa-build
 
 
 ### Submitting a demo
-Also, as with all PWABuilder projects, this is a "community firs"t project, and we would love to showcase your demos in the app!
+Also, as with all PWABuilder projects, this is a "community first" project, and we would love to showcase your demos in the app!
 Follow the instructions [here](https://github.com/pwa-builder/pwa-features/wiki/Submitting-a-new-demo) to do just that!.
