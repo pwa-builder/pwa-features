@@ -227,5 +227,39 @@
         "support": false
       }
     ]
+  },
+  {
+    "name": "Background Fetch",
+    "desc": "This API enables your web app to fetch large content (videos, podcasts, etc) in the background, even when your PWA isn't opened.",
+    "more_info": "background-fetch.md",
+    "ID": "background_fetch",
+    "demo_url": "https://pwa-offline-media-background-fetch.glitch.me/",
+    "github_url": "https://glitch.com/edit/#!/pwa-offline-media-background-fetch",
+    "screenshot_url": "/assets/background-fetch-screenshot.png",
+    "video_url":"https://www.youtube.com/watch?v=eLfgf2ZvFpo",
+    "spec_url": "https://wicg.github.io/background-fetch/",
+    "learn_more": "https://developers.google.com/web/updates/2018/12/background-fetch",
+    "support": [
+      {
+        "browser": "Edge",
+        "support": true
+      },
+      {
+        "browser": "Chrome",
+        "support": true
+      },
+      {
+        "browser": "Firefox",
+        "support": false
+      },
+      {
+        "browser": "Samsung Internet",
+        "support": true
+      },
+      {
+        "browser": "Safari",
+        "support": false
+      }
+    ]
   }
 ]
