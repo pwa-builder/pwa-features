@@ -88,6 +88,7 @@ export class DemoDetail extends LitElement {
 
       #learnMoreButton img {
         width: 1.2em;
+        height: 1.2em;
       }
 
       #installOptions {
@@ -198,13 +199,14 @@ export class DemoDetail extends LitElement {
         border: none;
         background: white;
         border-radius: 50%;
-        padding: 14px;
+        padding: 15%;
         width: 4em;
         cursor: pointer;
       }
 
       #backButton img {
         height: 100%;
+        width: 100%;
       }
 
       #headerInfoBlock {

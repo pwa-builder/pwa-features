@@ -182,12 +182,14 @@ export class CompDetail extends LitElement {
         margin-right: 2em;
       }
 
+
       #backButton {
         height: 4em;
+        width: 4em;
         border: none;
         background: white;
         border-radius: 50%;
-        padding: 14px;
+        padding: 20%;
         width: 4em;
         cursor: pointer;
         display: flex;
@@ -197,6 +199,7 @@ export class CompDetail extends LitElement {
 
       #backButton img {
         height: 100%;
+        width: 100%;
       }
 
       #headerInfoBlock {
