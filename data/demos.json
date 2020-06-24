@@ -236,7 +236,7 @@
     "demo_url": "https://pwa-offline-media-background-fetch.glitch.me/",
     "github_url": "https://glitch.com/edit/#!/pwa-offline-media-background-fetch",
     "screenshot_url": "/assets/background-fetch-screenshot.png",
-    "video_url":"https://www.youtube.com/watch?v=eLfgf2ZvFpo",
+    "video_url":"https://www.youtube.com/embed/eLfgf2ZvFpo",
     "spec_url": "https://wicg.github.io/background-fetch/",
     "learn_more": "https://developers.google.com/web/updates/2018/12/background-fetch",
     "support": [
