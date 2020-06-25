@@ -92,7 +92,7 @@ export class AppHeader extends LitElement {
       location.href = this.previous;
     }
     else {
-      location.href = 'https://preview.pwabuilder.com';
+      location.href = 'https://pwabuilder.com';
     }
   }
 
