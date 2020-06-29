@@ -81,7 +81,7 @@
       "auth"
     ],
     "ID": "graph_login",
-    "embed": "https://mgt.dev/?path=/story/components-mgt-login--login",
+    "embed": "https://mgt.dev/iframe.html?id=components-mgt-login--login&source=pwabuilder",
     "npm_url": "https://www.npmjs.com/package/@microsoft/mgt",
     "github_url": "https://github.com/microsoftgraph/microsoft-graph-toolkit",
     "readme_url": "https://raw.githubusercontent.com/microsoftgraph/microsoft-graph-toolkit/master/README.md",
@@ -118,7 +118,7 @@
       "graph"
     ],
     "ID": "graph_calendar",
-    "embed": "https://mgt.dev/?path=/story/components-mgt-agenda--simple",
+    "embed": "https://mgt.dev/iframe.html?id=components-mgt-agenda--simple&source=pwabuilder",
     "npm_url": "https://www.npmjs.com/package/@microsoft/mgt",
     "github_url": "https://github.com/microsoftgraph/microsoft-graph-toolkit",
     "readme_url": "https://raw.githubusercontent.com/microsoftgraph/microsoft-graph-toolkit/master/README.md",
@@ -155,7 +155,7 @@
       "graph"
     ],
     "ID": "graph_tasks",
-    "embed": "https://mgt.dev/?path=/story/components-mgt-tasks--simple",
+    "embed": "https://mgt.dev/iframe.html?id=components-mgt-tasks--tasks&source=pwabuilder",
     "npm_url": "https://www.npmjs.com/package/@microsoft/mgt",
     "github_url": "https://github.com/microsoftgraph/microsoft-graph-toolkit",
     "readme_url": "https://raw.githubusercontent.com/microsoftgraph/microsoft-graph-toolkit/master/README.md",
@@ -192,7 +192,7 @@
       "graph"
     ],
     "ID": "graph_people_picker",
-    "embed": "https://mgt.dev/?path=/story/components-mgt-people-picker--people-picker",
+    "embed": "https://mgt.dev/iframe.html?id=components-mgt-people-picker--people-picker&source=pwabuilder",
     "npm_url": "https://www.npmjs.com/package/@microsoft/mgt",
     "github_url": "https://github.com/microsoftgraph/microsoft-graph-toolkit",
     "readme_url": "https://raw.githubusercontent.com/microsoftgraph/microsoft-graph-toolkit/master/README.md",
@@ -229,7 +229,7 @@
       "graph"
     ],
     "ID": "graph_people",
-    "embed": "https://mgt.dev/?path=/story/components-mgt-people--people",
+    "embed": "https://mgt.dev/iframe.html?id=components-mgt-people--people&source=pwabuilder",
     "npm_url": "https://www.npmjs.com/package/@microsoft/mgt",
     "github_url": "https://github.com/microsoftgraph/microsoft-graph-toolkit",
     "readme_url": "https://raw.githubusercontent.com/microsoftgraph/microsoft-graph-toolkit/master/README.md",
