@@ -261,5 +261,38 @@
         "support": false
       }
     ]
+  },
+  {
+    "name": "Web NFC API",
+    "desc": "This API allows you to interact with NFC tags",
+    "more_info": "nfc.md",
+    "ID": "nfc",
+    "demo_url": "https://kenchris.github.io/webnfc-groceries/",
+    "github_url": "https://github.com/w3c/web-nfc",
+    "screenshot_url": "/assets/nfc.png",
+    "spec_url": "https://w3c.github.io/web-nfc",
+    "learn_more": "https://web.dev/nfc",
+    "support": [
+      {
+        "browser": "Edge",
+        "support": false
+      },
+      {
+        "browser": "Chrome",
+        "support": true
+      },
+      {
+        "browser": "Firefox",
+        "support": false
+      },
+      {
+        "browser": "Samsung Internet",
+        "support": false
+      },
+      {
+        "browser": "Safari",
+        "support": false
+      }
+    ]
   }
 ]
