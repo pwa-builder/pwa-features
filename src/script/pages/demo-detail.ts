@@ -297,6 +297,9 @@ export class DemoDetail extends LitElement {
 
   render() {
     return html`
+    <link rel="stylesheet"
+      href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.1.1/build/styles/default.min.css">
+      
       <meta property="og:title" content="${this.demo?.name}">
       <meta property="og:description" content="Check out this demo on PWABuilder.">
       <meta property="og:image" content="${this.demo?.screenshot_url}">
