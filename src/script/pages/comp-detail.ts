@@ -438,6 +438,9 @@ export class CompDetail extends LitElement {
 
   render() {
     return html`
+    <link rel="stylesheet"
+      href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.1.1/build/styles/default.min.css">
+      
       <meta property="og:title" content="${this.comp?.name}">
       <meta property="og:description" content="Check out this component on PWABuilder.">
       <meta property="og:image" content="${this.comp?.screenshot_url}">
