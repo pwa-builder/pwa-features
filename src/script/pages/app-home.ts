@@ -271,8 +271,8 @@ export class AppHome extends LitElement {
           </div>
 
           <div id="cats">
-            <button class="${this.cat === null ? 'active' : null}" @click=${this.doGetAll}>Components</button>
-            <button class="${this.cat === 'demos' ? 'active' : null}" @click=${() => this.changeCat('demos')}>Demos</button>
+            <button class="${this.cat === null ? 'active' : null}" aria-pressed="${this.cat === null ? 'true' : 'false'}" @click=${this.doGetAll}>Components</button>
+            <button class="${this.cat === 'demos' ? 'active' : null}" aria-pressed="${this.cat === 'demos' ? 'true' : 'false'}" @click=${() => this.changeCat('demos')}>Demos</button>
           </div>
         </div>
 
