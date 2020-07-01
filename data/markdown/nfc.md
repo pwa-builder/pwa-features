@@ -1,6 +1,6 @@
 ## The Web NFC API
 
-eb NFC aims to provide sites the ability to read and write to nearby NFC (Near Field Communication) tags in a secure and privacy preserving manner.
+Web NFC aims to provide sites the ability to read and write to nearby NFC (Near Field Communication) tags in a secure and privacy preserving manner.
 
 NFC consists of a rather large set of technologies, so for this first iteration of the API the focus has been on supporting the NFC Data Exchange Format aka NDEF, a lightweight binary message format, as it works across different tag formats.
 
