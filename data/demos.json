@@ -1,5 +1,38 @@
 
-[
+[{
+  "name": "Picture-in-Picture API",
+  "desc": "This API creates a floating always-on-top element to display various video sources.",
+  "more_info": "pip.md",
+  "ID": "pip",
+  "demo_url": "https://pwa-pip.glitch.me/",
+  "github_url": "https://glitch.com/edit/#!/pwa-pip",
+  "screenshot_url": "/assets/pipscreenshot.jpg",
+  "video_url":"https://www.youtube.com/embed/BmdwgpO474U",
+  "spec_url": "https://w3c.github.io/picture-in-picture/",
+  "learn_more": "https://developers.google.com/web/updates/2018/10/watch-video-using-picture-in-picture",
+  "support": [
+    {
+      "browser": "Edge",
+      "support": true
+    },
+    {
+      "browser": "Chrome",
+      "support": true
+    },
+    {
+      "browser": "Firefox",
+      "support": false
+    },
+    {
+      "browser": "Samsung Internet",
+      "support": false
+    },
+    {
+      "browser": "Safari",
+      "support": true
+    }
+  ]
+  },
   {
     "name": "low-latency canvas API",
     "desc": "This API tells the canvas to skip most of the rendering pipeline in the browser to get pixels on screen with minimal latency.",
