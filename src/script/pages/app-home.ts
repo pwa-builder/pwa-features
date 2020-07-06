@@ -59,6 +59,12 @@ export class AppHome extends LitElement {
         font-size: 24px;
       }
 
+      #noresults {
+        text-align: center;
+        color: black;
+        font-size: 24px;
+      }
+
       #catBar {
         display: flex;
         justify-content: space-around;
@@ -291,12 +297,11 @@ export class AppHome extends LitElement {
         </section>` : null}
 
         ${this.cat === null ? html`<ul id="compList">
-          ${
-        this.comps?.map((comp) => {
+          ${this.comps?.length > 1 ? html `${this.comps?.map((comp) => {
           return html`
                 <comp-card .comp=${comp}></comp-card>
               `
-        })
+        })}` : html `<h2 id="noresults" role="alert">No results found</h2>`
         }
         </ul>` : null}
 
