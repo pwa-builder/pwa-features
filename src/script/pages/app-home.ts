@@ -4,7 +4,7 @@ import { LitElement, css, html, customElement, property } from 'lit-element';
 import '@pwabuilder/pwainstall';
 import '../components/comp-card';
 import '../components/demo-card';
-import { getAll, getFeatured, searchComps, getDemos } from '../services/data';
+import { getAll, getFeatured, searchComps, searchDemos, getDemos } from '../services/data';
 
 @customElement('app-home')
 export class AppHome extends LitElement {
@@ -242,10 +242,15 @@ export class AppHome extends LitElement {
   }
 
   async handleSearch(event: InputEvent) {
-    this.searchValue = (event.target as HTMLInputElement)?.value;
-    const searchedValues = await searchComps(this.searchValue);
-
-    this.comps = [...searchedValues];
+    if (this.cat === 'demos') {
+      this.searchValue = (event.target as HTMLInputElement)?.value;
+      const searchedValues = await searchDemos(this.searchValue);
+      this.demos = [...searchedValues];
+    } else {   
+      this.searchValue = (event.target as HTMLInputElement)?.value;
+      const searchedValues = await searchComps(this.searchValue);
+      this.comps = [...searchedValues];
+    }
   }
 
   render() {
