@@ -4,7 +4,7 @@ import { LitElement, css, html, customElement, property } from 'lit-element';
 import '@pwabuilder/pwainstall';
 import '../components/comp-card';
 import '../components/demo-card';
-import { getAll, getFeatured, searchComps, getDemos } from '../services/data';
+import { getAll, getFeatured, searchComps, searchDemos, getDemos } from '../services/data';
 
 @customElement('app-home')
 export class AppHome extends LitElement {
@@ -54,6 +54,12 @@ export class AppHome extends LitElement {
       }
 
       #featured h2 {
+        text-align: center;
+        color: black;
+        font-size: 24px;
+      }
+
+      #noresults {
         text-align: center;
         color: black;
         font-size: 24px;
@@ -236,10 +242,15 @@ export class AppHome extends LitElement {
   }
 
   async handleSearch(event: InputEvent) {
-    this.searchValue = (event.target as HTMLInputElement)?.value;
-    const searchedValues = await searchComps(this.searchValue);
-
-    this.comps = [...searchedValues];
+    if (this.cat === 'demos') {
+      this.searchValue = (event.target as HTMLInputElement)?.value;
+      const searchedValues = await searchDemos(this.searchValue);
+      this.demos = [...searchedValues];
+    } else {   
+      this.searchValue = (event.target as HTMLInputElement)?.value;
+      const searchedValues = await searchComps(this.searchValue);
+      this.comps = [...searchedValues];
+    }
   }
 
   render() {
@@ -283,7 +294,7 @@ export class AppHome extends LitElement {
             ${
         this.featured?.map((comp) => {
           return html`
-                  <comp-card .comp=${comp}></comp-card>
+                  <li><comp-card .comp=${comp}></comp-card></li>
                 `
         })
         }
@@ -291,12 +302,11 @@ export class AppHome extends LitElement {
         </section>` : null}
 
         ${this.cat === null ? html`<ul id="compList">
-          ${
-        this.comps?.map((comp) => {
+          ${this.comps && this.comps.length > 0 ? html `${this.comps?.map((comp) => {
           return html`
-                <comp-card .comp=${comp}></comp-card>
+                <li><comp-card .comp=${comp}></comp-card></li>
               `
-        })
+        })}` : html `<h2 id="noresults" role="alert">No results found</h2>`
         }
         </ul>` : null}
 
@@ -305,11 +315,11 @@ export class AppHome extends LitElement {
 
             <ul id="compList">
               ${
-        this.demos?.map((demo) => {
+        this.demos && this.demos.length > 0 ? html `${this.demos?.map((demo) => {
           return html`
-                    <demo-card .demo=${demo}></demo-card>
+                    <li><demo-card .demo=${demo}></demo-card></li>
                   `
-        })
+        })}` : html `<h2 id="noresults" role="alert">No results found</h2>`
         }
             </ul>
           ` : null
