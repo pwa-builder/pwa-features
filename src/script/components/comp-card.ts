@@ -82,7 +82,7 @@ export class CompCard extends LitElement {
         </div>
 
         <div id="cardActions">
-          <a .href=${`component/${this.comp.ID}`}>View Component</a>
+          <a aria-label="${`View ${this.comp.name} Component link`}" .href=${`component/${this.comp.ID}`}>View Component</a>
         </div>
       </div>
     `;
