@@ -294,7 +294,7 @@ export class AppHome extends LitElement {
             ${
         this.featured?.map((comp) => {
           return html`
-                  <comp-card .comp=${comp}></comp-card>
+                  <li><comp-card .comp=${comp}></comp-card></li>
                 `
         })
         }
@@ -304,7 +304,7 @@ export class AppHome extends LitElement {
         ${this.cat === null ? html`<ul id="compList">
           ${this.comps && this.comps.length > 0 ? html `${this.comps?.map((comp) => {
           return html`
-                <comp-card .comp=${comp}></comp-card>
+                <li><comp-card .comp=${comp}></comp-card></li>
               `
         })}` : html `<h2 id="noresults" role="alert">No results found</h2>`
         }
@@ -317,7 +317,7 @@ export class AppHome extends LitElement {
               ${
         this.demos && this.demos.length > 0 ? html `${this.demos?.map((demo) => {
           return html`
-                    <demo-card .demo=${demo}></demo-card>
+                    <li><demo-card .demo=${demo}></demo-card></li>
                   `
         })}` : html `<h2 id="noresults" role="alert">No results found</h2>`
         }
