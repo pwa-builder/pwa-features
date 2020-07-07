@@ -294,7 +294,7 @@ export class AppHome extends LitElement {
             ${
         this.featured?.map((comp) => {
           return html`
-                  <comp-card .comp=${comp}></comp-card>
+                  <li><comp-card .comp=${comp}></comp-card></li>
                 `
         })
         }
