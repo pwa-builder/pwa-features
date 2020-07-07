@@ -62,6 +62,22 @@ export async function searchComps(searchValue: string) {
   }
 }
 
+export async function searchDemos(searchValue: string) {
+  const demos: any[] = await getDemos();
+
+  if (searchValue && demos) {
+    let searchedDemos = demos.filter((demo) => {
+      if ((demo.name.toLowerCase() as string).includes(searchValue.toLowerCase())) {
+        return demo;
+      }
+    })
+    return searchedDemos
+  }
+  else {
+    return demos;
+  }
+}
+
 export async function getDemos() {
   const demosRequest = await fetch('/data/demos.json');
   const demos = await demosRequest.json();
