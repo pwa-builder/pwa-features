@@ -302,7 +302,7 @@ export class AppHome extends LitElement {
         </section>` : null}
 
         ${this.cat === null ? html`<ul id="compList">
-          ${this.comps?.length > 0 ? html `${this.comps?.map((comp) => {
+          ${this.comps && this.comps.length > 0 ? html `${this.comps?.map((comp) => {
           return html`
                 <comp-card .comp=${comp}></comp-card>
               `
@@ -315,7 +315,7 @@ export class AppHome extends LitElement {
 
             <ul id="compList">
               ${
-        this.demos?.length > 0 ? html `${this.demos?.map((demo) => {
+        this.demos && this.demos.length > 0 ? html `${this.demos?.map((demo) => {
           return html`
                     <demo-card .demo=${demo}></demo-card>
                   `
