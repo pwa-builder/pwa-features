@@ -348,20 +348,20 @@ export class DemoDetail extends LitElement {
         </section>
 
         ${!this.demo?.video_url && this.demo?.screenshot_url ? html`<section id="demo">
-          <img .src="${this.demo?.screenshot_url}">
+          <img .src="${this.demo?.screenshot_url}" alt="screenshot of demo" tabindex="0">
         </section>` : null}
 
-        ${this.demo?.video_url ? html`<iframe id="mobileDemoVid" width="560" height="315" src="${this.demo?.video_url}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>` : null}
+        ${this.demo?.video_url ? html`<iframe tabindex="0" id="mobileDemoVid" width="560" height="315" src="${this.demo?.video_url}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>` : null}
 
         ${
           this.demo?.support ? html`
             <section id="support">
-              <browser-support .supportData="${this.demo?.support}"></browser-support>
+              <browser-support .supportData="${this.demo?.support}" tabindex="0"></browser-support>
             </section>
           ` : null
         }
 
-        ${this.readme ? html`<section id="readme" .innerHTML="${this.readme}"></section>` : null}
+        ${this.readme ? html`<section id="readme" .innerHTML="${this.readme}" tabindex="0"></section>` : null}
       </div>
     `;
   }
