@@ -63,11 +63,11 @@ export class AppHeader extends LitElement {
       }
 
       #hubLink:focus {
-        outline: auto
+        outline: auto;
       }
 
       #featureStore:focus {
-        outline: auto
+        outline: auto;
       }
 
       @media(max-width: 800px) {
