@@ -62,6 +62,14 @@ export class AppHeader extends LitElement {
         width: 86px;
       }
 
+      #hubLink:focus {
+        outline: auto
+      }
+
+      #featureStore:focus {
+        outline: auto
+      }
+
       @media(max-width: 800px) {
         header #tabs {
           margin-left: 2em;
@@ -103,7 +111,7 @@ export class AppHeader extends LitElement {
 
         <div id="tabs">
           <a id="hubLink" @click="${this.gobuilder}" tabindex="0">My Hub</a>
-          <a href="/" tabindex="0">Feature Store</a>
+          <a id="featureStore" href="/" tabindex="0">Feature Store</a>
         </div>
 
         <div id="github">
