@@ -99,11 +99,11 @@ export class AppHeader extends LitElement {
   render() {
     return html`
       <header>
-        <img @click="${this.gobuilder}" id="icon" src="/assets/pwabuilder.svg" alt="PWABuilder icon">
+        <img @click="${this.gobuilder}" id="icon" src="/assets/pwabuilder.svg" alt="PWABuilder icon" tabindex="0">
 
         <div id="tabs">
-          <a id="hubLink" @click="${this.gobuilder}">My Hub</a>
-          <a href="/">Feature Store</a>
+          <a id="hubLink" @click="${this.gobuilder}" tabindex="0">My Hub</a>
+          <a href="/" tabindex="0">Feature Store</a>
         </div>
 
         <div id="github">
