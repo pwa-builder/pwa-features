@@ -122,6 +122,11 @@ export class AppHome extends LitElement {
         width: 28em;
       }
 
+      #categoryButton:focus {
+        outline: auto;
+        outline-color: black;
+      }
+
       #searchBlock {
         display: flex;
         align-items: center;
@@ -282,8 +287,8 @@ export class AppHome extends LitElement {
           </div>
 
           <div id="cats">
-            <button class="${this.cat === null ? 'active' : null}" aria-pressed="${this.cat === null ? 'true' : 'false'}" @click=${this.doGetAll}>Components</button>
-            <button class="${this.cat === 'demos' ? 'active' : null}" aria-pressed="${this.cat === 'demos' ? 'true' : 'false'}" @click=${() => this.changeCat('demos')}>Demos</button>
+            <button class="${this.cat === null ? 'active' : null}" id="categoryButton" aria-pressed="${this.cat === null ? 'true' : 'false'}" @click=${this.doGetAll}>Components</button>
+            <button class="${this.cat === 'demos' ? 'active' : null}" id="categoryButton" aria-pressed="${this.cat === 'demos' ? 'true' : 'false'}" @click=${() => this.changeCat('demos')}>Demos</button>
           </div>
         </div>
 
