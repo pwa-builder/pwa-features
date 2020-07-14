@@ -494,7 +494,7 @@ export class CompDetail extends LitElement {
                 <button id="installButton" @click="${this.installComp}">
                   Install Component
 
-                  <img src="/assets/down.svg">
+                  <img src="/assets/down.svg" alt="dropdown">
 
                   ${this.showOptions ? html`<div id="installOptions">
                     <button @click="${() => this.copyInstall("script")}">
