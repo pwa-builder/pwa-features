@@ -327,5 +327,38 @@
         "support": false
       }
     ]
+  },
+  {
+    "name": "Screen Capture API",
+    "desc": "This API allows the user to grant you a media stream of the contents of their screen.",
+    "more_info": "screenCapture.md",
+    "ID": "screen-capture",
+    "demo_url": "https://wonderful-hill-005ad2f1e.azurestaticapps.net/",
+    "github_url": "https://github.com/jgw96/screeen-record/tree/master",
+    "screenshot_url": "/assets/displayMedia.png",
+    "spec_url": "https://w3c.github.io/mediacapture-screen-share/#dom-mediadevices-getdisplaymedia",
+    "learn_more": "https://developer.mozilla.org/en-US/docs/Web/API/Screen_Capture_API/Using_Screen_Capture",
+    "support": [
+      {
+        "browser": "Edge",
+        "support": true
+      },
+      {
+        "browser": "Chrome",
+        "support": true
+      },
+      {
+        "browser": "Firefox",
+        "support": true
+      },
+      {
+        "browser": "Samsung Internet",
+        "support": false
+      },
+      {
+        "browser": "Safari",
+        "support": true
+      }
+    ]
   }
 ]
