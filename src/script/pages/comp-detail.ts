@@ -449,7 +449,7 @@ export class CompDetail extends LitElement {
 
       <div id="scrolledHeaderBlock">
         <div id="headerBackButtonBlock">
-          <button @click="${() => this.goBack()}" id="backButton">
+          <button @click="${() => this.goBack()}" id="backButton" aria-label="Back">
             <img src="/assets/back.svg" alt="back icon">
           </button>
 

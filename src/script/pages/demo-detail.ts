@@ -312,7 +312,7 @@ export class DemoDetail extends LitElement {
           <div id="headerInfoBlock">
 
             <div id="backButtonBlock">
-              <button @click="${() => this.goBack()}" id="backButton">
+              <button @click="${() => this.goBack()}" id="backButton" aria-label="Back">
                 <img src="/assets/back.svg" alt="back icon">
               </button>
             </div>
