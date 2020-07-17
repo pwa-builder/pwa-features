@@ -266,7 +266,7 @@ export class CompDetail extends LitElement {
         padding: 10px 14px;
         text-decoration: none;
         margin-left: 4px;
-        
+
         display: flex;
         align-items: center;
 
@@ -322,7 +322,7 @@ export class CompDetail extends LitElement {
         #headerBlock {
           flex-direction: column;
         }
-        
+
 
         #backButtonBlock {
           margin-right: 1em;
@@ -440,7 +440,7 @@ export class CompDetail extends LitElement {
     return html`
     <link rel="stylesheet"
       href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.1.1/build/styles/default.min.css">
-      
+
       <meta property="og:title" content="${this.comp?.name}">
       <meta property="og:description" content="Check out this component on PWABuilder.">
       <meta property="og:image" content="${this.comp?.screenshot_url}">
@@ -478,7 +478,7 @@ export class CompDetail extends LitElement {
           <div id="headerInfoBlock">
 
             <div id="backButtonBlock">
-              <button @click="${() => this.goBack()}" id="backButton">
+              <button @click="${() => this.goBack()}" id="backButton" aria-label="Back">
                 <img src="/assets/back.svg" alt="back icon">
               </button>
             </div>
