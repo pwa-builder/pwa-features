@@ -106,7 +106,7 @@ export class AppHeader extends LitElement {
 
   render() {
     return html`
-      <header>
+      <header role="presentation">
         <img @click="${this.gobuilder}" id="icon" src="/assets/pwabuilder.svg" alt="PWABuilder icon" tabindex="0">
 
         <div id="tabs">
