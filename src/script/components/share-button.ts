@@ -51,7 +51,7 @@ export class ShareButton extends LitElement {
   render() {
     return html`
       <button @click="${() => this.share()}">
-        <img src="/assets/share.svg" alt="share icon">
+        <img src="/assets/share.svg" alt="share icon" aria-hidden="true">
         Share
       </button>
     `;
