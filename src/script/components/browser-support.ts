@@ -81,8 +81,16 @@ export class BrowserSupport extends LitElement {
               >
                 ${platform.browser}
                 ${platform.support
-                  ? html`<img src="/assets/check.svg" alt="checked" />`
-                  : html`<img src="/assets/close.svg" alt="no support" />`}
+                  ? html`<img
+                      src="/assets/check.svg"
+                      alt="checked"
+                      aria-hidden="true"
+                    />`
+                  : html`<img
+                      src="/assets/close.svg"
+                      alt="no support"
+                      aria-hidden="true"
+                    />`}
               </div>
             `;
           })}
