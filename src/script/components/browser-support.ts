@@ -1,9 +1,7 @@
-import { LitElement, css, html, customElement, property } from 'lit-element';
+import { LitElement, css, html, customElement, property } from "lit-element";
 
-
-@customElement('browser-support')
+@customElement("browser-support")
 export class BrowserSupport extends LitElement {
-
   @property({ type: Array }) supportData: any[] | null = null;
 
   static get styles() {
@@ -47,18 +45,22 @@ export class BrowserSupport extends LitElement {
         font-weight: bold;
       }
 
-      @media(max-width: 800px) {
-          #support {
-            margin-left: 0;
-            width: inherit;
-          }
+      .supportBlock p {
+        margin: 0;
+      }
 
-          #supportDetails {
-            display: grid;
-            grid-template-columns: auto auto;
-            width: fit-content;
-            grid-gap: 10px;
-          }
+      @media (max-width: 800px) {
+        #support {
+          margin-left: 0;
+          width: inherit;
+        }
+
+        #supportDetails {
+          display: grid;
+          grid-template-columns: auto auto;
+          width: fit-content;
+          grid-gap: 10px;
+        }
       }
     `;
   }
@@ -70,20 +72,33 @@ export class BrowserSupport extends LitElement {
   render() {
     return html`
       <div id="support">
-      <h3>Browser Support</h3>
+        <h3>Browser Support</h3>
 
-      <div id="supportDetails">
-                ${
-                  this.supportData?.map((platform: any) => {
-                    return html`
-                      <div class="supportBlock">
-                        ${platform.browser}
-
-                        ${platform.support ? html`<img src="/assets/check.svg" alt="checked">` : html`<img src="/assets/close.svg" alt="no support">`}
-                      </div>
-                    `
-                  })
-                }
+        <div id="supportDetails">
+          ${this.supportData?.map((platform: any) => {
+            return html`
+              <div
+                class="supportBlock"
+                aria-label="${platform.browser +
+                " " +
+                (platform.support ? "supported" : "not supported")}"
+              >
+                <p aria-hidden="true">${platform.browser}</p>
+                ${platform.support
+                  ? html`<img
+                      src="/assets/check.svg"
+                      alt="checked"
+                      aria-hidden="true"
+                    />`
+                  : html`<img
+                      src="/assets/close.svg"
+                      alt="no support"
+                      aria-hidden="true"
+                    />`}
+              </div>
+            `;
+          })}
+        </div>
       </div>
     `;
   }

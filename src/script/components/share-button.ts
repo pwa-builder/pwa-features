@@ -1,9 +1,7 @@
-import { LitElement, css, html, customElement, property } from 'lit-element';
+import { LitElement, css, html, customElement, property } from "lit-element";
 
-
-@customElement('share-button')
+@customElement("share-button")
 export class ShareButton extends LitElement {
-
   @property({ type: String }) shareURL: string | null = null;
 
   static get styles() {
@@ -26,7 +24,7 @@ export class ShareButton extends LitElement {
 
       button img {
         width: 1em;
-        margin-right: 2px
+        margin-right: 2px;
       }
     `;
   }
@@ -38,20 +36,19 @@ export class ShareButton extends LitElement {
   async share() {
     try {
       await (navigator as any).share({
-        title: 'PWABuilder',
-        text: 'Check this out!',
+        title: "PWABuilder",
+        text: "Check this out!",
         url: location.href,
-      })
-    }
-    catch (err) {
+      });
+    } catch (err) {
       console.error(err);
     }
   }
 
   render() {
     return html`
-      <button @click="${() => this.share()}">
-        <img src="/assets/share.svg" alt="share icon">
+      <button @click="${() => this.share()}" aria-label="Share">
+        <img src="/assets/share.svg" alt="share icon" />
         Share
       </button>
     `;
