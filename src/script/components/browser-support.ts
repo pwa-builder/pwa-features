@@ -45,6 +45,10 @@ export class BrowserSupport extends LitElement {
         font-weight: bold;
       }
 
+      .supportBlock p {
+        margin: 0;
+      }
+
       @media (max-width: 800px) {
         #support {
           margin-left: 0;
@@ -79,7 +83,7 @@ export class BrowserSupport extends LitElement {
                 " " +
                 (platform.support ? "supported" : "not supported")}"
               >
-                ${platform.browser}
+                <p aria-hidden="true">${platform.browser}</p>
                 ${platform.support
                   ? html`<img
                       src="/assets/check.svg"
