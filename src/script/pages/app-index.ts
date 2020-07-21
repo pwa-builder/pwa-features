@@ -56,7 +56,7 @@ export class AppIndex extends LitElement {
     return html`
       <div>
         <app-header></app-header>
-        <main>
+        <main role="presentation">
           <div id="routerOutlet"></div>
         </main>
       </div>
