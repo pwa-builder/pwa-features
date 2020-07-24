@@ -535,7 +535,7 @@ ${this.comp?.docs_url ? html`<a id="docsLink" .href="${this.comp?.docs_url}">Doc
 
         ${this.comp?.embed && !this.comp?.live_demo_url ? html`<section id="demo">
           <h2 id="demoHeader">Demo</h2>
-          <iframe .src="${this.comp?.embed}"></iframe>
+          <iframe .src="${this.comp?.embed}" role="presentation" aria-label="${this.comp?.name + ' Demo'}" title="${this.comp?.name + ' Demo'}"></iframe>
         </section>` : null}
 
         ${
