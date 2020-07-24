@@ -43,7 +43,8 @@ export class CompDetail extends LitElement {
         display: flex;
       }
 
-      #installButton {
+      #installButton,
+      #installButtonFixed {
         border-radius: 20px;
         background: rgb(147, 55, 216);
         color: white;
@@ -61,7 +62,8 @@ export class CompDetail extends LitElement {
         align-items: center;
       }
 
-      #installButton img {
+      #installButton img,
+      #installButtonFixed img {
         width: 14px;
         margin-left: 8px;
       }
@@ -456,7 +458,7 @@ export class CompDetail extends LitElement {
           <h3>${this.comp?.name}</h3>
         </div>
 
-        <button id="installButton" @click="${this.installComp}">
+        <button id="installButtonFixed" @click="${this.installComp}">
           Install Component
 
           ${this.showOptions ? html`<div id="installOptions">
