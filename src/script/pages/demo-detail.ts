@@ -299,7 +299,7 @@ export class DemoDetail extends LitElement {
     return html`
     <link rel="stylesheet"
       href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.1.1/build/styles/default.min.css">
-      
+
       <meta property="og:title" content="${this.demo?.name}">
       <meta property="og:description" content="Check out this demo on PWABuilder.">
       <meta property="og:image" content="${this.demo?.screenshot_url}">
@@ -323,7 +323,7 @@ export class DemoDetail extends LitElement {
 
                 <p>${this.demo?.desc}</P>
 
-                ${this.demo?.video_url ? html`<iframe id="desktopDemoVid" width="560" height="315" src="${this.demo?.video_url}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>` : null }
+                ${this.demo?.video_url ? html`<iframe id="desktopDemoVid" width="560" height="315" src="${this.demo?.video_url}" role="presentation" title="desktop demo video" aria-label="desktop demo video" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>` : null }
               </div>
 
               <div>
@@ -351,7 +351,7 @@ export class DemoDetail extends LitElement {
           <img .src="${this.demo?.screenshot_url}" alt="screenshot of demo" tabindex="0">
         </section>` : null}
 
-        ${this.demo?.video_url ? html`<iframe tabindex="0" id="mobileDemoVid" width="560" height="315" src="${this.demo?.video_url}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>` : null}
+        ${this.demo?.video_url ? html`<iframe tabindex="0" id="mobileDemoVid" width="560" height="315" src="${this.demo?.video_url}" role="presentation" title="mobile demo video" aria-label="mobile demo video" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>` : null}
 
         ${
           this.demo?.support ? html`
