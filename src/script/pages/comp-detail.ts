@@ -488,7 +488,7 @@ export class CompDetail extends LitElement {
 
               <p>${this.comp?.desc}</P>
 
-              ${this.comp?.video_url ? html`<iframe id="demoVid" width="560" height="315" src="${this.comp?.video_url}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>` : null}
+              ${this.comp?.video_url ? html`<iframe id="demoVid" width="560" height="315" src="${this.comp?.video_url}" role="presentation" title="demo video" aria-label="demo video" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>` : null}
 
               <div id="compActionsBlock">
                 <button id="installButton" @click="${this.installComp}">
@@ -531,7 +531,7 @@ ${this.comp?.docs_url ? html`<a id="docsLink" .href="${this.comp?.docs_url}">Doc
           </div>
         </section>
 
-        ${this.comp?.video_url ? html`<iframe id="mobileDemoVid" width="560" height="315" src="${this.comp?.video_url}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>` : null}
+        ${this.comp?.video_url ? html`<iframe id="mobileDemoVid" width="560" height="315" src="${this.comp?.video_url}" aria-label="mobile demo video" title="mobile demo video" role="presentation" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>` : null}
 
         ${this.comp?.embed && !this.comp?.live_demo_url ? html`<section id="demo">
           <h2 id="demoHeader">Demo</h2>
