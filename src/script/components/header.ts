@@ -118,10 +118,25 @@ export class AppHeader extends LitElement {
     }
   }
 
+  goToMain(event: any) {
+    event.preventDefault();
+
+    document
+      ?.getElementsByTagName("app-index")
+      .item(0)
+      ?.shadowRoot?.getElementById("main")
+      ?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+  }
+
   render() {
     return html`
       <header role="presentation">
-        <a id="go-to-main" href="#main">Skip to Content</a>
+        <a id="go-to-main" href="#main" @click="${this.goToMain}"
+          >Skip to Content</a
+        >
         <img
           @click="${this.gobuilder}"
           id="icon"
