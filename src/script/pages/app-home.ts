@@ -22,7 +22,7 @@ export class AppHome extends LitElement {
         position: fixed;
         bottom: 16px;
         right: 16px;
-        --install-button-color: var(--app-color-primary);
+        --install-button-color: #5759af;
       }
 
       button {
@@ -149,6 +149,14 @@ export class AppHome extends LitElement {
         padding: 8px;
         border-radius: 4px;
         border: none;
+      }
+
+      #searchInput::placeholder {
+        color: black;
+      }
+
+      #searchInput:placeholder-shown {
+        color: black;
       }
 
       #search label {
