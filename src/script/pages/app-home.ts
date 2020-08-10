@@ -215,7 +215,7 @@ export class AppHome extends LitElement {
           width: 100%;
         }
 
-        #compCard {
+        #compList comp-card {
           margin: 8px;
         }
       }
