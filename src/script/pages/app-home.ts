@@ -185,7 +185,7 @@ export class AppHome extends LitElement {
           flex-direction: column;
 
           white-space: nowrap;
-          overflow: scroll;
+          overflow: hidden;
 
           padding-bottom: 1em;
         }
@@ -213,6 +213,10 @@ export class AppHome extends LitElement {
       @media (max-width: 640px) {
         #compList {
           width: 100%;
+        }
+
+        #compCard {
+          margin: 8px;
         }
       }
 
