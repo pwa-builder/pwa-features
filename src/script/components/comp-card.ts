@@ -1,11 +1,8 @@
-import { LitElement, css, html, customElement, property } from 'lit-element';
+import { LitElement, css, html, customElement, property } from "lit-element";
 
-
-@customElement('comp-card')
+@customElement("comp-card")
 export class CompCard extends LitElement {
-
   @property({ type: Object }) comp: any;
-  
 
   static get styles() {
     return css`
@@ -13,7 +10,7 @@ export class CompCard extends LitElement {
         display: flex;
         justify-content: center;
       }
-    
+
       .compCard {
         display: flex;
         flex-direction: column;
@@ -66,6 +63,12 @@ export class CompCard extends LitElement {
         background-color: #9337d8;
         color: white;
       }
+
+      @media (max-width: 640px) {
+        .compCard {
+          width: 100%;
+        }
+      }
     `;
   }
 
@@ -82,7 +85,11 @@ export class CompCard extends LitElement {
         </div>
 
         <div id="cardActions">
-          <a aria-label="${`View ${this.comp.name} Component link`}" .href=${`component/${this.comp.ID}`}>View Component</a>
+          <a
+            aria-label="${`View ${this.comp.name} Component link`}"
+            .href=${`component/${this.comp.ID}`}
+            >View Component</a
+          >
         </div>
       </div>
     `;
