@@ -184,8 +184,8 @@ export class CompDetail extends LitElement {
         margin-right: 2em;
       }
 
-
-      #backButton {
+      #backButton,
+      #backButtonFixed {
         height: 4em;
         width: 4em;
         border: none;
@@ -199,7 +199,8 @@ export class CompDetail extends LitElement {
         align-items: center;
       }
 
-      #backButton img {
+      #backButton img,
+      #backButtonFixed img {
         height: 100%;
         width: 100%;
       }
@@ -247,7 +248,7 @@ export class CompDetail extends LitElement {
         align-items: center;
       }
 
-      #scrolledHeaderBlock #headerBackButtonBlock #backButton {
+      #scrolledHeaderBlock #headerBackButtonBlock #backButtonFixed {
         margin-right: 14px;
         height: 3em;
         width: 3em;
@@ -467,8 +468,12 @@ export class CompDetail extends LitElement {
 
       <div id="scrolledHeaderBlock">
         <div id="headerBackButtonBlock">
-          <button @click="${() => this.goBack()}" id="backButton" aria-label="Back">
-            <img src="/assets/back.svg" alt="back icon">
+          <button
+            @click="${() => this.goBack()}"
+            id="backButtonFixed"
+            aria-label="Back"
+          >
+            <img src="/assets/back.svg" alt="back icon" />
           </button>
 
           <h3>${this.comp?.name}</h3>
