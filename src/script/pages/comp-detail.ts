@@ -189,7 +189,7 @@ export class CompDetail extends LitElement {
         height: 4em;
         width: 4em;
         border: none;
-        background: white;
+        background: black;
         border-radius: 50%;
         padding: 20%;
         width: 4em;
