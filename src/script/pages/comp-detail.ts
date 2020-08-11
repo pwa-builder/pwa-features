@@ -315,8 +315,10 @@ export class CompDetail extends LitElement {
         margin-left: 8px;
       }
 
-      @media(max-width: 800px) {
-        #headerBlock, #demo, #readme {
+      @media (max-width: 800px) {
+        #headerBlock,
+        #demo,
+        #readme {
           margin-left: 0;
           margin-right: 0;
         }
@@ -324,7 +326,6 @@ export class CompDetail extends LitElement {
         #headerBlock {
           flex-direction: column;
         }
-
 
         #backButtonBlock {
           margin-right: 1em;
@@ -334,9 +335,24 @@ export class CompDetail extends LitElement {
           width: 100%;
         }
 
+        #compActionsBlock {
+          flex-direction: column;
+        }
+
+        #compActionsBlock a {
+          margin-top: 4px;
+          margin-left: 0;
+        }
+
         #actions {
           margin-top: 1em;
           margin-left: 4.4em;
+          flex-wrap: wrap;
+        }
+
+        #actions > share-button,
+        #actions > a {
+          margin-bottom: 4px;
         }
 
         #mobileDemoVid {

@@ -1,20 +1,25 @@
-import { LitElement, css, html, customElement, property } from 'lit-element';
+import { LitElement, css, html, customElement, property } from "lit-element";
 
 // For more info on the @pwabuilder/pwainstall component click here https://github.com/pwa-builder/pwa-install
-import '@pwabuilder/pwainstall';
-import '../components/comp-card';
-import '../components/demo-card';
-import { getAll, getFeatured, searchComps, searchDemos, getDemos } from '../services/data';
+import "@pwabuilder/pwainstall";
+import "../components/comp-card";
+import "../components/demo-card";
+import {
+  getAll,
+  getFeatured,
+  searchComps,
+  searchDemos,
+  getDemos,
+} from "../services/data";
 
-@customElement('app-home')
+@customElement("app-home")
 export class AppHome extends LitElement {
-
   @property({ type: Array }) comps: any[] | null = null;
   @property({ type: Array }) featured: any[] | null = null;
   @property({ type: Array }) demos: any[] | null = null;
 
   @property({ type: String }) cat: string | null = null;
-  @property({ type: String }) searchValue: string = '';
+  @property({ type: String }) searchValue: string = "";
 
   static get styles() {
     return css`
@@ -81,7 +86,7 @@ export class AppHome extends LitElement {
       }
 
       #catBar button {
-        background: linear-gradient(270deg,#242424 23.15%,#3c3c3c 57.68%);
+        background: linear-gradient(270deg, #242424 23.15%, #3c3c3c 57.68%);
         color: #fff;
         font-family: sans-serif;
         font-style: normal;
@@ -96,7 +101,7 @@ export class AppHome extends LitElement {
       }
 
       #catBar button.active {
-        background: linear-gradient(270deg,#622392 17.15%,#9337d8 52.68%);
+        background: linear-gradient(270deg, #622392 17.15%, #9337d8 52.68%);
       }
 
       #headerText {
@@ -165,7 +170,7 @@ export class AppHome extends LitElement {
         margin-bottom: 8px;
       }
 
-      @media(max-width: 800px) {
+      @media (max-width: 800px) {
         #headerText {
           padding: 16px;
         }
@@ -180,7 +185,7 @@ export class AppHome extends LitElement {
           flex-direction: column;
 
           white-space: nowrap;
-          overflow: scroll;
+          overflow: hidden;
 
           padding-bottom: 1em;
         }
@@ -205,14 +210,24 @@ export class AppHome extends LitElement {
         }
       }
 
-      @media(min-width: 1200px) {
+      @media (max-width: 640px) {
+        #compList {
+          width: 100%;
+        }
+
+        #compList comp-card {
+          margin: 8px;
+        }
+      }
+
+      @media (min-width: 1200px) {
         ul {
           margin-left: 6em;
           margin-right: 6em;
         }
       }
 
-      @media(spanning: single-fold-vertical) {
+      @media (spanning: single-fold-vertical) {
         #welcomeBlock {
           width: 50%;
         }
@@ -228,8 +243,8 @@ export class AppHome extends LitElement {
     await this.doFeatured();
     await this.doGetAll();
 
-    if (location.search.includes('demos')) {
-      await this.changeCat('demos');
+    if (location.search.includes("demos")) {
+      await this.changeCat("demos");
     }
   }
 
@@ -245,7 +260,7 @@ export class AppHome extends LitElement {
   }
 
   async changeCat(cat: string) {
-    if (cat === 'demos') {
+    if (cat === "demos") {
       const demos = await getDemos();
 
       this.demos = [...demos];
@@ -255,11 +270,11 @@ export class AppHome extends LitElement {
   }
 
   async handleSearch(event: InputEvent) {
-    if (this.cat === 'demos') {
+    if (this.cat === "demos") {
       this.searchValue = (event.target as HTMLInputElement)?.value;
       const searchedValues = await searchDemos(this.searchValue);
       this.demos = [...searchedValues];
-    } else {   
+    } else {
       this.searchValue = (event.target as HTMLInputElement)?.value;
       const searchedValues = await searchComps(this.searchValue);
       this.comps = [...searchedValues];
@@ -269,74 +284,96 @@ export class AppHome extends LitElement {
   render() {
     return html`
       <div>
-
         <div id="headerText">
-        ${this.cat !== 'demos'
-        ? html`
-          <h1>PWABuilder Components</h1>
+          ${this.cat !== "demos"
+            ? html` <h1>PWABuilder Components</h1>
 
-          <p>
-          Add that special something to supercharge your PWA. These cross-platform features can make your website work more like an app.</p>`
-        : html`
-          <h1>PWABuilder Demos</h1>
+                <p>
+                  Add that special something to supercharge your PWA. These
+                  cross-platform features can make your website work more like
+                  an app.
+                </p>`
+            : html`
+                <h1>PWABuilder Demos</h1>
 
-          <p>
-           Interested in what the modern web can do? Check out our demos below to start playing with new web APIs!</p>
-        `}
+                <p>
+                  Interested in what the modern web can do? Check out our demos
+                  below to start playing with new web APIs!
+                </p>
+              `}
         </div>
-
 
         <div id="catBar">
           <div id="searchBlock">
             <div id="search">
               <label for="searchInput">Search</label>
-              <input @input="${(event: InputEvent) => this.handleSearch(event)}" .value="${this.searchValue}" id="searchInput" name="searchInput" type="search" placeholder="install component...">
+              <input
+                @input="${(event: InputEvent) => this.handleSearch(event)}"
+                .value="${this.searchValue}"
+                id="searchInput"
+                name="searchInput"
+                type="search"
+                placeholder="install component..."
+                aria-label="search components"
+              />
             </div>
           </div>
 
           <div id="cats">
-            <button class="${this.cat === null ? 'active' : null}" id="categoryButton" aria-pressed="${this.cat === null ? 'true' : 'false'}" @click=${this.doGetAll}>Components</button>
-            <button class="${this.cat === 'demos' ? 'active' : null}" id="categoryButton" aria-pressed="${this.cat === 'demos' ? 'true' : 'false'}" @click=${() => this.changeCat('demos')}>Demos</button>
+            <button
+              class="${this.cat === null ? "active" : null}"
+              id="categoryButton"
+              aria-pressed="${this.cat === null ? "true" : "false"}"
+              @click=${this.doGetAll}
+            >
+              Components
+            </button>
+            <button
+              class="${this.cat === "demos" ? "active" : null}"
+              id="categoryButton"
+              aria-pressed="${this.cat === "demos" ? "true" : "false"}"
+              @click=${() => this.changeCat("demos")}
+            >
+              Demos
+            </button>
           </div>
         </div>
 
-        ${this.searchValue.length < 1 && this.cat === null ? html`<section id="featured">
-          <h2>Featured</h2>
+        ${this.searchValue.length < 1 && this.cat === null
+          ? html`<section id="featured">
+              <h2>Featured</h2>
 
-          <ul>
-            ${
-        this.featured?.map((comp) => {
-          return html`
-                  <li><comp-card .comp=${comp}></comp-card></li>
-                `
-        })
-        }
-          </ul>
-        </section>` : null}
-
-        ${this.cat === null ? html`<ul id="compList">
-          ${this.comps && this.comps.length > 0 ? html `${this.comps?.map((comp) => {
-          return html`
-                <li><comp-card .comp=${comp}></comp-card></li>
-              `
-        })}` : html `<h2 id="noresults" role="alert">No results found</h2>`
-        }
-        </ul>` : null}
-
-        ${
-      this.cat === 'demos' ? html`
-
-            <ul id="compList">
-              ${
-        this.demos && this.demos.length > 0 ? html `${this.demos?.map((demo) => {
-          return html`
-                    <li><demo-card .demo=${demo}></demo-card></li>
-                  `
-        })}` : html `<h2 id="noresults" role="alert">No results found</h2>`
-        }
-            </ul>
-          ` : null
-      }
+              <ul>
+                ${this.featured?.map((comp) => {
+                  return html` <li><comp-card .comp=${comp}></comp-card></li> `;
+                })}
+              </ul>
+            </section>`
+          : null}
+        ${this.cat === null
+          ? html`<ul id="compList">
+              ${this.comps && this.comps.length > 0
+                ? html`${this.comps?.map((comp) => {
+                    return html`
+                      <li><comp-card .comp=${comp}></comp-card></li>
+                    `;
+                  })}`
+                : html`<h2 id="noresults" role="alert">No results found</h2>`}
+            </ul>`
+          : null}
+        ${this.cat === "demos"
+          ? html`
+              <ul id="compList">
+                ${this.demos && this.demos.length > 0
+                  ? html`${this.demos?.map((demo) => {
+                      return html`
+                        <li><demo-card .demo=${demo}></demo-card></li>
+                      `;
+                    })}`
+                  : html`<h2 id="noresults" role="alert">No results found</h2>`}
+              </ul>
+            `
+          : null}
 
         <pwa-install>Install App</pwa-install>
       </div>
