@@ -69,6 +69,20 @@ export class AppHeader extends LitElement {
         outline: auto;
       }
 
+      #go-to-main {
+        display: block;
+        position: absolute;
+        color: #0078d4;
+        left: 0;
+        padding: 16px;
+        z-index: -2;
+      }
+
+      #go-to-main:focus,
+      #go-to-main:active {
+        z-index: 800;
+      }
+
       @media (max-width: 800px) {
         header #tabs {
           margin-left: 2em;
@@ -104,10 +118,32 @@ export class AppHeader extends LitElement {
     }
   }
 
+  goToMain(event: any) {
+    event.preventDefault();
+
+    document
+      ?.getElementsByTagName("app-index")
+      .item(0)
+      ?.shadowRoot?.getElementById("main")
+      ?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+  }
+
   render() {
     return html`
       <header role="presentation">
-        <img @click="${this.gobuilder}" id="icon" src="/assets/pwabuilder.svg" alt="PWABuilder icon" tabindex="0" />
+        <a id="go-to-main" href="#main" @click="${this.goToMain}"
+          >Skip to Content</a
+        >
+        <img
+          @click="${this.gobuilder}"
+          id="icon"
+          src="/assets/pwabuilder.svg"
+          alt="PWABuilder icon"
+          tabindex="0"
+        />
 
         <div id="tabs">
           <a id="hubLink" @click="${this.gobuilder}" tabindex="0">My Hub</a>
