@@ -1,21 +1,17 @@
-import { LitElement, css, html, customElement } from 'lit-element';
+import { LitElement, css, html, customElement } from "lit-element";
 
-import './app-home';
+import "./app-home";
 
-import { Router } from '@vaadin/router';
+import { Router } from "@vaadin/router";
 
-import '../components/header';
+import "../components/header";
 
-import { initAnalytics } from '../services/analytics';
+import { initAnalytics } from "../services/analytics";
 
-
-@customElement('app-index')
+@customElement("app-index")
 export class AppIndex extends LitElement {
-
   static get styles() {
-    return css`
-
-    `;
+    return css``;
   }
 
   constructor() {
@@ -24,28 +20,30 @@ export class AppIndex extends LitElement {
 
   firstUpdated() {
     // For more info on using the @vaadin/router check here https://vaadin.com/router
-    const router = new Router(this.shadowRoot?.querySelector('#routerOutlet'));
+    const router = new Router(this.shadowRoot?.querySelector("#routerOutlet"));
     router.setRoutes([
-      { path: '/', component: 'app-home' },
+      { path: "/", component: "app-home" },
       {
-        path: '/component/:id', component: 'comp-detail',
+        path: "/component/:id",
+        component: "comp-detail",
         action: async () => {
-          await import('./comp-detail.js');
+          await import("./comp-detail.js");
         },
       },
       {
-        path: '/demo/:id', component: 'demo-detail',
+        path: "/demo/:id",
+        component: "demo-detail",
         action: async () => {
-          await import('./demo-detail.js');
+          await import("./demo-detail.js");
         },
       },
       {
         path: "/about",
         component: "app-about",
         action: async () => {
-          await import('./app-about.js');
+          await import("./app-about.js");
         },
-      }
+      },
     ]);
 
     // init analytics
@@ -56,7 +54,7 @@ export class AppIndex extends LitElement {
     return html`
       <div>
         <app-header></app-header>
-        <main>
+        <main id="main" role="presentation">
           <div id="routerOutlet"></div>
         </main>
       </div>

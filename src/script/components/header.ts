@@ -1,9 +1,7 @@
-import { LitElement, css, html, customElement } from 'lit-element';
+import { LitElement, css, html, customElement } from "lit-element";
 
-
-@customElement('app-header')
+@customElement("app-header")
 export class AppHeader extends LitElement {
-
   previous: string | null = null;
 
   static get styles() {
@@ -31,14 +29,15 @@ export class AppHeader extends LitElement {
         justify-content: space-around;
       }
 
-      header #tabs a, header #tabs button {
+      header #tabs a,
+      header #tabs button {
         padding-bottom: 6px;
         font-family: sans-serif;
         font-style: normal;
         font-weight: 600;
         line-height: 21px;
         text-align: center;
-        color: hsla(0,0%,100%,.7);
+        color: hsla(0, 0%, 100%, 0.7);
         align-items: center;
         text-transform: uppercase;
         font-size: 14px;
@@ -54,7 +53,7 @@ export class AppHeader extends LitElement {
       }
 
       header #tabs #hubLink {
-        color: hsla(0,0%,100%,.7);
+        color: hsla(0, 0%, 100%, 0.7);
       }
 
       header #github {
@@ -62,20 +61,41 @@ export class AppHeader extends LitElement {
         width: 86px;
       }
 
-      @media(max-width: 800px) {
+      #hubLink:focus {
+        outline: auto;
+      }
+
+      #featureStore:focus {
+        outline: auto;
+      }
+
+      #go-to-main {
+        display: block;
+        position: absolute;
+        color: #0078d4;
+        left: 0;
+        padding: 16px;
+        z-index: -2;
+      }
+
+      #go-to-main:focus,
+      #go-to-main:active {
+        z-index: 800;
+      }
+
+      @media (max-width: 800px) {
         header #tabs {
           margin-left: 2em;
           width: 57em;
         }
       }
 
-      @media(min-width: 1336px) {
+      @media (min-width: 1336px) {
         header {
           padding-left: 154px;
           padding-right: 154px;
         }
       }
-
     `;
   }
 
@@ -88,26 +108,49 @@ export class AppHeader extends LitElement {
   }
 
   gobuilder() {
-    if (this.previous?.includes('pwabuilder') && this.previous?.includes('url')) {
+    if (
+      this.previous?.includes("pwabuilder") &&
+      this.previous?.includes("url")
+    ) {
       location.href = this.previous;
+    } else {
+      location.href = "https://pwabuilder.com";
     }
-    else {
-      location.href = 'https://pwabuilder.com';
-    }
+  }
+
+  goToMain(event: any) {
+    event.preventDefault();
+
+    document
+      ?.getElementsByTagName("app-index")
+      .item(0)
+      ?.shadowRoot?.getElementById("main")
+      ?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
   }
 
   render() {
     return html`
-      <header>
-        <img @click="${this.gobuilder}" id="icon" src="/assets/pwabuilder.svg" alt="PWABuilder icon">
+      <header role="presentation">
+        <a id="go-to-main" href="#main" @click="${this.goToMain}"
+          >Skip to Content</a
+        >
+        <img
+          @click="${this.gobuilder}"
+          id="icon"
+          src="/assets/pwabuilder.svg"
+          alt="PWABuilder icon"
+          tabindex="0"
+        />
 
         <div id="tabs">
-          <a id="hubLink" @click="${this.gobuilder}">My Hub</a>
-          <a href="/">Feature Store</a>
+          <a id="hubLink" @click="${this.gobuilder}" tabindex="0">My Hub</a>
+          <a id="featureStore" href="/" tabindex="0">Feature Store</a>
         </div>
 
-        <div id="github">
-        </div>
+        <div id="github"></div>
       </header>
     `;
   }

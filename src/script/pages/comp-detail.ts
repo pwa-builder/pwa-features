@@ -43,7 +43,8 @@ export class CompDetail extends LitElement {
         display: flex;
       }
 
-      #installButton {
+      #installButton,
+      #installButtonFixed {
         border-radius: 20px;
         background: rgb(147, 55, 216);
         color: white;
@@ -61,7 +62,8 @@ export class CompDetail extends LitElement {
         align-items: center;
       }
 
-      #installButton img {
+      #installButton img,
+      #installButtonFixed img {
         width: 14px;
         margin-left: 8px;
       }
@@ -266,7 +268,7 @@ export class CompDetail extends LitElement {
         padding: 10px 14px;
         text-decoration: none;
         margin-left: 4px;
-        
+
         display: flex;
         align-items: center;
 
@@ -313,8 +315,10 @@ export class CompDetail extends LitElement {
         margin-left: 8px;
       }
 
-      @media(max-width: 800px) {
-        #headerBlock, #demo, #readme {
+      @media (max-width: 800px) {
+        #headerBlock,
+        #demo,
+        #readme {
           margin-left: 0;
           margin-right: 0;
         }
@@ -322,7 +326,6 @@ export class CompDetail extends LitElement {
         #headerBlock {
           flex-direction: column;
         }
-        
 
         #backButtonBlock {
           margin-right: 1em;
@@ -332,9 +335,24 @@ export class CompDetail extends LitElement {
           width: 100%;
         }
 
+        #compActionsBlock {
+          flex-direction: column;
+        }
+
+        #compActionsBlock a {
+          margin-top: 4px;
+          margin-left: 0;
+        }
+
         #actions {
           margin-top: 1em;
           margin-left: 4.4em;
+          flex-wrap: wrap;
+        }
+
+        #actions > share-button,
+        #actions > a {
+          margin-bottom: 4px;
         }
 
         #mobileDemoVid {
@@ -440,7 +458,7 @@ export class CompDetail extends LitElement {
     return html`
     <link rel="stylesheet"
       href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.1.1/build/styles/default.min.css">
-      
+
       <meta property="og:title" content="${this.comp?.name}">
       <meta property="og:description" content="Check out this component on PWABuilder.">
       <meta property="og:image" content="${this.comp?.screenshot_url}">
@@ -449,14 +467,14 @@ export class CompDetail extends LitElement {
 
       <div id="scrolledHeaderBlock">
         <div id="headerBackButtonBlock">
-          <button @click="${() => this.goBack()}" id="backButton">
+          <button @click="${() => this.goBack()}" id="backButton" aria-label="Back">
             <img src="/assets/back.svg" alt="back icon">
           </button>
 
           <h3>${this.comp?.name}</h3>
         </div>
 
-        <button id="installButton" @click="${this.installComp}">
+        <button id="installButtonFixed" @click="${this.installComp}">
           Install Component
 
           ${this.showOptions ? html`<div id="installOptions">
@@ -478,7 +496,7 @@ export class CompDetail extends LitElement {
           <div id="headerInfoBlock">
 
             <div id="backButtonBlock">
-              <button @click="${() => this.goBack()}" id="backButton">
+              <button @click="${() => this.goBack()}" id="backButton" aria-label="Back">
                 <img src="/assets/back.svg" alt="back icon">
               </button>
             </div>
@@ -488,7 +506,7 @@ export class CompDetail extends LitElement {
 
               <p>${this.comp?.desc}</P>
 
-              ${this.comp?.video_url ? html`<iframe id="demoVid" width="560" height="315" src="${this.comp?.video_url}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>` : null}
+              ${this.comp?.video_url ? html`<iframe id="demoVid" width="560" height="315" src="${this.comp?.video_url}" role="presentation" title="demo video" aria-label="demo video" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>` : null}
 
               <div id="compActionsBlock">
                 <button id="installButton" @click="${this.installComp}">
@@ -531,11 +549,11 @@ ${this.comp?.docs_url ? html`<a id="docsLink" .href="${this.comp?.docs_url}">Doc
           </div>
         </section>
 
-        ${this.comp?.video_url ? html`<iframe id="mobileDemoVid" width="560" height="315" src="${this.comp?.video_url}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>` : null}
+        ${this.comp?.video_url ? html`<iframe id="mobileDemoVid" width="560" height="315" src="${this.comp?.video_url}" aria-label="mobile demo video" title="mobile demo video" role="presentation" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>` : null}
 
         ${this.comp?.embed && !this.comp?.live_demo_url ? html`<section id="demo">
           <h2 id="demoHeader">Demo</h2>
-          <iframe .src="${this.comp?.embed}"></iframe>
+          <iframe .src="${this.comp?.embed}" role="presentation" aria-label="${this.comp?.name + ' Demo'}" title="${this.comp?.name + ' Demo'}"></iframe>
         </section>` : null}
 
         ${

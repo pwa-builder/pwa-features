@@ -1,8 +1,8 @@
 {
-  "name": "PWABuilder Features",
+  "name": "PWABuilder Components and Demos Showcase",
   "display": "standalone",
   "start_url": "/",
-  "short_name": "Features",
+  "short_name": "Showcase",
   "theme_color": "#686bd2",
   "description": "Take your PWA to the next level and install the latest components from the PWABuilder team! Also, check out what the modern web is capable of in the demos section!",
   "orientation": "any",
