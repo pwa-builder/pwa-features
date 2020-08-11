@@ -314,6 +314,7 @@ export class AppHome extends LitElement {
                 name="searchInput"
                 type="search"
                 placeholder="install component..."
+                aria-label="search components"
               />
             </div>
           </div>
