@@ -197,7 +197,7 @@ export class DemoDetail extends LitElement {
       #backButton {
         height: 4em;
         border: none;
-        background: white;
+        background: black;
         border-radius: 50%;
         padding: 15%;
         width: 4em;
