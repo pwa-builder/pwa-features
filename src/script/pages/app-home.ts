@@ -211,12 +211,25 @@ export class AppHome extends LitElement {
       }
 
       @media (max-width: 640px) {
+        #searchBlock #search {
+          display: block;
+        }
+
         #compList {
           width: 100%;
         }
 
         #compList comp-card {
           margin: 8px;
+        }
+
+        label[for="searchInput"] {
+          width: max-content;
+        }
+
+        #searchInput {
+          display: inline-block;
+          max-width: 320px;
         }
       }
 
