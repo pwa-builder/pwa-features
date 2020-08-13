@@ -197,22 +197,32 @@ export class AppHome extends LitElement {
         #searchBlock {
           margin-left: 0;
           margin-top: 1em;
-
-          width: 90%;
         }
 
         #searchBlock #search {
-          width: 100%;
-        }
-
-        #searchInput {
+          display: block;
           width: 100%;
         }
       }
 
+      @media (max-width: 800px) and (min-width: 641px) {
+        #searchInput {
+          max-width: 800px;
+        }
+      }
+
       @media (max-width: 640px) {
-        #searchBlock #search {
+        #catBar {
+          padding: 0 0 8px 0;
+        }
+
+        #searchBlock {
           display: block;
+          margin: 8px 0;
+
+          #search {
+            display: block;
+          }
         }
 
         #compList {
@@ -294,6 +304,17 @@ export class AppHome extends LitElement {
     }
   }
 
+  async handleFocusMobile(event: FocusEvent) {
+    if (window.devicePixelRatio > 2) {
+      const focusedEl = (<any>event).path[0];
+
+      focusedEl.scrollIntoView({
+        behavior: "smooth",
+        block: "end",
+      });
+    }
+  }
+
   render() {
     return html`
       <div>
@@ -358,7 +379,15 @@ export class AppHome extends LitElement {
 
               <ul>
                 ${this.featured?.map((comp) => {
-                  return html` <li><comp-card .comp=${comp}></comp-card></li> `;
+                  return html`
+                    <li>
+                      <comp-card
+                        .comp=${comp}
+                        @focusin=${(evt: FocusEvent) =>
+                          this.handleFocusMobile(evt)}
+                      ></comp-card>
+                    </li>
+                  `;
                 })}
               </ul>
             </section>`
@@ -368,7 +397,13 @@ export class AppHome extends LitElement {
               ${this.comps && this.comps.length > 0
                 ? html`${this.comps?.map((comp) => {
                     return html`
-                      <li><comp-card .comp=${comp}></comp-card></li>
+                      <li>
+                        <comp-card
+                          .comp=${comp}
+                          @focusin=${(evt: FocusEvent) =>
+                            this.handleFocusMobile(evt)}
+                        ></comp-card>
+                      </li>
                     `;
                   })}`
                 : html`<h2 id="noresults" role="alert">No results found</h2>`}
@@ -380,7 +415,13 @@ export class AppHome extends LitElement {
                 ${this.demos && this.demos.length > 0
                   ? html`${this.demos?.map((demo) => {
                       return html`
-                        <li><demo-card .demo=${demo}></demo-card></li>
+                        <li>
+                          <demo-card
+                            .demo=${demo}
+                            @focusin=${(evt: FocusEvent) =>
+                              this.handleFocusMobile(evt)}
+                          ></demo-card>
+                        </li>
                       `;
                     })}`
                   : html`<h2 id="noresults" role="alert">No results found</h2>`}
