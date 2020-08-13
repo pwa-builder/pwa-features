@@ -34,12 +34,12 @@ export class CompCard extends LitElement {
         font-size: 14px;
       }
 
-      #cardActions {
+      .cardActions {
         display: flex;
         justify-content: center;
       }
 
-      #cardActions a {
+      .cardActions a {
         text-decoration: none;
         font-size: 14px;
         font-weight: bold;
@@ -59,7 +59,7 @@ export class CompCard extends LitElement {
         transition: all 260ms;
       }
 
-      #cardActions a:hover {
+      .cardActions a:hover {
         background-color: #9337d8;
         color: white;
       }
@@ -84,7 +84,7 @@ export class CompCard extends LitElement {
           <p>${this.comp.desc}</p>
         </div>
 
-        <div id="cardActions">
+        <div class="cardActions">
           <a
             aria-label="${`View ${this.comp.name} Component link`}"
             .href=${`component/${this.comp.ID}`}
