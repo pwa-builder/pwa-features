@@ -118,6 +118,12 @@ export class AppHeader extends LitElement {
     }
   }
 
+  builderEnterKey(e: KeyboardEvent) {
+    if (e.key === "Enter") {
+      this.gobuilder();
+    }
+  }
+
   goToMain(event: any) {
     event.preventDefault();
 
@@ -146,7 +152,7 @@ export class AppHeader extends LitElement {
         />
 
         <div id="tabs">
-          <a id="hubLink" @click="${this.gobuilder}" tabindex="0">My Hub</a>
+          <a id="hubLink" @click="${this.gobuilder}" @keyup="${this.builderEnterKey}" tabindex="0">My Hub</a>
           <a id="featureStore" href="/" tabindex="0">Feature Store</a>
         </div>
 
