@@ -82,7 +82,7 @@ export class DemoCard extends LitElement {
         </div>
 
         <div id="demoActions">
-          <a .href=${`demo/${this.demo.ID}`}>View Demo</a>
+          <a .href=${`demo/${this.demo.ID}`} aria-label="${"View ${this.demo.name} Demo Link"}">View Demo</a>
         </div>
       </div>
     `;
