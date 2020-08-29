@@ -37,10 +37,10 @@ export class AppHome extends LitElement {
 
       #compList {
         list-style: none;
-        padding: 0;
+        padding: 0 16px;
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-        grid-gap: 1rem;
+        grid-gap: 16px;
       }
 
       #featured ul {
@@ -54,7 +54,8 @@ export class AppHome extends LitElement {
         min-height: 280px;
       }
 
-      #featured comp-card {
+      #featured comp-card,
+      #featured demo-card {
         margin: 8px;
       }
 
@@ -170,6 +171,81 @@ export class AppHome extends LitElement {
         margin-bottom: 8px;
       }
 
+      @media (max-width: 800px), (min-resolution: 300dpi) {
+        #catBar,
+        #featured,
+        #compList {
+          padding-left: 8px;
+          padding-right: 8px;
+        }
+
+        #compList comp-card,
+        #compList demo-card {
+          margin: 8px;
+        }
+      }
+      @media (min-resolution: 300dpi) and (max-width: 640px) {
+        #catBar {
+          padding: 0px 8px 8px !important;
+        }
+
+        #catBar label[for="searchInput"] {
+          display: none;
+        }
+
+        #searchBlock {
+          width: 100%;
+        }
+      }
+
+      @media (min-resolution: 300dpi) and (max-width: 800px) {
+        #headerText {
+          height: auto !important;
+        }
+
+        #catBar,
+        #searchBlock {
+          display: block !important;
+          width: auto;
+          margin: 8px 0 !important;
+        }
+
+        #searchInput {
+          width: 100%;
+          height: unset !important;
+        }
+
+        #cats {
+          width: 100%;
+        }
+      }
+
+      @media (min-resolution: 300dpi) and (max-width: 640px) {
+        #searchInput {
+          max-width: unset !important;
+        }
+      }
+
+      @media (min-resolution: 300dpi) {
+        #compList,
+        #featured ul {
+          display: block;
+        }
+
+        #cats {
+          display: flex;
+          justify-content: center;
+          align-items: baseline;
+          align-content: center;
+        }
+
+        #cats button {
+          flex: 1 1 auto;
+          flex-grow: 1;
+          text-overflow: ellipsis;
+        }
+      }
+
       @media (max-width: 800px) {
         #headerText {
           padding: 16px;
@@ -223,10 +299,6 @@ export class AppHome extends LitElement {
           #search {
             display: block;
           }
-        }
-
-        #compList {
-          width: 100%;
         }
 
         #compList comp-card {
@@ -355,16 +427,16 @@ export class AppHome extends LitElement {
 
           <div id="cats">
             <button
+              id="componentCategoryButton"
               class="${this.cat === null ? "active" : null}"
-              id="categoryButton"
               aria-pressed="${this.cat === null ? "true" : "false"}"
               @click=${this.doGetAll}
             >
               Components
             </button>
             <button
+              id="demoCategoryButton"
               class="${this.cat === "demos" ? "active" : null}"
-              id="categoryButton"
               aria-pressed="${this.cat === "demos" ? "true" : "false"}"
               @click=${() => this.changeCat("demos")}
             >
