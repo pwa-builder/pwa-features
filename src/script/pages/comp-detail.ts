@@ -520,11 +520,11 @@ export class CompDetail extends LitElement {
                   <img src="/assets/down.svg" alt="dropdown">
 
                   ${this.showOptions ? html`<div id="installOptions">
-                    <button @click="${() => this.copyInstall("script")}">
+                    <button @click="${() => this.copyInstall("script")}" aria-controls="toast">
                       <img src="/assets/copy.svg" alt="copy icon">
                       with script tag
                     </button>
-                    <button @click="${() => this.copyInstall("npm")}">
+                    <button @click="${() => this.copyInstall("npm")}" aria-controls="toast">
                       <img src="/assets/copy.svg" alt="copy icon">
                       with npm
                     </button>
@@ -571,7 +571,7 @@ ${this.comp?.docs_url ? html`<a id="docsLink" .href="${this.comp?.docs_url}">Doc
 
         ${this.readme ? html`<section id="readme" .innerHTML="${this.readme}"></section>` : null}
 
-        ${this.showToast ? html`<comp-toast>copied to your clipboard</comp-toast>` : null}
+        ${this.showToast ? html`<comp-toast id="toast" role="alert">copied to your clipboard</comp-toast>` : null}
       </div>
     `;
   }
