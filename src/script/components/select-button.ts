@@ -33,17 +33,12 @@ export class SelectButton extends LitElement {
   }
 
   handleFocusOut(evt: FocusEvent) {
-    // Generate when focus events become a
+    // Generate when focus events once when they are relevant
     if (this.componentIdList.size === 0) {
       this.generateComponentIdList();
     }
 
-    console.log(evt.target);
-    // console.log(evt.currentTarget);
-    // console.log(evt.relatedTarget);
-    const focusOutComponentId = (<any>evt.target).id;
-    console.log(this.componentIdList, focusOutComponentId);
-
+    const focusOutComponentId = (<HTMLElement>evt?.relatedTarget)?.id;
     if (
       this.showMenu &&
       !this.componentIdList.has(focusOutComponentId)
@@ -60,7 +55,7 @@ export class SelectButton extends LitElement {
   }
 
   handleSlotChange() {
-    // Clear list on component changes, this ensures the list is trim
+    // Clear list if a slot changes values, warning: this doesn't trigger if a child node changes.
     this.componentIdList.clear();
   }
 
@@ -76,7 +71,6 @@ export class SelectButton extends LitElement {
     const slots = this.shadowRoot?.querySelectorAll("slot") || [];
     let queue: Array<Node | HTMLElement> = [];
 
-    const searchList: Array<String> = [];
     if (slots) {
       for (let i = 0; i < slots.length; i++) {
         const slot = slots[i];
