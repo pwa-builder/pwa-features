@@ -4,7 +4,7 @@ import { LitElement, css, html, customElement, property } from "lit-element";
 export class SelectButton extends LitElement {
   @property({ type: Boolean }) showMenu: boolean = false;
 
-  private componentIdList: Array<String>;
+  private componentIdList: Set<String>;
 
   static get styles() {
     return css`
@@ -16,7 +16,7 @@ export class SelectButton extends LitElement {
 
   constructor() {
     super();
-    this.componentIdList = [];
+    this.componentIdList = new Set();
   }
 
   render() {
@@ -46,7 +46,7 @@ export class SelectButton extends LitElement {
 
     if (
       this.showMenu &&
-      !this.componentIdList.includes(focusOutComponentId)
+      !this.componentIdList.has(focusOutComponentId)
     ) {
       this.close();
     }
@@ -61,7 +61,7 @@ export class SelectButton extends LitElement {
 
   handleSlotChange() {
     // Clear list on component changes, this ensures the list is trim
-    this.componentIdList = [];
+    this.componentIdList.clear();
   }
 
   close() {
@@ -93,12 +93,10 @@ export class SelectButton extends LitElement {
       }
 
       if (current.id) {
-        searchList.push(current.id);
+        this.componentIdList.add(current.id);
       }
 
       queuePos++;
     }
-
-    this.componentIdList = searchList;
   }
 }
