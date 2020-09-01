@@ -1,5 +1,9 @@
 import { LitElement, css, html, customElement, property } from "lit-element";
 
+/*
+  Bubbling Events:
+    close-select-menu (from function close()) - this notifies the parent that the menu should be closed. To keep data binding 1-way.
+*/
 @customElement("select-button")
 export class SelectButton extends LitElement {
   @property({ type: Boolean }) showMenu: boolean = false;
