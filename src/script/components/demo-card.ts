@@ -5,7 +5,7 @@ import { LitElement, css, html, customElement, property } from 'lit-element';
 export class DemoCard extends LitElement {
 
   @property({ type: Object }) demo: any;
-  
+
 
   static get styles() {
     return css`
@@ -13,7 +13,7 @@ export class DemoCard extends LitElement {
         display: flex;
         justify-content: center;
       }
-    
+
       .demoCard {
         display: flex;
         flex-direction: column;
@@ -65,6 +65,12 @@ export class DemoCard extends LitElement {
       #demoActions a:hover {
         background-color: #9337d8;
         color: white;
+      }
+
+      @media (max-width: 640px) {
+        .demoCard {
+          width: 100%;
+        }
       }
     `;
   }
