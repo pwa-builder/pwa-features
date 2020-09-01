@@ -40,7 +40,7 @@ export class CompToast extends LitElement {
 
   render() {
     return html`
-      <div id="toast">
+      <div id="toast" role="alert">
         <slot></slot>
       </div>
     `
