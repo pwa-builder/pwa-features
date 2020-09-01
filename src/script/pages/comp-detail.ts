@@ -6,6 +6,7 @@ import { Router } from '@vaadin/router';
 import '../components/comp-toast';
 import '../components/share-button';
 import '../components/browser-support';
+import '../components/select-button';
 import { doCapture } from '../services/analytics';
 
 
@@ -87,11 +88,12 @@ export class CompDetail extends LitElement {
         padding-left: 12px;
         align-items: flex-start;
         border-radius: 6px;
-        margin-left: 1.8em;
-        margin-top: 4em;
+        margin-left: 10px;
+        margin-top: 2em;
         width: 10em;
         box-shadow: 0 0 4px 1px rgba(0,0,0,.18039);
         justify-content: flex-start;
+        align-items: flex-start;
 
         animation-name: appear;
         animation-duration: 200ms;
@@ -238,10 +240,6 @@ export class CompDetail extends LitElement {
         opacity: 1;
       }
 
-      #scrolledHeaderBlock #installOptions {
-        margin-left: -10px;
-      }
-
       #scrolledHeaderBlock #headerBackButtonBlock {
         display: flex;
         justify-content: space-between;
@@ -382,6 +380,8 @@ export class CompDetail extends LitElement {
 
   constructor() {
     super();
+
+    this.addEventListener("close-select-menu", this.installComp);
   }
 
   async firstUpdated() {
@@ -478,21 +478,35 @@ export class CompDetail extends LitElement {
 
           <h3>${this.comp?.name}</h3>
         </div>
-
-        <button id="installButtonFixed" @click="${this.installComp}">
-          Install Component
-
-          ${this.showOptions ? html`<div id="installOptions">
-            <button @click="${() => this.copyInstall("script")}">
-              <img src="/assets/copy.svg" alt="copy icon">
-              with script tag
+        <select-button .showMenu=${this.showOptions}>
+          <button
+            slot="button"
+            id="installButtonFixed"
+            @click="${this.installComp}"
+            aria-haspopup="true"
+            aria-controls="installOptions"
+            aria-expanded="${this.showOptions}">
+            Install Component
+          </button>
+          <div slot="menu" id="installOptions" role="menu">
+            <button
+              id="installMenuScript"
+              role="menuitem"
+              aria-controls="toast"
+              @click="${() => this.copyInstall("script")}">
+                <img src="/assets/copy.svg" alt="copy icon">
+                with script tag
+              </button>
+            <button
+              id="installMenuNpm"
+              role="menuitem"
+              aria-controls="toast"
+              @click="${() => this.copyInstall("npm")}">
+                <img src="/assets/copy.svg" alt="copy icon">
+                with npm
             </button>
-            <button @click="${() => this.copyInstall("npm")}">
-              <img src="/assets/copy.svg" alt="copy icon">
-              with npm
-            </button>
-          </div>` : null}
-        </button>
+          </div>
+        </select-button>
       </div>
 
       <div id="compDetail">
@@ -514,22 +528,37 @@ export class CompDetail extends LitElement {
               ${this.comp?.video_url ? html`<iframe id="demoVid" width="560" height="315" src="${this.comp?.video_url}" role="presentation" title="demo video" aria-label="demo video" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>` : null}
 
               <div id="compActionsBlock">
-                <button id="installButton" @click="${this.installComp}">
-                  Install Component
-
-                  <img src="/assets/down.svg" alt="dropdown">
-
-                  ${this.showOptions ? html`<div id="installOptions">
-                    <button @click="${() => this.copyInstall("script")}">
-                      <img src="/assets/copy.svg" alt="copy icon">
-                      with script tag
+                <select-button .showMenu=${this.showOptions}>
+                  <button
+                    slot="button"
+                    id="installButton"
+                    aria-haspopup="true"
+                    aria-controls="installOptions"
+                    aria-expanded="${this.showOptions}"
+                    @click="${this.installComp}">
+                      Install Component
+                      <img src="/assets/down.svg" alt="dropdown">
+                  </button>
+                  <div slot="menu" id="installOptions" role="menu">
+                    <button
+                      id="installMenuScript"
+                      role="menuitem"
+                      aria-controls="toast"
+                      @click="${() => this.copyInstall("script")}">
+                        <img src="/assets/copy.svg" alt="copy icon">
+                        with script tag
                     </button>
-                    <button @click="${() => this.copyInstall("npm")}">
-                      <img src="/assets/copy.svg" alt="copy icon">
-                      with npm
+                    <button
+                      slot="menu"
+                      id="installMenuNpm"
+                      role="menuitem"
+                      aria-controls="toast"
+                      @click="${() => this.copyInstall("npm")}">
+                        <img src="/assets/copy.svg" alt="copy icon">
+                        with npm
                     </button>
-                  </div>` : null}
-                </button>
+                  </div>
+                </select-button>
 
                 ${
       this.comp?.live_demo_url && !this.comp?.embed ? html`
@@ -571,7 +600,7 @@ ${this.comp?.docs_url ? html`<a id="docsLink" .href="${this.comp?.docs_url}">Doc
 
         ${this.readme ? html`<section id="readme" .innerHTML="${this.readme}"></section>` : null}
 
-        ${this.showToast ? html`<comp-toast>copied to your clipboard</comp-toast>` : null}
+        ${this.showToast ? html`<comp-toast id="toast" role="alert">copied to your clipboard</comp-toast>` : null}
       </div>
     `;
   }
