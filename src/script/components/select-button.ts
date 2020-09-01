@@ -34,7 +34,7 @@ export class SelectButton extends LitElement {
 
   handleFocusOut(evt: FocusEvent) {
     // Generate when focus events become a
-    if (this.componentIdList.length === 0) {
+    if (this.componentIdList.size === 0) {
       this.generateComponentIdList();
     }
 
