@@ -62,6 +62,17 @@ export class BrowserSupport extends LitElement {
           grid-gap: 10px;
         }
       }
+
+      @media (min-resolution: 300dpi) and (max-width: 800px) {
+        #supportDetails {
+          display: flex;
+          flex-flow: column;
+        }
+
+        .supportBlock {
+          flex: 1 1;
+        }
+      }
     `;
   }
 
