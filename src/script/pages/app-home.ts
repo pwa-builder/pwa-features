@@ -170,6 +170,15 @@ export class AppHome extends LitElement {
         margin-bottom: 8px;
       }
 
+      .focus-within:focus-within {
+        outline: rgb(0, 95, 204) auto 2px;
+        position: fixed;
+        height: 31px;
+        width: 77px;
+        right: 15px;
+        bottom: 15px;
+      }
+
       @media (max-width: 800px) {
         #headerText {
           padding: 16px;
@@ -429,7 +438,9 @@ export class AppHome extends LitElement {
             `
           : null}
 
-        <pwa-install>Install App</pwa-install>
+        <div class="focus-within">
+          <pwa-install>Install App</pwa-install>
+        </div>
       </div>
     `;
   }
