@@ -80,7 +80,7 @@ export default {
 
 3. Profit.
 
-## Extending the workbox service worker
+## Extending your service worker with workbox
 
 1. Get the dependencies
 
@@ -149,12 +149,6 @@ export default {
 }
 
 ```
-
-
-## Upgrade your service worker
-
-1. a
-
 
 ## Advanced Topics
 
