@@ -8,7 +8,7 @@ There are three major approaches to generating a service worker:
 
 1. Have Workbox do the heavy lifting and plug into with `generateSW`
 2. Use your service worker as the start point and inject into it with the workbox system using `injectManifest`, if you do have a manifest and want to use workbox plugins this is a good way to extend your service worker.
-3. Use the workbox libraries directly using `copyWorkboxLibraries`, this is not covered here, but this allows you to tailor the service worker behavior without boilerplate.
+3. Use the workbox libraries directly using `copyWorkboxLibraries`, this is not covered here, but this allows you to tailor the service worker behavior without boilerplate and allows you to plug into the workbox system and benefit from the plugins (theoretically).
 
 ## Use a workbox generated service worker
 
