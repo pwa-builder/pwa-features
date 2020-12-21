@@ -360,5 +360,71 @@
         "support": true
       }
     ]
+  },
+  {
+    "name": "Add Offline Support to your service worker with Workbox",
+    "desc": "Demo and tutorial to add Workbox libraries to your service worker.",
+    "more_info": "workbox-offline-with-sw.md",
+    "ID": "workbox-offline-add",
+    "demo_url": "",
+    "github_url": "",
+    "screenshot_url": "",
+    "spec_url": "",
+    "learn_more": "",
+    "support": [
+      {
+        "browser": "Edge",
+        "support": true
+      },
+      {
+        "browser": "Chrome",
+        "support": true
+      },
+      {
+        "browser": "Firefox",
+        "support": true
+      },
+      {
+        "browser": "Samsung Internet",
+        "support": false
+      },
+      {
+        "browser": "Safari",
+        "support": true
+      }
+    ]
+  },
+  {
+    "name": "Use Workbox to create a service worker",
+    "desc": "Demo and tutorial to add a service worker with Workbox.",
+    "more_info": "workbox-offline-generate-sw.md",
+    "ID": "workbox-offline-generate",
+    "demo_url": "",
+    "github_url": "",
+    "screenshot_url": "",
+    "spec_url": "",
+    "learn_more": "",
+    "support": [
+      {
+        "browser": "Edge",
+        "support": true
+      },
+      {
+        "browser": "Chrome",
+        "support": true
+      },
+      {
+        "browser": "Firefox",
+        "support": true
+      },
+      {
+        "browser": "Samsung Internet",
+        "support": false
+      },
+      {
+        "browser": "Safari",
+        "support": true
+      }
+    ]
   }
 ]
