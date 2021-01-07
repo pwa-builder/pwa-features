@@ -1,5 +1,3 @@
-If you are looking for.
-
 ## Purpose
 
 The intent of this document is to help developers get started with a service worker that leverages the cache library of Workbox to provide. Below this guide is a quick tutorial on how to create a service worker and incorporate Workbox into your build step.
@@ -100,7 +98,7 @@ import { precacheAndRoute } from 'workbox-precaching';
 precacheAndRoute(self.__WB_MANIFEST);
 ```
 
-#### An example tuned to a single api.
+#### Example: Caching a single api
 
 ```typescript
 declare const self: ServiceWorkerGlobalScope;
@@ -120,7 +118,7 @@ registerRoute(({url}) => url.hostname === "the-one-api.dev",
         statuses: [200]
       }),
       {
-        // Used to generate the cache key and to replicate, the last in the plugins list dictates, default is the url
+        // Used to generate the cache key and to replicate, the last in the plugins list dictates, default is the url, the edit here is just to use the pathname and search.
         cacheKeyWillBeUsed: async ({request}) => {
           const parsedUrl = new URL(request.url);
           return parsedUrl.pathname + parsedUrl.search;
@@ -213,7 +211,7 @@ self.addEventListener('message', event => {
   }
 })
 
-// need to clean caches manually
+// need to clean caches manually.
 self.addEventListener('activate', event => {
   event.waitUntil(
     caches.keys().then(cacheNames => {
@@ -240,12 +238,71 @@ navigate.serviceWorker.postMessage(
 
 #### Example: rel tags
 
+The big issue with the rel tags is that browser support isn't universal, and the behavior is different based on implementation.
+
 ```html
+<html>
+  <head>
+    <!-- ... -->
+    <!-- gives the browser a small head start in dns lookup for resources like images and audio -->
+    <link rel="dns-prefetch" href="www.example.com">
+
+    <!-- sets up sockets before use -->
+    <link rel="preconnect" href="www.example.com">
+
+    <!-- asks the browser to do the above, but also actually fetch the resource -->
+    <link rel="prefetch" href="www.example.com/api/user">
+
+    <!-- higher priority than prefetch -->
+    <link rel="subresource" href="www.example.com/assets/main.css">
+
+    <!-- works like a buffer swap, renders the page in the background and swaps it out, expensive, and the nullified by Page Visibility API settings: https://www.w3.org/TR/page-visibility/ -->
+    <link rel="prerender" href="www.example.com">
+
+    <!-- asks the browser to pre-emptively cache the resource -->
+    <link rel="preload" href="www.example.com/assets/main.css">
+
+  </head>
+  <body>
+    <!-- ... -->
+  </body>
+</html>
+
 ```
 
 ## Offline Fallback
 
-The fallback html
+Offline fallbacks primarily rely on the precache boilerplate above, but the service worker intercepts the preload request and loads from the cache rather than make a network request.
+
+### Example: Workbox
+
+```typescript
+  import { precacheAndRoute, matchPrecache } from 'workbox-precaching';
+  import { setCatchHandler } from 'workbox-routing';
+  import {* as navigationPreload} from 'workbox-navigation-preload';
+
+  // placeholder, better to map directly to json that is used to generate the prefetch manifest
+  const FALLBACK_HTML = "www.example.com/fallback"
+
+  // be
+  precacheAndRoute(self.__WB_MANIFEST);
+
+  navigationPreload.enable();
+
+  setCatchHandler(async ({event}) => {
+    if (event.request.destination === "document") {
+      return matchPrecache(FALLBACK_HTML)
+    }
+
+    return Response.error();
+  })
+```
+
+### Example: Cache API
+
+```javascript
+```
+
 
 ## Setup Walkthrough
 
