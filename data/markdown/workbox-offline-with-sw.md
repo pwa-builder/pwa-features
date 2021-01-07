@@ -274,7 +274,7 @@ The big issue with the rel tags is that browser support isn't universal, and the
 
 Offline fallbacks primarily rely on the precache boilerplate above, but the service worker intercepts the preload request and loads from the cache rather than make a network request.
 
-### Example: Workbox
+### Example: Workbox Offline fallback
 
 ```typescript
   import { precacheAndRoute, matchPrecache } from 'workbox-precaching';
@@ -284,7 +284,6 @@ Offline fallbacks primarily rely on the precache boilerplate above, but the serv
   // placeholder, better to map directly to json that is used to generate the prefetch manifest
   const FALLBACK_HTML = "www.example.com/fallback"
 
-  // be
   precacheAndRoute(self.__WB_MANIFEST);
 
   navigationPreload.enable();
@@ -301,6 +300,57 @@ Offline fallbacks primarily rely on the precache boilerplate above, but the serv
 ### Example: Cache API
 
 ```javascript
+  const cacheName = "offline"
+  const offlineUrl = "offline.html"
+
+  self.addEventListener("install", event => {
+    event.waitUntil(
+      (async () => {
+        const cache = await caches.open(cacheName)
+        // skips the http cache
+        await cache.add(new Request(offlineUrl, { cache: "reload" }))
+      })()
+    )
+
+    self.skipWaiting()
+  })
+
+  self.addEventListener("activate", event => {
+    event.waitUntil(
+      (async () => {
+        // browser supports navigation preload.
+        if ("navigationPreload" in self.registration) {
+          await self.registration.navigationPreload.enable()
+        }
+      })()
+    )
+
+    self.clients.claim()
+  })
+
+  self.addEventListener("fetch", event => {
+    // to only interfect navigate requests.
+    if (event.request.mode === "navigate") {
+      event.respondWith(
+        (async () => {
+          try {
+            const preloadResponse = await event.preloadResponse
+            if (preloadResponse) {
+              return preloadResponse
+            }
+
+            const networkResponse = await fetch(event.request)
+            return networkResponse
+          } catch (error) {
+            const cache = await caches.open(cacheName)
+            const cachedResponse = await cache.match(offlineUrl)
+
+            return cachedResponse
+          }
+        })()
+      )
+    }
+  })
 ```
 
 
