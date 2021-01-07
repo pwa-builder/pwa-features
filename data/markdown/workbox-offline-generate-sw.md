@@ -1,5 +1,3 @@
-If you are looking for.
-
 ## Purpose
 
 The intent of this document is to help developers get started with a service worker that leverages the cache library of Workbox to provide. Below this guide is a quick tutorial on how to create a service worker and incorporate Workbox into your build step.
@@ -82,20 +80,4 @@ export default {
 
 ## Advanced Topics
 
-### Precaching Files
-
-Candidates for precaching include: the start url html, the offline fallback html, javascript, images used on your start and 404, . Essentially they are critical for
-
-## Setup Walkthrough
-
-### Setup Basic Service Worker
-
-If you do not have a service worker the most basic example
-
-### Registering your service worker
-
-### Configuring Workbox
-
-If you do not have workbox configured this part of the guide will walk you through adding it to your build step for your service worker.
-
-### Bundling Workbox into your service worker build
+Please refer to the more in depth guide [here](https://components.pwabuilder.com/demo/workbox_offline_with_sw).
