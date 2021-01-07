@@ -44,7 +44,7 @@ const config = {
   templatedURLs: ['your.site.com/server-renderer'] // place all server rendered urls to precache here.
 }
 
-// Script
+// Node
 import { generateSW } from 'workbox-build';
 
 generateSW(config).then(({count, size, filePaths, warnings}) => {
@@ -84,17 +84,15 @@ export default {
 
 ### Precaching Files
 
-Candidates for precaching include: the start url html, the offline fallback html, javascript, images used on your start and . Essentially they are critical for 
-
-## Offline Fallback
-
-The fallback html
+Candidates for precaching include: the start url html, the offline fallback html, javascript, images used on your start and 404, . Essentially they are critical for
 
 ## Setup Walkthrough
 
 ### Setup Basic Service Worker
 
 If you do not have a service worker the most basic example
+
+### Registering your service worker
 
 ### Configuring Workbox
 
