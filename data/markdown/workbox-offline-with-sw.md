@@ -4,7 +4,7 @@ The intent of this document is to help developers get started with a service wor
 
 There are three major approaches to generating a service worker:
 
-1. Have Workbox do the heavy lifting and plug into with `generateSW`, [demo and tutorial here](https://components.pwabuilder.com/demo/workbox_offline_generate_sw).
+1. Have Workbox do the heavy lifting and plug into with `generateSW`, [demo and tutorial here](/demo/workbox-offline-generate).
 2. Use your service worker as the start point and inject into it with the workbox system using `injectManifest`, if you do have a manifest and want to use workbox plugins this is a good way to extend your service worker.
 3. Use the workbox libraries directly using `copyWorkboxLibraries`, this is not covered here, but this allows you to tailor the service worker behavior without boilerplate and allows you to plug into the workbox system and benefit from the plugins (theoretically).
 
@@ -26,6 +26,8 @@ npm install --save workbox-webpack-plugin
 
 2. Add to your build step, note there's specify: `swSrc` which is the service worker source file, opionally thee `injectionPoint` which defaults to `injectionPoint`
 
+### Universal Configuration
+
 ```typescript
 // Inject Manifest config
 const config = {
@@ -44,7 +46,11 @@ const config = {
   importScripts: ['other-sw.js'], // add to the generated service worker, like middle ware.
   templatedURLs: ['your.site.com/server-renderer'] // place all server rendered urls to precache here.
 }
+```
 
+### Node build script
+
+```typescript
 // Node
 import replace from '@rollup/plugin-replace';
 import { injectManifest } from 'workbox-build';
@@ -53,6 +59,11 @@ injectManifest(config).then(({count, size, filePaths, warnings}) => {
   console.log(`Generated ${swDest}, which will precache ${count} files, totaling ${size} bytes.`);
 });
 
+```
+
+### Rollup plugin
+
+```typescript
 // Rollup config, an example rollup bundled service worker below
 import workbox from 'rollup-plugin-workbox-inject'
 
@@ -67,7 +78,11 @@ export default {
     })
   ]
 }
+```
 
+### Webpack plugin
+
+```typescript
 // Webpack
 import { InjectManifest } from 'workbox-webpack-plugin';
 
@@ -81,10 +96,11 @@ export default {
     })
   ]
 }
-
 ```
 
 ## Advanced Topics
+
+These examples are not meant to be exhaustive, the alternatives shown are to highlight the advantages of workbox.
 
 ### Rollup Service Worker
 
@@ -98,7 +114,7 @@ import { precacheAndRoute } from 'workbox-precaching';
 precacheAndRoute(self.__WB_MANIFEST);
 ```
 
-#### Example: Caching a single api
+#### Example: Extending the cache to a single api
 
 ```typescript
 declare const self: ServiceWorkerGlobalScope;
@@ -142,7 +158,7 @@ Candidates for precaching are the typical static assets of your website:
 
 Caching can be done manually with the [Cache API](https://developer.mozilla.org/en-US/docs/Web/API/Cache), Workbox which interfaces with the Cache API and simplifies it considerably, and the html `rel` tag although [not all browsers support the tag equally](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/rel). Our recommendation is to use Workbox, as it provides simple work flows that will address most tasks, and keeps the development digestible.
 
-#### Example: Workbox
+#### Example: Precache with Workbox
 
 ```typescript
 import {precacheAndRoute} from 'workbox-precaching';
@@ -150,15 +166,16 @@ import {registerRoute} from 'workbox-routing';
 import {CacheFirst} from 'workbox-strategies';
 
 precacheAndRoute(self.__WB_MANIFEST);
+
+// can do custom tasks here
 registerRoute(
   ({request}) => request.destination === 'image',
   new CacheFirst({cacheName: 'images'}),
 );
-
 ```
 
 
-#### Example: Cache API
+#### Example: Precache with Cache API
 
 ```javascript
 // setup caches with the install event listener
@@ -197,7 +214,7 @@ self.addEventListener('fetch', (event) => {
 })
 
 /*
-  receive custom messages
+  receive custom messages, e.i. manually trigger things to cache
 */
 self.addEventListener('message', event => {
   if (event.data && event.data.type === 'KEY") {
@@ -236,9 +253,9 @@ navigate.serviceWorker.postMessage(
 )
 ```
 
-#### Example: rel tags
+#### Example: Precache with rel tags
 
-The big issue with the rel tags is that browser support isn't universal, and the behavior is different based on implementation.
+The main issue with the rel tags is that browser support isn't universal, and the behavior is different based on implementation. Not to mention cache rules need to be sent with the response header, meaning your caching behavior is relies on four different sources, two of them being logic in your control: the browser's settings, the users custom settings and browser plugins, the response header rules for caching, and the html.
 
 ```html
 <html>
@@ -274,7 +291,7 @@ The big issue with the rel tags is that browser support isn't universal, and the
 
 Offline fallbacks primarily rely on the precache boilerplate above, but the service worker intercepts the preload request and loads from the cache rather than make a network request.
 
-### Example: Workbox Offline fallback
+### Example: Offline Fallback with Workbox
 
 ```typescript
   import { precacheAndRoute, matchPrecache } from 'workbox-precaching';
@@ -286,6 +303,7 @@ Offline fallbacks primarily rely on the precache boilerplate above, but the serv
 
   precacheAndRoute(self.__WB_MANIFEST);
 
+  // new logic starts here
   navigationPreload.enable();
 
   setCatchHandler(async ({event}) => {
@@ -297,13 +315,14 @@ Offline fallbacks primarily rely on the precache boilerplate above, but the serv
   })
 ```
 
-### Example: Cache API
+### Example: Offline Fallback with Cache API
 
 ```javascript
   const cacheName = "offline"
   const offlineUrl = "offline.html"
 
   self.addEventListener("install", event => {
+    // including "install" cache logic above
     event.waitUntil(
       (async () => {
         const cache = await caches.open(cacheName)
@@ -316,6 +335,7 @@ Offline fallbacks primarily rely on the precache boilerplate above, but the serv
   })
 
   self.addEventListener("activate", event => {
+    // including the "activate" logic above
     event.waitUntil(
       (async () => {
         // browser supports navigation preload.
@@ -350,18 +370,9 @@ Offline fallbacks primarily rely on the precache boilerplate above, but the serv
         })()
       )
     }
+
+    // include the fetch logic above
   })
+
+  // Remember this code will require manual cache cleaning and the management of the other resources as well, for sake of DRYness I'm not repeating the logic above.
 ```
-
-
-## Setup Walkthrough
-
-### Setup Basic Service Worker
-
-If you do not have a service worker the most basic example
-
-### Configuring Workbox
-
-If you do not have workbox configured this part of the guide will walk you through adding it to your build step for your service worker.
-
-### Bundling Workbox into your service worker build
