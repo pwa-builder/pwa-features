@@ -5,7 +5,7 @@ The intent of this document is to help developers get started with a service wor
 There are three major approaches to generating a service worker:
 
 1. Have Workbox do the heavy lifting and plug into with `generateSW`.
-2. Use your service worker as the start point and inject into it with the workbox system using `injectManifest`, if you do have a manifest and want to use workbox plugins this is a good way to extend your service worker, [demo and tutorial here](https://components.pwabuilder.com/demo/workbox_offline_with_sw).
+2. Use your service worker as the start point and inject into it with the workbox system using `injectManifest`, if you do have a manifest and want to use workbox plugins this is a good way to extend your service worker, [demo and tutorial here](/demo/workbox-offline-extend-workbox).
 3. Use the workbox libraries directly using `copyWorkboxLibraries`, this is not covered here, but this allows you to tailor the service worker behavior without boilerplate and allows you to plug into the workbox system and benefit from the plugins (theoretically).
 
 ## Use a workbox generated service worker
@@ -23,7 +23,9 @@ npm install --save rollup-plugin-workbox
 npm install --save workbox-webpack-plugin
 ```
 
-2. Add to your build step
+2. Add to your build step, using the configuration below and the script or a bundler.
+
+### Configuration (applies too all)
 
 ```typescript
 // Config remains largely the same between the different implementations.
@@ -41,14 +43,21 @@ const config = {
   importScripts: ['other-sw.js'], // add to the generated service worker, like middle ware.
   templatedURLs: ['your.site.com/server-renderer'] // place all server rendered urls to precache here.
 }
+```
 
-// Node
+### Node Script
+
+```typescript
 import { generateSW } from 'workbox-build';
 
 generateSW(config).then(({count, size, filePaths, warnings}) => {
   console.log(`Generated ${swDest}, which will precache ${count} files, totaling ${size} bytes.`);
 });
+```
 
+### Rollup
+
+```typescript
 // Rollup plugin
 import { generateSW } from 'rollup-plugin-workbox';
 
@@ -59,7 +68,11 @@ export default {
     generateSW(config)
   ]
 }
+```
 
+### Webpack
+
+```typescript
 // Webpack
 import { GenerateSW } from 'workbox-webpack-plugin';
 
@@ -76,8 +89,6 @@ export default {
 
 ```
 
-3. Profit.
-
 ## Advanced Topics
 
-Please refer to the more in depth guide [here](https://components.pwabuilder.com/demo/workbox_offline_with_sw).
+Please refer to the more in depth guide [here](/demo/workbox-offline-extend-workbox).
