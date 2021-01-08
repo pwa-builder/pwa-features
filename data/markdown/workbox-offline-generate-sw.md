@@ -25,7 +25,7 @@ npm install --save workbox-webpack-plugin
 
 2. Add to your build step, using the configuration below and the script or a bundler.
 
-### Configuration (applies too all)
+### Configuration (universal)
 
 ```typescript
 // Config remains largely the same between the different implementations.
