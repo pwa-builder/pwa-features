@@ -18,7 +18,7 @@
     "@vaadin/router": "^1.7.2",
     "idb-keyval": "^3.2.0",
     "lit-element": "^2.3.1",
-    "marked": "^1.0.0",
+    "marked": "^4.0.10",
     "mdn-browser-compat-data": "^1.0.21"
   },
   "devDependencies": {
